@@ -107,7 +107,7 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onResume() {
-		Log.i(TAG, "onResume");
+		//HLog.i("onResume");
 		super.onResume();
 		connectUSBDevice();
 	}
@@ -115,7 +115,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		Log.i(TAG, "onPause");
+		//HLog.i("onPause");
     	if(midiInputDevice != null){
     		midiInputDevice.stop();
     		midiInputDevice = null;
@@ -131,13 +131,18 @@ public class MainActivity extends Activity {
 	}
 	
 	public static void connectUSBDevice(){
-		Log.i(TAG, "connectUSBDevice");
+		//HLog.i("remove later:connectUSBDevice");
 
+		if(midiInputDevice != null){
+    		midiInputDevice.stop();
+    		midiInputDevice = null;
+    	}
+		
 		HashMap<String, UsbDevice> deviceList = usbManager.getDeviceList();
 		Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
 		UsbDevice device = null;
 		if(deviceList.isEmpty()){
-			//HLog.i("No USB device connected");
+			HLog.i("No USB device connected");
 			FragMentManager.getInstance().updateUSBConnection(false);
 			return;
 		}else{	

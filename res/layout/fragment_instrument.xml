@@ -74,6 +74,7 @@
 		        android:src="@drawable/notes"/> 
 		    <ImageButton    
 		        android:layout_marginLeft="15dp" 
+		        android:layout_marginRight="30dp" 
 		        android:id="@+id/console_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
