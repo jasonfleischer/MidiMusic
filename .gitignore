@@ -24,21 +24,3 @@ proguard/
 
 # Log Files
 *.log
-
-*.class
-
-*.apk
-
-bin/resources.ap_
-
-bin/MidiMusic.apk
-
-bin/classes/com/comp4905/jasonfleischer/midimusic/views/UsbConnection$1.class
-
-bin/classes/com/comp4905/jasonfleischer/midimusic/views/RecordingPane$3.class
-
-bin/classes/com/comp4905/jasonfleischer/midimusic/views/RecordingPane$2.class
-
-bin/resources.ap_
-
-bin/classes.dex
