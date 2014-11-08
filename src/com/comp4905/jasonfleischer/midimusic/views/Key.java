@@ -29,7 +29,7 @@ public class Key {
 			defaultColor = R.color.grey;
 			v.setBackgroundResource(defaultColor);
 		}else if(isHighlighted){
-			defaultColor = R.color.blue;
+			defaultColor = R.color.grey;
 			v.setBackgroundResource(defaultColor);
 		}else{
 			if(isBlackKey) 

@@ -63,7 +63,8 @@ public class GridFragment extends Fragment{
 		            ge.getHitRect(r); 
 		            if(r.contains((int)xPos,(int)yPos)){
 		                if(lastPressedGrid != i){
-		                	ges[lastPressedGrid].setDefaultResource();
+		                	if(lastPressedGrid != -1)
+		                		ges[lastPressedGrid].setDefaultResource();
 		                    lastPressedGrid = i;
 		                    ge.playNote();
 		                    ge.setBackgroundResource(R.drawable.grid_element_pressed);
@@ -71,6 +72,12 @@ public class GridFragment extends Fragment{
 		                }
 		            }       
 				}
+				
+				if (event.getAction() == MotionEvent.ACTION_UP){
+					ges[lastPressedGrid].setDefaultResource();
+	            	lastPressedGrid = -1;
+				}
+				
 				return true;
 			}
 		});
