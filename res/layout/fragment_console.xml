@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_bottom_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_top_margin" >
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+	    android:layout_height="50dp"
+	    android:orientation="horizontal">
+	    <LinearLayout 
+    	    android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:orientation="vertical">
+		    <TextView 
+		        android:layout_width="wrap_content"
+	    		android:layout_height="wrap_content"
+	    		android:textSize="20sp"
+	    		android:textStyle="bold"
+	    		android:text="@string/console"/>
+		    <include layout="@layout/usb_connection"/>
+	    </LinearLayout>
+		<LinearLayout 
+		    android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_alignParentRight="true"> 
+	   	    <ImageButton         
+		        android:id="@+id/usb_btn"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:scaleType="fitCenter"
+		        android:src="@drawable/usb"/>  
+		    <ImageButton 
+		        android:id="@+id/console_key_btn"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:scaleType="fitCenter"
+		        android:src="@drawable/keys"/>
+		</LinearLayout>
+	</RelativeLayout>
+	<ScrollView
+	    android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:background="@drawable/rounded_corners_bg_shape">
+		<LinearLayout
+		    android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:orientation="horizontal"
+    		android:paddingLeft="10dp"
+    		android:paddingRight="10dp" >
+		<LinearLayout
+		    android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:orientation="vertical"
+    		android:paddingLeft="10dp"
+    		android:paddingRight="10dp" >
+		    <GridLayout 
+			    android:layout_width="wrap_content"
+	    		android:layout_height="wrap_content"
+	    		android:columnCount="2" >
+	    		<TextView 
+			        android:layout_width="200dp"
+				    android:layout_height="wrap_content" 
+				    android:textStyle="bold"
+				    android:textSize="18sp"
+				    android:text="@string/instrument"/>
+				<Spinner
+				    android:id="@+id/instrumentSpinner"
+				    android:layout_width="220dp"
+				    android:layout_height="60dp" />
+			    <TextView 
+			        android:layout_width="match_parent"
+				    android:layout_height="wrap_content" 
+				    android:textStyle="bold"
+				    android:textSize="18sp"
+				    android:text="@string/transpose_keyboard"/>
+				<Spinner
+				    android:id="@+id/keySpinner"
+				    android:layout_width="220dp"
+				    android:layout_height="60dp" />
+				<TextView 
+			        android:layout_width="match_parent"
+				    android:layout_height="wrap_content" 
+				    android:textStyle="bold"
+				    android:textSize="18sp"
+				    android:text="@string/octave"/>
+				<Spinner
+				    android:id="@+id/octaveSpinner"
+				    android:layout_width="220dp"
+				    android:layout_height="60dp" />	
+				<TextView 
+				    android:layout_height="wrap_content" 
+				    android:textStyle="bold"
+				    android:textSize="18sp"
+				    android:text="Highlighted Scale:"/>
+				<Spinner
+				    android:id="@+id/scaleSpinner"
+				    android:layout_width="220dp"
+				    android:layout_height="60dp" />
+				<TextView 
+				    android:layout_height="wrap_content" 
+				    android:textStyle="bold"
+				    android:textSize="18sp"
+				    android:text="Modulate USB:"/>
+				<Spinner
+				    android:id="@+id/modulateSpinner"
+				    android:layout_width="220dp"
+				    android:layout_height="60dp" />
+			</GridLayout>
+		    </LinearLayout>
+
+		<LinearLayout
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+		    android:paddingLeft="10dp"
+		    android:paddingRight="10dp" >
+
+		    <LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10dp"
+		        android:background="@drawable/conatiner_shape"
+		        android:paddingRight="10dp"
+		        android:paddingLeft="10dp"
+		        android:paddingBottom="10dp" 
+		        android:orientation="vertical">
+				<RelativeLayout  
+				    android:layout_width="wrap_content"
+		        	android:layout_height="wrap_content">
+					<TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="15dp"
+		            android:text="Metronome:"
+		            android:textSize="19sp"
+		            android:textStyle="bold" />
+					<LinearLayout  
+					    android:id="@+id/console_metronome_btn_cont"
+					    android:layout_width="wrap_content"
+		        		android:layout_height="wrap_content"
+		        		android:orientation="horizontal"
+		        		android:layout_alignParentRight="true">
+					   <ImageButton
+				            android:layout_width="50dp"
+				            android:layout_height="50dp"
+				            android:layout_marginTop="3dp"
+				            android:scaleType="fitCenter"
+				            android:src="@drawable/metronome" />
+					   <ImageButton
+				            android:id="@+id/console_metronome_btn"
+				            android:layout_width="50dp"
+				            android:layout_height="50dp"
+				            android:layout_marginTop="3dp"
+				            android:scaleType="fitCenter"
+				            android:src="@drawable/play" />
+				   </LinearLayout>
+				</RelativeLayout>
+				<LinearLayout 
+				    android:layout_width="wrap_content"
+		        	android:layout_height="wrap_content">
+				    <TextView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="Tempo:"
+			            android:textSize="18sp"
+			            android:textStyle="bold" />
+			        <Spinner
+			            android:id="@+id/consoleTempoSpinner"
+			            android:layout_width="130dp"
+			            android:layout_height="60dp"
+			            android:layout_weight="1" />
+			        <TextView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginLeft="15dp"
+			            android:text="Accent:"
+			            android:textSize="18sp"
+			            android:textStyle="bold" />
+			        <Spinner
+			            android:id="@+id/consoleAccentSpinner"
+			            android:layout_width="130dp"
+			            android:layout_height="60dp"
+			            android:layout_weight="1" />
+
+				</LinearLayout>
+				<LinearLayout 
+				    android:layout_width="wrap_content"
+				    android:layout_marginTop="5dp"
+		        	android:layout_height="wrap_content">
+			        <TextView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="Spoken:"
+			            android:textSize="18sp"
+			            android:textStyle="bold" />
+				    <ToggleButton 
+				        android:layout_marginLeft="5dp"
+				        android:id="@+id/console_spoken_metronome_btn"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"/>
+				    <RadioGroup android:id="@+id/console_spoken_options"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_row="3"
+		                android:layout_marginLeft="5dp"
+		                android:checkedButton="@+id/console_spoken_option_1"
+		                android:orientation="horizontal">
+				        <RadioButton
+				            android:id="@+id/console_spoken_option_1"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp"
+		                    android:paddingRight="18dp"
+		                    android:text="- - -" />
+				         <RadioButton
+				            android:id="@+id/console_spoken_option_2"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp"
+		                    android:paddingRight="18dp"
+		                    android:text="- And -"  />
+				          <RadioButton
+				            android:id="@+id/console_spoken_option_3"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp"
+		                    android:paddingRight="18dp"
+		                    android:text="e And a"  />
+				    </RadioGroup>
+				</LinearLayout>
+		        
+		    </LinearLayout>
+
+		    <LinearLayout
+		        android:id="@+id/playing_mode_cont"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10dp"
+		        android:background="@drawable/conatiner_shape"
+		        android:orientation="vertical"
+		        android:paddingRight="10dp"
+		        android:paddingLeft="10dp"
+		        android:paddingBottom="10dp" >
+		        <TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="15dp"
+		            android:text="Playing Mode:"
+		            android:textSize="19sp"
+		            android:textStyle="bold" />
+		        <LinearLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:orientation="horizontal" >
+		            <RadioGroup
+		                android:id="@+id/playing_mode_radio_group"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_row="3"
+		                android:orientation="horizontal" >
+		                <RadioButton
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp"
+		                    android:paddingRight="18dp" />
+		                <RadioButton
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp"
+		                    android:paddingRight="18dp" />
+		                <RadioButton
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp"
+		                    android:paddingRight="18dp" />
+		                <RadioButton
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp" />
+		            </RadioGroup>
+		        </LinearLayout>
+
+		        <GridLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:columnCount="2"
+		            android:visibility="gone" >
+
+		            <TextView
+		                android:layout_width="180dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="Duration:"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+
+		            <Spinner
+		                android:id="@+id/duration_spinner"
+		                android:layout_width="180dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+		        </GridLayout>
+
+		        <GridLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:columnCount="2"
+		            android:visibility="gone" >
+
+		            <TextView
+		                android:layout_width="180dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="Chord:"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+
+		            <Spinner
+		                android:id="@+id/chord_spinner"
+		                android:layout_width="180dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+
+		            <TextView
+		                android:layout_width="180dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="@string/duration"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+		            <Spinner
+		                android:id="@+id/duration_spinner_chord"
+		                android:layout_width="180dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+		        </GridLayout>
+		        <GridLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:columnCount="2"
+		            android:visibility="gone" >
+		            <TextView
+		                android:layout_width="180dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="Type:"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+		            <Spinner
+		                android:id="@+id/sequence_spinner"
+		                android:layout_width="180dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+		        </GridLayout>
+		        <FrameLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:visibility="gone" >
+		        </FrameLayout>
+		    </LinearLayout>
+		</LinearLayout>
+		    
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>

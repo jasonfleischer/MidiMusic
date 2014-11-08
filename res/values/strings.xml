@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Midi Music</string>
+    <string name="dash">-</string>
+    
+    <string name="instrument">Instrument:</string>
+    <string name="key">Key:</string>
+    <string name="octave">Octave:</string>
+    <string name="note">Note:</string>
+    <string name="duration">Duration:</string>
+    
+    <string name="usb_disconn">USB Device Disconnected</string>
+	<string name="usb_conn">USB Device Connected</string>
+	
+	<string name="console">Console</string>
+	<string name="transpose_keyboard">Transpose Keyboard:</string>
+	
+	<string name="drum_machine">Drum Machine</string>
+	
+	<string name="sequencer">Sequencer</string>
+	
+	<string name="loading">Loading</string>
+	<string name="updating_midi">Updating Midi Files</string>
+	
+	
+	<string name="chord_player">Chord Player</string>
+	
+	<!-- toasts -->
+	
+	<!-- content descriptors -->
+	<string name="descp_led">led indicator</string>
+</resources>

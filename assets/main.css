@@ -1,0 +1,13 @@
+body {	
+	background-color:rgba( 0,255,255, 0.0)  !important;
+}
+
+#loading {
+	bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;	
+    height:200px;
+}
