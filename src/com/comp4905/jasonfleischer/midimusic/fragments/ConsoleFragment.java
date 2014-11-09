@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -41,7 +42,8 @@ public class ConsoleFragment extends Fragment{
 
 	
 	
-	private ImageButton usbBtn, keyBtn, metronomeBtn;
+	private ImageButton keyBtn, metronomeBtn;
+	private Button usbBtn;
 	private ToggleButton spokenBtn;
 	private Spinner keySpinner, octaveSpinner, instrumentSpinner, scaleSpinner, modulateSpinner,
 		chordSpinner, durationSpinner, durationSpinnerChord, sequenceSpinner, tempoSpinner, accentSpinner;
@@ -57,7 +59,7 @@ public class ConsoleFragment extends Fragment{
 		
 		View rootView = inflater.inflate(R.layout.fragment_console, container, false);
 		usbConn = (UsbConnection) rootView.findViewById(R.id.usb_connection_view);
-		usbBtn = (ImageButton) rootView.findViewById(R.id.usb_btn);
+		usbBtn = (Button) rootView.findViewById(R.id.usb_btn);
 		keyBtn = (ImageButton) rootView.findViewById(R.id.console_key_btn);
 		spokenBtn = (ToggleButton) rootView.findViewById(R.id.console_spoken_metronome_btn);
 		metronomeBtn = (ImageButton) rootView.findViewById(R.id.console_metronome_btn);
@@ -81,11 +83,7 @@ public class ConsoleFragment extends Fragment{
 		usbBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(MainActivity.midiInputDevice != null){ // stop if already connected
-					HLog.i("USB Device Already Connected");
-				}else{
-					MainActivity.connectUSBDevice();
-				}
+				MainActivity.connectUSBDevice();
 			}
 		});
 		keyBtn.setOnClickListener(new OnClickListener() {

@@ -71,7 +71,8 @@
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/notes"/> 
+		        android:src="@drawable/notes"
+		        android:visibility="gone"/> 
 		    <ImageButton    
 		        android:layout_marginLeft="15dp" 
 		        android:layout_marginRight="30dp" 

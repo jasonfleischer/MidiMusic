@@ -28,12 +28,7 @@
 		    android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
 	    	android:layout_alignParentRight="true"> 
-	   	    <ImageButton         
-		        android:id="@+id/usb_btn"
-		        android:layout_width="50dp"
-		        android:layout_height="50dp"
-		        android:scaleType="fitCenter"
-		        android:src="@drawable/usb"/>  
+	   	     
 		    <ImageButton 
 		        android:id="@+id/console_key_btn"
 		        android:layout_width="50dp"
@@ -58,6 +53,47 @@
     		android:orientation="vertical"
     		android:paddingLeft="10dp"
     		android:paddingRight="10dp" >
+    		<LinearLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10dp"
+		        android:background="@drawable/conatiner_shape"
+		        android:paddingRight="10dp"
+		        android:paddingLeft="10dp"
+		        android:paddingBottom="10dp" 
+		        android:orientation="vertical">
+
+				<GridLayout 
+				    android:layout_width="wrap_content"
+				    android:layout_marginLeft="10dp"
+		    		android:layout_height="wrap_content"
+		    		android:columnCount="2" > 
+		    		<TextView
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+						android:layout_marginTop="5dp"
+			            android:layout_marginBottom="10dp"
+			            android:text="USB Settings:"
+			            android:textSize="19sp"
+			            android:textStyle="bold" />
+					<Button 
+					    android:id="@+id/usb_btn"
+					    android:layout_marginTop="10dp"
+					    android:layout_width="fill_parent"
+				        android:layout_height="50dp"
+				        android:text="Connect USB Device"/>
+					<TextView 
+					    android:layout_height="wrap_content" 
+					    android:layout_width="200dp"
+					    android:textStyle="bold"
+					    android:textSize="18sp"
+					    android:text="Modulate USB:"/>
+					<Spinner
+					    android:id="@+id/modulateSpinner"
+					    android:layout_width="180dp"
+					    android:layout_height="60dp" />
+		        </GridLayout>
+		    </LinearLayout>
 		    <GridLayout 
 			    android:layout_width="wrap_content"
 	    		android:layout_height="wrap_content"
@@ -101,17 +137,11 @@
 				    android:id="@+id/scaleSpinner"
 				    android:layout_width="220dp"
 				    android:layout_height="60dp" />
-				<TextView 
-				    android:layout_height="wrap_content" 
-				    android:textStyle="bold"
-				    android:textSize="18sp"
-				    android:text="Modulate USB:"/>
-				<Spinner
-				    android:id="@+id/modulateSpinner"
-				    android:layout_width="220dp"
-				    android:layout_height="60dp" />
+				
 			</GridLayout>
-		    </LinearLayout>
+		
+		    
+		</LinearLayout>
 
 		<LinearLayout
 		    android:layout_width="wrap_content"
@@ -133,12 +163,12 @@
 				    android:layout_width="wrap_content"
 		        	android:layout_height="wrap_content">
 					<TextView
-		            android:layout_width="match_parent"
-		            android:layout_height="wrap_content"
-		            android:layout_marginTop="15dp"
-		            android:text="Metronome:"
-		            android:textSize="19sp"
-		            android:textStyle="bold" />
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:layout_marginTop="15dp"
+			            android:text="Metronome:"
+			            android:textSize="19sp"
+			            android:textStyle="bold" />
 					<LinearLayout  
 					    android:id="@+id/console_metronome_btn_cont"
 					    android:layout_width="wrap_content"

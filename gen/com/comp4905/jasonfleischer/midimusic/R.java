@@ -15,10 +15,9 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int blue=0x7f060003;
         public static final int grey=0x7f060001;
         public static final int semitransparent=0x7f060000;
-        public static final int white=0x7f060004;
+        public static final int white=0x7f060003;
         public static final int yellow=0x7f060002;
     }
     public static final class dimen {
@@ -59,28 +58,29 @@ public final class R {
         public static final int grid_element=0x7f020015;
         public static final int grid_element_highlighted=0x7f020016;
         public static final int grid_element_pressed=0x7f020017;
-        public static final int icon=0x7f020018;
-        public static final int keys=0x7f020019;
-        public static final int ledgreen=0x7f02001a;
-        public static final int ledred=0x7f02001b;
-        public static final int loop=0x7f02001c;
-        public static final int metronome=0x7f02001d;
-        public static final int no_wrench=0x7f02001e;
-        public static final int notes=0x7f02001f;
-        public static final int play=0x7f020020;
-        public static final int record=0x7f020021;
-        public static final int rounded_corners_bg_shape=0x7f020022;
-        public static final int sequence_shape=0x7f020023;
-        public static final int sequence_shape_colored=0x7f020024;
-        public static final int sequence_shape_highlight=0x7f020025;
-        public static final int sequence_shape_selected=0x7f020026;
-        public static final int stop=0x7f020027;
-        public static final int transparent_bg=0x7f020028;
-        public static final int usb=0x7f020029;
-        public static final int wave=0x7f02002a;
-        public static final int white_key=0x7f02002b;
-        public static final int wrench=0x7f02002c;
-        public static final int yellow_key=0x7f02002d;
+        public static final int highlighted_key=0x7f020018;
+        public static final int icon=0x7f020019;
+        public static final int keys=0x7f02001a;
+        public static final int ledgreen=0x7f02001b;
+        public static final int ledred=0x7f02001c;
+        public static final int loop=0x7f02001d;
+        public static final int metronome=0x7f02001e;
+        public static final int no_wrench=0x7f02001f;
+        public static final int notes=0x7f020020;
+        public static final int play=0x7f020021;
+        public static final int record=0x7f020022;
+        public static final int rounded_corners_bg_shape=0x7f020023;
+        public static final int sequence_shape=0x7f020024;
+        public static final int sequence_shape_colored=0x7f020025;
+        public static final int sequence_shape_highlight=0x7f020026;
+        public static final int sequence_shape_selected=0x7f020027;
+        public static final int stop=0x7f020028;
+        public static final int transparent_bg=0x7f020029;
+        public static final int usb=0x7f02002a;
+        public static final int wave=0x7f02002b;
+        public static final int white_key=0x7f02002c;
+        public static final int wrench=0x7f02002d;
+        public static final int yellow_key=0x7f02002e;
     }
     public static final class id {
         public static final int chord_connect_btn=0x7f0a0005;
@@ -94,7 +94,7 @@ public final class R {
         public static final int consoleAccentSpinner=0x7f0a001c;
         public static final int consoleTempoSpinner=0x7f0a001b;
         public static final int console_btn=0x7f0a0046;
-        public static final int console_key_btn=0x7f0a0013;
+        public static final int console_key_btn=0x7f0a0012;
         public static final int console_metronome_btn=0x7f0a001a;
         public static final int console_metronome_btn_cont=0x7f0a0019;
         public static final int console_spoken_metronome_btn=0x7f0a001d;
@@ -133,10 +133,10 @@ public final class R {
         public static final int fragment_container=0x7f0a0000;
         public static final int grid_element_label=0x7f0a006a;
         public static final int instrument=0x7f0a0040;
-        public static final int instrumentSpinner=0x7f0a0014;
+        public static final int instrumentSpinner=0x7f0a0015;
         public static final int instrument_change_btn=0x7f0a0042;
         public static final int instrument_fragment=0x7f0a0048;
-        public static final int keySpinner=0x7f0a0015;
+        public static final int keySpinner=0x7f0a0016;
         public static final int key_0=0x7f0a004a;
         public static final int key_1=0x7f0a0053;
         public static final int key_10=0x7f0a0057;
@@ -161,10 +161,10 @@ public final class R {
         public static final int ll_5=0x7f0a0010;
         public static final int ll_6=0x7f0a0011;
         public static final int loading_text=0x7f0a0001;
-        public static final int modulateSpinner=0x7f0a0018;
+        public static final int modulateSpinner=0x7f0a0014;
         public static final int note=0x7f0a0041;
         public static final int note_btn=0x7f0a0045;
-        public static final int octaveSpinner=0x7f0a0016;
+        public static final int octaveSpinner=0x7f0a0017;
         public static final int playing_mode_cont=0x7f0a0022;
         public static final int playing_mode_radio_group=0x7f0a0023;
         public static final int progress=0x7f0a003e;
@@ -175,7 +175,7 @@ public final class R {
         public static final int recording_rec_btn=0x7f0a006f;
         public static final int recording_status=0x7f0a006e;
         public static final int recording_time=0x7f0a006d;
-        public static final int scaleSpinner=0x7f0a0017;
+        public static final int scaleSpinner=0x7f0a0018;
         public static final int seqColSpinner=0x7f0a0067;
         public static final int seqDurationSpinner=0x7f0a0066;
         public static final int seqGridLayout=0x7f0a0060;
@@ -196,7 +196,7 @@ public final class R {
         public static final int sequence_play_btn=0x7f0a005b;
         public static final int sequence_save_btn=0x7f0a0059;
         public static final int sequence_spinner=0x7f0a0027;
-        public static final int usb_btn=0x7f0a0012;
+        public static final int usb_btn=0x7f0a0013;
         public static final int usb_connection=0x7f0a0074;
         public static final int usb_connection_view=0x7f0a0072;
         public static final int webview=0x7f0a003f;

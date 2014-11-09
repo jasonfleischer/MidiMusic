@@ -77,6 +77,12 @@ public class Note implements Serializable{
 			});
 		}else{
 			SoundManager.getInstance().playDrumSound(MainActivity.config.midiDrumSounds[name.ordinal()].getSoundID());
+			MainActivity.getInstance().runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					FragMentManager.getInstance().updateNotePressed(MainActivity.config.midiDrumSounds[name.ordinal()].getName(), -1);
+				}
+			});
 		}
 	}
 	

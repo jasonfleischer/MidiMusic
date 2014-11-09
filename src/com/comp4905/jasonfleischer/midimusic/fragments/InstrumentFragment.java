@@ -43,6 +43,8 @@ public class InstrumentFragment extends Fragment{
 			instrumentTV.setText(MainActivity.config.chordInstrument.getName());
 		}else if(MainActivity.config.playingMode  == PlayingMode.SEQUENCE){
 			instrumentTV.setText(MainActivity.config.sequenceInstrument.getName());
+		}else{
+			instrumentTV.setText("Drums");
 		}
 		
 		usbConn.updateUSBConn(MainActivity.midiInputDevice!=null);
@@ -98,10 +100,14 @@ public class InstrumentFragment extends Fragment{
 	}
 	
 	public void setNotePressed(String s, int octave){
-		if(s.length()==1)
-			noteTV.setText(s+octave);
-		else
-			noteTV.setText(s+" "+octave);
+		if(octave != -1){
+			if(s.length()==1)
+				noteTV.setText(s+octave);
+			else
+				noteTV.setText(s+" "+octave);
+		}else{
+			noteTV.setText(s);
+		}
 	}
 	
 	public UsbConnection getUsbConn() {
