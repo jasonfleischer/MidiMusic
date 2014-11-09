@@ -90,8 +90,6 @@ public class MainActivity extends Activity {
 				config = new MidiMusicConfig();
 			}
 				
-			
-				
 			//populate drums Sounds
 			for(int i=0;i< config.allDrumSounds.length;i++){
 				config.allDrumSounds[i].setSoundId();
