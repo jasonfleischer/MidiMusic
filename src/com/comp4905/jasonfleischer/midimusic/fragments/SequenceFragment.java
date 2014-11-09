@@ -51,11 +51,11 @@ public class SequenceFragment extends Fragment{
 	private static final int NUM_OF_ROWS = 25;
 	private static final String[] VERT_MARKERS = new String[]{"-","-","m3","M3","-","-","5","-","6","-","-","Oct"};
 	
-	private static final String[] tempoList = new String[]{"very slow", "slow", "medium", "fast", "very fast"};
+	private static final String[] tempoList = new String[]{"Very Slow", "Slow", "Medium", "Fast", "Very Fast"};
 	private HashMap<String, Integer> tempoMap;
 	
 	//Config
-	private static PlayingMode lastSelectedPlayingMode;
+	private static PlayingMode lastSelectedPlayingMode = PlayingMode.SINGLE_NOTE;
 	private static NoteName key = NoteName.C;;
 	private static int octave = 2;
 	private static int numberOfCol;
@@ -288,6 +288,9 @@ public class SequenceFragment extends Fragment{
 					connectBtn.setImageResource(R.drawable.connect);
 					MainActivity.config.playingMode = lastSelectedPlayingMode;
 					HLog.i("Midi Device and virtual keyboard is now detached from sequence sounds");	
+				}
+				if(MainActivity.midiInputDevice != null){
+					new UpdateSelections().execute();
 				}
 			}
 		});

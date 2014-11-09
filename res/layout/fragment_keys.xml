@@ -15,7 +15,7 @@
 	        android:id="@+id/key_0"
 	        android:layout_width="@dimen/keyboard_key_width"
 	        android:layout_height="fill_parent"
-	        android:background="@drawable/white_key">
+	        android:background="@drawable/key_white_key">
 	        <TextView 
 	            android:id="@+id/key_text"
 	            android:layout_width="wrap_content"
@@ -30,37 +30,37 @@
 	        android:id="@+id/key_2"
 	        android:layout_width="@dimen/keyboard_key_width"
 	        android:layout_height="fill_parent"
-	        android:background="@drawable/white_key"/>
+	        android:background="@drawable/key_white_key"/>
 	    <FrameLayout
 	        android:id="@+id/key_4"
 	        android:layout_width="@dimen/keyboard_key_width"
 	        android:layout_height="fill_parent"
-	        android:background="@drawable/white_key"/>
+	        android:background="@drawable/key_white_key"/>
 	    <FrameLayout
 	        android:id="@+id/key_5"
 	        android:layout_width="@dimen/keyboard_key_width"
 	        android:layout_height="fill_parent"
-	        android:background="@drawable/white_key"/>
+	        android:background="@drawable/key_white_key"/>
 	    <FrameLayout
 	        android:id="@+id/key_7"
 	        android:layout_width="@dimen/keyboard_key_width"
 	        android:layout_height="fill_parent"
-	        android:background="@drawable/white_key"/>
+	        android:background="@drawable/key_white_key"/>
 	    <FrameLayout
 	        android:id="@+id/key_9"
 	        android:layout_width="@dimen/keyboard_key_width"
 	        android:layout_height="fill_parent"
-	        android:background="@drawable/white_key"/>
+	        android:background="@drawable/key_white_key"/>
 	    <FrameLayout
 	        android:id="@+id/key_11"
 	        android:layout_width="@dimen/keyboard_key_width"
 	        android:layout_height="fill_parent"
-	        android:background="@drawable/white_key"/>
+	        android:background="@drawable/key_white_key"/>
 	    <FrameLayout
 	        android:id="@+id/key_12"
 	        android:layout_width="@dimen/keyboard_key_width"
 	        android:layout_height="fill_parent"
-	        android:background="@drawable/white_key"/>
+	        android:background="@drawable/key_white_key"/>
 	</LinearLayout>
 
     <!-- Black Keys -->
@@ -72,28 +72,28 @@
             android:id="@+id/key_1"
         	android:layout_width="72dp"
         	android:layout_height="fill_parent"
-        	android:background="@drawable/black_key"
+        	android:background="@drawable/key_black"
         	android:layout_marginLeft="70dp">
         </FrameLayout>
         <FrameLayout
             android:id="@+id/key_3"
         	android:layout_width="72dp"
         	android:layout_height="fill_parent"
-        	android:background="@drawable/black_key"
+        	android:background="@drawable/key_black"
         	android:layout_marginLeft="60dp">
         </FrameLayout>
         <FrameLayout
             android:id="@+id/key_6"
         	android:layout_width="70dp"
         	android:layout_height="fill_parent"
-        	android:background="@drawable/black_key"
+        	android:background="@drawable/key_black"
         	android:layout_marginLeft="128dp">
         </FrameLayout>
         <FrameLayout
             android:id="@+id/key_8"
         	android:layout_width="70dp"
         	android:layout_height="fill_parent"
-        	android:background="@drawable/black_key"
+        	android:background="@drawable/key_black"
         	android:layout_marginLeft="58dp">
         </FrameLayout>
         <FrameLayout
@@ -101,7 +101,7 @@
         	android:layout_width="70dp"
         	android:layout_height="fill_parent"
         	android:layout_marginLeft="58dp"
-        	android:background="@drawable/black_key">
+        	android:background="@drawable/key_black">
         </FrameLayout>       
     </LinearLayout>
 </RelativeLayout>

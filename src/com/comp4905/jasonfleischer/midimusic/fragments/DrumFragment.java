@@ -42,7 +42,7 @@ public class DrumFragment extends Fragment{
 	
 	private boolean isEditMode;
 	private static DrumSound selectDrumSound;
-	private static PlayingMode lastSelectedPlayingMode;
+	private static PlayingMode lastSelectedPlayingMode = PlayingMode.SINGLE_NOTE;
 	
 	
 	//private volatile static boolean isLooping= false;
@@ -103,15 +103,17 @@ public class DrumFragment extends Fragment{
 		}
 		
 		usbConn.updateUSBConn(MainActivity.midiInputDevice!=null);
-		if(grid.getVisibility()==View.VISIBLE){
+		if(!MainActivity.config.kitIsShowing){
 			gridBtn.setImageResource(R.drawable.drum);
+			grid.setVisibility(View.VISIBLE);
 		}else{
 			gridBtn.setImageResource(R.drawable.grid);
+			kit.setVisibility(View.VISIBLE);
 		}
 		gridBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(grid.getVisibility()==View.VISIBLE){
+				if(!MainActivity.config.kitIsShowing){
 					kit.setVisibility(View.VISIBLE);
 					grid.setVisibility(View.GONE);
 					gridBtn.setImageResource(R.drawable.grid);
@@ -120,6 +122,7 @@ public class DrumFragment extends Fragment{
 					grid.setVisibility(View.VISIBLE);
 					gridBtn.setImageResource(R.drawable.drum);
 				}
+				MainActivity.config.kitIsShowing = ! MainActivity.config.kitIsShowing;
 			}
 		});
 		

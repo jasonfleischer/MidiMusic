@@ -43,6 +43,9 @@ public class MidiMusicConfig implements Serializable{
 	public DrumSound[] kitDrumSounds;
 	public DrumSound[] midiDrumSounds;
 	
+	public boolean kitIsShowing;
+	public boolean keysAreShowing; // for instrument fragment
+	
 	public static enum PlayingMode{ 
 		SINGLE_NOTE("Single Note"), CHORD("Chord"), SEQUENCE("Sequence"), DRUMS("Drums");
 		private String name;
@@ -101,6 +104,9 @@ public class MidiMusicConfig implements Serializable{
  		}
  		tempo = tempos.get(10);
  		sequenceTempo = tempos.get(0);
+ 		
+ 		kitIsShowing = false;
+ 		keysAreShowing = true;
  		
  		createDrumSounds();
 	}

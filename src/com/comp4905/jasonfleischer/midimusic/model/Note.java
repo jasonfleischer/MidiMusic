@@ -45,13 +45,18 @@ public class Note implements Serializable{
 	}
 	
 	public static enum NoteDuration{
-		Sixteenth(4),Eighth(8),Quarter(16),Half(32),Whole(64);
+		Sixteenth(4, "Very Short"),Eighth(8,"Short"),Quarter(16, "Medium"),Half(32, "Long"),Whole(64, "Very Long");
 		private int value;
-		NoteDuration(int v){
+		private String name;
+		NoteDuration(int v, String n){
 			value = v;
+			name = n;
 		}
 		public int getValue() {
 			return value;
+		}
+		public String getName(){
+			return name;
 		}
 	}
 	

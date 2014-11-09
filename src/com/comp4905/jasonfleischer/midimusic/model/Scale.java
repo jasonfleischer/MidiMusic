@@ -11,7 +11,7 @@ public enum Scale{
 	blues("Blues",new int[]{3,5,6,7,10}),
 	whole("Whole note", new int[]{2,4,6,8,10}),
 	Mtri("Maj Triad", new int[]{4,7}),
-	mtri("Min Triad", new int[]{3,7});
+	mtri("min Triad", new int[]{3,7});
 	
 	private String name;
 	private int[] intervals;

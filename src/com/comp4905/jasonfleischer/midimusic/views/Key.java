@@ -29,13 +29,16 @@ public class Key {
 			defaultColor = R.color.grey;
 			v.setBackgroundResource(defaultColor);
 		}else if(isHighlighted){
-			defaultColor = R.drawable.highlighted_key;
+			if(isBlackKey) 
+				defaultColor = R.drawable.key_highlighted_black;
+			else
+				defaultColor = R.drawable.key_highlighted_white;
 			v.setBackgroundResource(defaultColor);
 		}else{
 			if(isBlackKey) 
-				defaultColor = R.drawable.black_key;
+				defaultColor = R.drawable.key_black;
 			else
-				defaultColor = R.drawable.white_key;
+				defaultColor = R.drawable.key_white_key;
 		}
 		
 		// set keyPress
@@ -94,7 +97,7 @@ public class Key {
 	
 	public void onPress(){
 		note.playNote();
-		view.setBackgroundResource(R.drawable.yellow_key);
+		view.setBackgroundResource(R.drawable.key_yellow);
 	}
 	
 	public void onRelease(){

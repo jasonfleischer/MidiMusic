@@ -294,6 +294,7 @@
     		android:layout_height="wrap_content"
     		android:alignmentMode="alignBounds"
 			android:columnCount="5" 
+			android:visibility="gone"
     		android:rowCount="5"
     		android:layout_gravity="center"
 			android:orientation="horizontal">

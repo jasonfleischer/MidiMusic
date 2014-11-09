@@ -48,9 +48,9 @@ public class FragMentManager {
 	}
 	
 	
-	public void setupInstrumentFragment(boolean keysAreShowing){
+	public void setupInstrumentFragment(){
 		//fragmentManager.executePendingTransactions();
-		fragmentManager.beginTransaction().add(R.id.instrument_fragment,(keysAreShowing?new KeysFragment():new GridFragment())).commit();
+		fragmentManager.beginTransaction().add(R.id.instrument_fragment,(MainActivity.config.keysAreShowing?new KeysFragment():new GridFragment())).commit();
 	}
 	public void showKeys(){
 		replace(new KeysFragment(), R.id.instrument_fragment);

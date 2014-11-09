@@ -19,7 +19,6 @@ public class InstrumentFragment extends Fragment{
 	private TextView instrumentTV, noteTV;
 	private ImageButton instrumentChangeBtn, drumBtn, sequenceBtn, consoleBtn, notesBtn, closeBtn;
 	private UsbConnection usbConn;
-	private static boolean keysAreShowing = true;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,18 +48,18 @@ public class InstrumentFragment extends Fragment{
 		
 		usbConn.updateUSBConn(MainActivity.midiInputDevice!=null);
 		
-		instrumentChangeBtn.setImageResource(keysAreShowing?R.drawable.grid2:R.drawable.keys);
+		instrumentChangeBtn.setImageResource(MainActivity.config.keysAreShowing?R.drawable.grid2:R.drawable.keys);
 		instrumentChangeBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(keysAreShowing){
+				if(MainActivity.config.keysAreShowing){
 					instrumentChangeBtn.setImageResource(R.drawable.keys);
 					FragMentManager.getInstance().showGrid();
 				}else{
 					instrumentChangeBtn.setImageResource(R.drawable.grid2);
 					FragMentManager.getInstance().showKeys();
 				}
-				keysAreShowing = ! keysAreShowing;
+				MainActivity.config.keysAreShowing = ! MainActivity.config.keysAreShowing;
 			}
 		});
 		drumBtn.setOnClickListener(new OnClickListener() {
@@ -94,7 +93,7 @@ public class InstrumentFragment extends Fragment{
 			}
 		});
 		
-		FragMentManager.getInstance().setupInstrumentFragment(keysAreShowing);
+		FragMentManager.getInstance().setupInstrumentFragment();
 		
 		return rootView;
 	}
