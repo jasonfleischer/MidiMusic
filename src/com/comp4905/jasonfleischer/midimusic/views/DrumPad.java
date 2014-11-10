@@ -2,7 +2,6 @@ package com.comp4905.jasonfleischer.midimusic.views;
 
 import com.comp4905.jasonfleischer.midimusic.R;
 import com.comp4905.jasonfleischer.midimusic.audio.SoundManager;
-import com.comp4905.jasonfleischer.midimusic.audio.SoundManager.SoundType;
 import com.comp4905.jasonfleischer.midimusic.fragments.DrumFragment;
 import com.comp4905.jasonfleischer.midimusic.model.DrumSound;
 
@@ -77,9 +76,6 @@ public class DrumPad extends RelativeLayout{
 					else if(action == MotionEvent.ACTION_DOWN){
 						base.setBackgroundResource(R.drawable.drum_shape_pressed);
 						SoundManager.getInstance().playDrumSound(drumSound.getSoundID());
-						if(RecordingPane.isRecording){
-							RecordingPane.masterTrack.add(SoundType.DRUM, System.nanoTime(), drumSound.getSoundID());
-						}
 						return true;
 					}	
 					return false;

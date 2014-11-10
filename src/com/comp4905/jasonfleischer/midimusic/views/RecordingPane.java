@@ -19,8 +19,8 @@ import android.widget.TextView;
 
 public class RecordingPane extends LinearLayout{
 
-	private TextView bpmTextView, timeTextView, statusTextView;
-	private ImageButton recordBtn, loopBtn, deleteTrackBtn;
+	private static TextView bpmTextView, timeTextView, statusTextView;
+	private static ImageButton recordBtn, loopBtn, deleteTrackBtn;
 	
 	private volatile static boolean isLooping= false;
 	public volatile static boolean isRecording = false;
@@ -45,7 +45,7 @@ public class RecordingPane extends LinearLayout{
 		if(masterTrack!=null){
 			timeTextView.setText(masterTrack.getNumberOfBeats()+" beats");
 		}else{
-			timeTextView.setText("-");
+			timeTextView.setText("");
 		}
 		
 		statusTextView= (TextView) findViewById(R.id.recording_status);
@@ -72,24 +72,32 @@ public class RecordingPane extends LinearLayout{
 
 						@Override
 						public void run() {
-							MainActivity.getInstance().runOnUiThread(new Runnable() {
-								@Override
-								public void run() {
-									recordBtn.setImageResource(R.drawable.stop);
-									statusTextView.setText("Recording");
-								}
-							});
+							
 							
 							isRecording = true;
+							SoundManager.getInstance().startMetronome(0, 0);
+							
 							if(masterTrack == null){
-								HLog.i("Recording Started");
-								
+								HLog.i("Recording started");
 								masterTrack = new Track(tempo);
+								MainActivity.getInstance().runOnUiThread(new Runnable() {
+									@Override
+									public void run() {
+										recordBtn.setImageResource(R.drawable.stop);
+										statusTextView.setText("Recording track");
+									}
+								});
 							}else {
-								HLog.i("Dubbing Started");
-								
-								SoundManager.getInstance().playTrack(masterTrack);
+								HLog.i("Dubbing started");
+								SoundManager.getInstance().playTrack(masterTrack, false);
 								masterTrack.setDubStartTime();
+								MainActivity.getInstance().runOnUiThread(new Runnable() {
+									@Override
+									public void run() {
+										recordBtn.setImageResource(R.drawable.stop);
+										statusTextView.setText("Dubbing track");
+									}
+								});
 							}
 						}
 					}, delay);
@@ -98,12 +106,18 @@ public class RecordingPane extends LinearLayout{
 					
 				}else{
 					stopTimer();
+					SoundManager.getInstance().stopMetronome();
 					isRecording = false;
 					recordBtn.setImageResource(R.drawable.record);
-					HLog.i("Recording Stopped");
-					statusTextView.setText("Recording stopped");
-					if(masterTrack != null){
+					
+					if(masterTrack == null){
+						HLog.i("Dubbing stopped");
+						statusTextView.setText("Dubbing stopped");
+						
+					}else{
 						SoundManager.getInstance().stopTrack();
+						HLog.i("Recording Stopped");
+						statusTextView.setText("Recording stopped");
 					}
 					masterTrack.normalizeTime();
 					timeTextView.setText(masterTrack.getNumberOfBeats()+" beats");
@@ -116,41 +130,21 @@ public class RecordingPane extends LinearLayout{
 		loopBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
-				
-				if(!isLooping){
+				if(!isLooping){//start loop
 					if(masterTrack ==null || masterTrack.getDelayBeforeNextLoop()==null){
 						HLog.i("Cannot loop empty or uncomplete recording");
 						return;
 					}
-					//long delay = SoundManager.getInstance().playCountIn();
-					
-					//countInTimer = new Timer();
-					//countInTimer.schedule(new TimerTask(){
-
-						//@Override
-						//public void run() {
-							//MainActivity.getInstance().runOnUiThread(new Runnable() {
-								//@Override
-								//public void run() {
-									loopBtn.setImageResource(R.drawable.stop);
-								//}
-							//});
-							isLooping = true;
-							SoundManager.getInstance().playTrack(masterTrack);
-						//}
-					//}, delay);
-						
+					isLooping = true;
+					SoundManager.getInstance().playTrack(masterTrack, true);
 					statusTextView.setText("Track playing");
-					
-				}else{
-					
+					loopBtn.setImageResource(R.drawable.stop);
+				}else{//stop loop
 					statusTextView.setText("Track stopped");
 					SoundManager.getInstance().stopTrack();
 					isLooping = false;
 					loopBtn.setImageResource(R.drawable.loop);
 				}
-				//isLooping=!isLooping;
 			}
 		});
 		
@@ -166,8 +160,8 @@ public class RecordingPane extends LinearLayout{
 				recordBtn.setImageResource(R.drawable.record);
 				masterTrack = null;
 				HLog.i("Cleared recording");
-				statusTextView.setText("Track Cleared");
-				timeTextView.setText("-");
+				statusTextView.setText("Track cleared");
+				timeTextView.setText("");
 			}
 		});
 	}
@@ -175,14 +169,28 @@ public class RecordingPane extends LinearLayout{
 	
 	private void updateStatus(){
 		if(masterTrack == null){
-			statusTextView.setText("No Track");
+			statusTextView.setText("Empty track");
 		}else if(isRecording){
-			statusTextView.setText("Recording");
+			statusTextView.setText("Recording track");
 		}else if(isLooping){
 			statusTextView.setText("Track playing");
 		}else{
 			statusTextView.setText("Track ready");
 		}
+		
+	}
+	
+	public static void stopDub(){
+		MainActivity.getInstance().runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				statusTextView.setText("Dubbing stopped");
+				recordBtn.setImageResource(R.drawable.record);
+			}
+		});
+		SoundManager.getInstance().stopMetronome();
+		masterTrack.normalizeTime();
+		isRecording = false;
 		
 	}
 	

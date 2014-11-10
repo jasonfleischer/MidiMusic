@@ -77,7 +77,31 @@ public class SoundManager {
 	}
 	public void playSound(int soundId) {	
 		soundPool.play(soundId, 1, 1, 0, 0, 1);
+		if(RecordingPane.isRecording){
+			RecordingPane.masterTrack.add(SoundType.NOTE, System.nanoTime(), soundId);
+		}
 	}
+	
+	/*public void playSingleNoteSound(int soundId){
+		soundPool.play(soundId, 1, 1, 0, 0, 1);
+		if(RecordingPane.isRecording){
+			RecordingPane.masterTrack.add(SoundType.NOTE, System.nanoTime(), soundId);
+		}
+	}
+	public void playChordSound(int soundId){
+		soundPool.play(soundId, 1, 1, 0, 0, 1);
+		if(RecordingPane.isRecording){
+			RecordingPane.masterTrack.add(SoundType.NOTE, System.nanoTime(), soundId);
+		}
+	}
+	public void playSequenceSound(int soundId){
+		soundPool.play(soundId, 1, 1, 0, 0, 1);
+		if(RecordingPane.isRecording){
+			RecordingPane.masterTrack.add(SoundType.NOTE, System.nanoTime(), soundId);
+		}
+	}*/
+	
+	
 	public void unloadFromSoundPool(int soundID){
 		soundPool.unload(soundID);
 	}
@@ -88,7 +112,10 @@ public class SoundManager {
 		return drumSoundPool.load(FileManager.getInstance().getAFD("drums/"+fileName), 1);
 	}
 	public void playDrumSound(int soundId) {
-		drumSoundPool.play(soundId, 1, 1, 0, 0, 1);
+		drumSoundPool.play(soundId, 0.8f, 0.8f, 0, 0, 1);
+		if(RecordingPane.isRecording){
+			RecordingPane.masterTrack.add(SoundType.DRUM, System.nanoTime(), soundId);
+		}
 	}
 	public void unloadDrumPool(int soundIDs){
 		drumSoundPool.unload(soundIDs);
@@ -96,7 +123,6 @@ public class SoundManager {
 	
 	public long playCountIn(){
 		final long tempoTime = MainActivity.config.tempo.getMS();
-		//final long startBuffer = 4 * tempoTime;
 		stopMetronome();
 		metronomeTimer = new Timer(); 
 		
@@ -109,7 +135,7 @@ public class SoundManager {
 	}
 	
 	//Track
-	public void playTrack(final Track t){
+	public void playTrack(final Track t, final boolean repeat){
 		stopTimer(timer);
 		timer = new Timer(); 
 		
@@ -128,16 +154,27 @@ public class SoundManager {
 					else
 						timer.schedule(new TrackTimerTimer(ids.get(i), soundPool), times.get(i));
 				}
-				if(t.getSoundIds().size() != RecordingPane.masterTrack.getSoundIds().size()){
-					HLog.i("Different");
+				if(!repeat){
+					timer.schedule(new TimerTask() {
+						
+						@Override
+						public void run() {
+							RecordingPane.stopDub();
+						}
+					}, t.getDelayBeforeNextLoop());
 				}
 			}
 		};
 		
 		if(t==null||t.getSoundIds().isEmpty()){
+			HLog.e("playTrack null");
 			return;
 		}
-		timer.scheduleAtFixedRate(tt, 0, t.getDelayBeforeNextLoop());
+		
+		if (repeat)
+			timer.scheduleAtFixedRate(tt, 0, t.getDelayBeforeNextLoop());
+		else
+			timer.schedule(tt, 0);
 	}
 	
 	public void stopTrack(){

@@ -6,7 +6,6 @@ import com.comp4905.jasonfleischer.midimusic.MainActivity;
 import com.comp4905.jasonfleischer.midimusic.MidiMusicConfig.PlayingMode;
 import com.comp4905.jasonfleischer.midimusic.R;
 import com.comp4905.jasonfleischer.midimusic.audio.SoundManager;
-import com.comp4905.jasonfleischer.midimusic.audio.SoundManager.SoundType;
 import com.comp4905.jasonfleischer.midimusic.model.DrumSound;
 import com.comp4905.jasonfleischer.midimusic.util.HLog;
 import com.comp4905.jasonfleischer.midimusic.views.DrumPad;
@@ -30,8 +29,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 public class DrumFragment extends Fragment{
 
-	private ImageButton /*recordBtn, loopBtn, deleteTrackBtn,*/
-		gridBtn, editBtn, connectBtn, keyBtn;
+	private ImageButton gridBtn, editBtn, connectBtn, keyBtn;
 	private RecordingPane recordingPane;
 	private RelativeLayout kit;
 	private FrameLayout[] drums;
@@ -45,26 +43,15 @@ public class DrumFragment extends Fragment{
 	private static PlayingMode lastSelectedPlayingMode = PlayingMode.SINGLE_NOTE;
 	
 	
-	//private volatile static boolean isLooping= false;
-	//public volatile static boolean isRecording = false;
-	//public volatile static Track masterTrack;
-	//private Timer countInTimer;
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_drum, container, false);
 		isEditMode = false;
 		selectDrumSound = null;
-		//masterTrack = null;
-		//isRecording=false;
-		//isLooping = false;
 	
 		usbConn = (UsbConnection) rootView.findViewById(R.id.usb_connection_view);
 		recordingPane = (RecordingPane) rootView.findViewById(R.id.recording_pane_view);
 		recordingPane.init();
-		//recordBtn = (ImageButton) rootView.findViewById(R.id.drum_rec_btn);
-		//loopBtn= (ImageButton) rootView.findViewById(R.id.drum_loop_btn);
-		//deleteTrackBtn = (ImageButton) rootView.findViewById(R.id.drum_delete_track_btn);
 		gridBtn= (ImageButton) rootView.findViewById(R.id.drum_grid_btn);
 		editBtn= (ImageButton) rootView.findViewById(R.id.drum_edit_btn);
 		connectBtn = (ImageButton) rootView.findViewById(R.id.drum_connect_btn);
@@ -88,9 +75,6 @@ public class DrumFragment extends Fragment{
 						deploySpinner(drumSound);
 					}else{	
 						SoundManager.getInstance().playDrumSound(drumSound.getSoundID());
-						if(RecordingPane.isRecording){
-							RecordingPane.masterTrack.add(SoundType.DRUM, System.nanoTime(), drumSound.getSoundID());
-						}
 					}			
 				}
 			});
@@ -125,111 +109,6 @@ public class DrumFragment extends Fragment{
 				MainActivity.config.kitIsShowing = ! MainActivity.config.kitIsShowing;
 			}
 		});
-		
-		/*recordBtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				
-				if(isLooping){
-					HLog.i("Cannot record while track is looping");
-					return;
-				}
-				
-				if(!isRecording){	
-					//count in
-					long delay = SoundManager.getInstance().playCountIn();
-					countInTimer = new Timer();
-					countInTimer.schedule(new TimerTask(){
-
-						@Override
-						public void run() {
-							MainActivity.getInstance().runOnUiThread(new Runnable() {
-								@Override
-								public void run() {
-									recordBtn.setImageResource(R.drawable.stop);
-								}
-							});
-							
-							isRecording = true;
-							if(masterTrack == null){
-								HLog.i("Recording Started");
-								masterTrack = new Track();
-							}else {
-								HLog.i("Dubbing Started");
-								SoundManager.getInstance().playTrack(masterTrack);
-								masterTrack.setDubStartTime();
-							}
-						}
-					}, delay);
-					
-					
-					
-				}else{
-					stopRecordingTimer();
-					isRecording = false;
-					masterTrack.normalizeTime();
-					recordBtn.setImageResource(R.drawable.record);
-					HLog.i("Recording Stopped");
-					if(masterTrack != null){
-						SoundManager.getInstance().stopTrack();
-					}
-				}
-			}
-		});
-		
-		loopBtn.setImageResource((isLooping?R.drawable.stop:R.drawable.loop));
-		loopBtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-
-				
-				if(!isLooping){
-					if(masterTrack ==null || masterTrack.getDelayBeforeNextLoop()==null){
-						HLog.i("Cannot loop empty or uncomplete recording");
-						return;
-					}
-					//long delay = SoundManager.getInstance().playCountIn();
-					//countInTimer = new Timer();
-					//countInTimer.schedule(new TimerTask(){
-
-						//@Override
-						//public void run() {
-							//MainActivity.getInstance().runOnUiThread(new Runnable() {
-								//@Override
-								//public void run() {
-									loopBtn.setImageResource(R.drawable.stop);
-								//}
-							//});
-							isLooping = true;
-							SoundManager.getInstance().playTrack(masterTrack);
-						//}
-					//}, delay);
-						
-					
-				}else{
-					SoundManager.getInstance().stopTrack();
-					isLooping = false;
-					loopBtn.setImageResource(R.drawable.loop);
-				}
-				//isLooping=!isLooping;
-			}
-		});
-		
-		deleteTrackBtn.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				SoundManager.getInstance().stopTrack();
-				stopRecordingTimer();
-				isLooping = false;
-				isRecording = false;
-				loopBtn.setImageResource(R.drawable.loop);
-				recordBtn.setImageResource(R.drawable.record);
-				masterTrack = null;
-				HLog.i("Cleared recording");
-				
-			}
-		});*/
 		editBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.comp4905.jasonfleischer.midimusic.MainActivity;
 import com.comp4905.jasonfleischer.midimusic.MidiMusicConfig.PlayingMode;
 import com.comp4905.jasonfleischer.midimusic.R;
+import com.comp4905.jasonfleischer.midimusic.views.RecordingPane;
 import com.comp4905.jasonfleischer.midimusic.views.UsbConnection;
 
 public class InstrumentFragment extends Fragment{
@@ -19,6 +20,8 @@ public class InstrumentFragment extends Fragment{
 	private TextView instrumentTV, noteTV;
 	private ImageButton instrumentChangeBtn, drumBtn, sequenceBtn, consoleBtn, notesBtn, closeBtn;
 	private UsbConnection usbConn;
+	
+	private RecordingPane recordingPane;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +38,9 @@ public class InstrumentFragment extends Fragment{
 		consoleBtn = (ImageButton) rootView.findViewById(R.id.console_btn);
 		notesBtn = (ImageButton) rootView.findViewById(R.id.note_btn);
 		closeBtn = (ImageButton) rootView.findViewById(R.id.close_btn);
+		
+		recordingPane = (RecordingPane) rootView.findViewById(R.id.recording_pane_view);
+		recordingPane.init();
 		
 		if(MainActivity.config.playingMode ==PlayingMode.SINGLE_NOTE){
 			instrumentTV.setText(MainActivity.config.singleNoteInstrument.getName());

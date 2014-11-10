@@ -5,10 +5,8 @@ import java.io.Serializable;
 import com.comp4905.jasonfleischer.midimusic.MainActivity;
 import com.comp4905.jasonfleischer.midimusic.MidiMusicConfig.PlayingMode;
 import com.comp4905.jasonfleischer.midimusic.audio.MidiFile;
-import com.comp4905.jasonfleischer.midimusic.audio.NDKFunct;
 import com.comp4905.jasonfleischer.midimusic.audio.SoundManager;
 import com.comp4905.jasonfleischer.midimusic.fragments.FragMentManager;
-import com.comp4905.jasonfleischer.midimusic.util.FileManager;
 import com.comp4905.jasonfleischer.midimusic.util.HLog;
 
 public class Note implements Serializable{
@@ -103,14 +101,14 @@ public class Note implements Serializable{
 		switch(MainActivity.config.playingMode){
 			case CHORD:
 				
-				NDKFunct.writeChordFile(midiValue, MainActivity.config.chordInstrument.getValue(), 
+				/*NDKFunct.writeChordFile(midiValue, MainActivity.config.chordInstrument.getValue(), 
 						DEFAULT_NOTE_VELOCITY, MainActivity.config.noteDuration.getValue(),
 						FileManager.getInstance().EXTERNAL_PATH+fileName, MainActivity.config.tempo.getMpqn()
-						,MainActivity.config.chord.getIntervals()); 
-				/*MidiFile.writeChordFile(midiValue, MainActivity.config.chordInstrument.getValue(), 
+						,MainActivity.config.chord.getIntervals()); */
+				MidiFile.writeChordFile(midiValue, MainActivity.config.chordInstrument.getValue(), 
 						DEFAULT_NOTE_VELOCITY, MainActivity.config.noteDuration.getValue(),
 						fileName, MainActivity.config.tempo.getTempoEvent(),
-						MainActivity.config.chord.getIntervals());*/
+						MainActivity.config.chord.getIntervals());
 				break;
 			case SEQUENCE:
 				//TODO NDK
