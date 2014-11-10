@@ -52,7 +52,6 @@
 		        android:scaleType="fitCenter"
 		        android:src="@drawable/delete"/> 	    	
 	    	<ImageButton 
-	    	    android:layout_marginLeft="10dp"
 		        android:id="@+id/sequence_play_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
@@ -65,7 +64,6 @@
 		        android:scaleType="fitCenter"
 		        android:src="@drawable/loop"/>
 	    	<ImageButton
-	    	    android:layout_marginLeft="10dp" 
 		        android:id="@+id/sequence_connect_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
@@ -74,6 +72,7 @@
 	    	<ImageButton 
 		        android:id="@+id/sequence_expand_btn"
 		        android:layout_width="50dp"
+		        android:layout_marginRight="30dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
 		        android:src="@drawable/collapse"/> 

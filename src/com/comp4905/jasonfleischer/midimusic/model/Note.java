@@ -3,7 +3,6 @@ package com.comp4905.jasonfleischer.midimusic.model;
 import java.io.Serializable;
 
 import com.comp4905.jasonfleischer.midimusic.MainActivity;
-import com.comp4905.jasonfleischer.midimusic.MidiMusicConfig.PlayingMode;
 import com.comp4905.jasonfleischer.midimusic.audio.MidiFile;
 import com.comp4905.jasonfleischer.midimusic.audio.SoundManager;
 import com.comp4905.jasonfleischer.midimusic.fragments.FragMentManager;
@@ -16,6 +15,8 @@ public class Note implements Serializable{
 	private int octave;
 	private int midiValue;
 	private int soundID;
+	private int chordSoundID;
+	private int sequenceSoundID;
 	
 	public static final int DEFAULT_NOTE_VELOCITY = 127;
 	private static final int MIN_MIDI_VALUE = 21;
@@ -70,15 +71,18 @@ public class Note implements Serializable{
 	}
 	
 	public void playNote(){
-		if(MainActivity.config.playingMode != PlayingMode.DRUMS){
-			SoundManager.getInstance().playSound(soundID);
+		
+		switch(MainActivity.config.playingMode){
+		case CHORD:
+			SoundManager.getInstance().playSound(chordSoundID);
 			MainActivity.getInstance().runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
 					FragMentManager.getInstance().updateNotePressed(name.toString(), octave);
 				}
 			});
-		}else{
+			break;
+		case DRUMS:
 			SoundManager.getInstance().playDrumSound(MainActivity.config.midiDrumSounds[name.ordinal()].getSoundID());
 			MainActivity.getInstance().runOnUiThread(new Runnable() {
 				@Override
@@ -86,6 +90,27 @@ public class Note implements Serializable{
 					FragMentManager.getInstance().updateNotePressed(MainActivity.config.midiDrumSounds[name.ordinal()].getName(), -1);
 				}
 			});
+			break;
+		case SEQUENCE:
+			SoundManager.getInstance().playSound(sequenceSoundID);
+			MainActivity.getInstance().runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					FragMentManager.getInstance().updateNotePressed(name.toString(), octave);
+				}
+			});
+			break;
+		case SINGLE_NOTE:
+			SoundManager.getInstance().playSound(soundID);
+			MainActivity.getInstance().runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					FragMentManager.getInstance().updateNotePressed(name.toString(), octave);
+				}
+			});
+			break;
+		default:
+			break;
 		}
 	}
 	
@@ -94,13 +119,14 @@ public class Note implements Serializable{
 	}
 	
 	public void updateNoteFile(){
-		if(soundID != -1){
-			SoundManager.getInstance().unloadFromSoundPool(soundID);
-		}
-		String fileName = midiValue+".mid";
+		//if(soundID != -1){
+			//SoundManager.getInstance().unloadFromSoundPool(soundID);
+		//}
+		String fileName = "";
 		switch(MainActivity.config.playingMode){
 			case CHORD:
 				
+				fileName = midiValue+"_chord.mid";
 				/*NDKFunct.writeChordFile(midiValue, MainActivity.config.chordInstrument.getValue(), 
 						DEFAULT_NOTE_VELOCITY, MainActivity.config.noteDuration.getValue(),
 						FileManager.getInstance().EXTERNAL_PATH+fileName, MainActivity.config.tempo.getMpqn()
@@ -109,9 +135,11 @@ public class Note implements Serializable{
 						DEFAULT_NOTE_VELOCITY, MainActivity.config.noteDuration.getValue(),
 						fileName, MainActivity.config.tempo.getTempoEvent(),
 						MainActivity.config.chord.getIntervals());
+				chordSoundID = SoundManager.getInstance().addSoundSoundPool(fileName);
 				break;
 			case SEQUENCE:
 				//TODO NDK
+				fileName = midiValue+"_sequence.mid";
 				/*NDKFunct.writeSequenceFile(midiValue, MainActivity.config.sequenceInstrument.getValue(),
 						DEFAULT_NOTE_VELOCITY, FileManager.getInstance().EXTERNAL_PATH+fileName, 
 						MainActivity.config.tempo.getMpqn(),
@@ -121,19 +149,22 @@ public class Note implements Serializable{
 						DEFAULT_NOTE_VELOCITY, fileName, 
 						MainActivity.config.sequenceTempo.getTempoEvent(),
 						MainActivity.config.sequence.getSequence());
+				sequenceSoundID = SoundManager.getInstance().addSoundSoundPool(fileName);
 				break;
 			case SINGLE_NOTE:
+				fileName = midiValue+".mid";
 				MidiFile.writeSingleNoteFile(midiValue, MainActivity.config.singleNoteInstrument.getValue(), 
 						DEFAULT_NOTE_VELOCITY, MainActivity.config.noteDuration.getValue(),
 						fileName, MainActivity.config.tempo.getTempoEvent());
 				/*NDKFunct.writeSingleNoteFile(midiValue, MainActivity.config.singleNoteInstrument.getValue(), 
 						DEFAULT_NOTE_VELOCITY, MainActivity.config.noteDuration.getValue(),
 						FileManager.getInstance().EXTERNAL_PATH+fileName, MainActivity.config.tempo.getMpqn());*/
+				soundID = SoundManager.getInstance().addSoundSoundPool(fileName);
 				break;
 			default:
 				break;		
 		}
-		soundID = SoundManager.getInstance().addSoundSoundPool(fileName);
+		
 	}
 	
 	public NoteName getName() {
@@ -148,5 +179,7 @@ public class Note implements Serializable{
 
 	public void unLoad() {
 		SoundManager.getInstance().unloadFromSoundPool(soundID);
+		SoundManager.getInstance().unloadFromSoundPool(sequenceSoundID);
+		SoundManager.getInstance().unloadFromSoundPool(chordSoundID);
 	}
 }

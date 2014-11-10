@@ -2,7 +2,6 @@ package com.comp4905.jasonfleischer.midimusic.model;
 
 import com.comp4905.jasonfleischer.midimusic.MainActivity;
 import com.comp4905.jasonfleischer.midimusic.audio.MidiFile;
-import com.comp4905.jasonfleischer.midimusic.audio.SoundManager;
 import com.comp4905.jasonfleischer.midimusic.model.Note.NoteDuration;
 import com.comp4905.jasonfleischer.midimusic.model.Note.NoteName;
 
@@ -59,11 +58,11 @@ public class Chord {
 		String fileName = "chrd_"+rootNote.name()+chordName.name()+".mid";
 		int midiValue= 12+(12*octave)+rootNote.ordinal();
 		MidiFile.writeChordFile(midiValue, instrument, Note.DEFAULT_NOTE_VELOCITY, duration.getValue(), fileName, MainActivity.config.tempo.getTempoEvent(), chordName.intervals );
-		soundID = SoundManager.getInstance().addChordSoundPool(fileName);
+		//soundID = SoundManager.getInstance().addChordSoundPool(fileName);
 	}
 
 	public void playChord() {
-		SoundManager.getInstance().playChordSound(soundID);
+		//SoundManager.getInstance().playChordPlayerSound(soundID);
 	}
 
 	public int getSoundID() {

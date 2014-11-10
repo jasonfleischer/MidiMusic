@@ -44,6 +44,7 @@
 	    	<ImageButton 
 		        android:id="@+id/drum_connect_btn"
 		        android:layout_width="50dp"
+		        android:layout_marginRight="30dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
 		        android:src="@drawable/connect"/>

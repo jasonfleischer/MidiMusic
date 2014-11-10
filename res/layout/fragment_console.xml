@@ -94,60 +94,176 @@
 					    android:layout_height="60dp" />
 		        </GridLayout>
 		    </LinearLayout>
+
 		    <LinearLayout
+		        android:id="@+id/playing_mode_cont"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_marginTop="10dp"
 		        android:background="@drawable/conatiner_shape"
-		        android:paddingRight="10dp"
+		        android:orientation="vertical"
+		        android:paddingBottom="10dp"
 		        android:paddingLeft="10dp"
-		        android:paddingBottom="10dp" 
-		        android:orientation="vertical">
-				<TextView
+		        android:paddingRight="10dp" >
+
+		        <TextView
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
-					android:layout_marginTop="15dp"
-		            android:layout_marginBottom="10dp"
-		            android:text="Virtual Keyboard:"
+		            android:layout_marginTop="15dp"
+		            android:text="Playing Mode:"
 		            android:textSize="19sp"
 		            android:textStyle="bold" />
-			    <GridLayout 
-				    android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:columnCount="2" >
-				    <TextView 
-				        android:layout_width="200dp"
-					    android:layout_height="wrap_content" 
-					    android:textStyle="bold"
-					    android:textSize="18sp"
-					    android:text="Transpose Key:"/>
-					<Spinner
-					    android:id="@+id/keySpinner"
-					    android:layout_width="220dp"
-					    android:layout_height="60dp" />
-					<TextView 
-				        android:layout_width="match_parent"
-					    android:layout_height="wrap_content" 
-					    android:textStyle="bold"
-					    android:textSize="18sp"
-					    android:text="@string/octave"/>
-					<Spinner
-					    android:id="@+id/octaveSpinner"
-					    android:layout_width="220dp"
-					    android:layout_height="60dp" />	
-					<TextView 
-					    android:layout_height="wrap_content" 
-					    android:textStyle="bold"
-					    android:textSize="18sp"
-					    android:text="Highlighted Scale:"/>
-					<Spinner
-					    android:id="@+id/scaleSpinner"
-					    android:layout_width="220dp"
-					    android:layout_height="60dp" />
-					
-				</GridLayout>
-			</LinearLayout>
-		
+
+		        <LinearLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:orientation="horizontal" >
+
+		            <RadioGroup
+		                android:id="@+id/playing_mode_radio_group"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="horizontal" >
+
+		                <RadioButton
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp"
+		                    android:paddingRight="18dp" />
+
+		                <RadioButton
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp"
+		                    android:paddingRight="18dp" />
+
+		                <RadioButton
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp"
+		                    android:paddingRight="18dp" />
+
+		                <RadioButton
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="60dp" />
+		            </RadioGroup>
+		        </LinearLayout>
+
+		        <GridLayout
+		            android:id="@+id/instrument_cont"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:columnCount="2" >
+
+		            <TextView
+		                android:layout_width="180dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="@string/instrument"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+
+		            <Spinner
+		                android:id="@+id/instrumentSpinner"
+		                android:layout_width="210dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+		        </GridLayout>
+
+		        <GridLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:columnCount="2"
+		            android:visibility="gone" >
+
+		            <TextView
+		                android:layout_width="180dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="Sustain:"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+
+		            <Spinner
+		                android:id="@+id/duration_spinner"
+		                android:layout_width="210dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+		        </GridLayout>
+
+		        <GridLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:columnCount="2"
+		            android:visibility="gone" >
+
+		            <TextView
+		                android:layout_width="180dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="Chord:"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+
+		            <Spinner
+		                android:id="@+id/chord_spinner"
+		                android:layout_width="210dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+
+		            <TextView
+		                android:layout_width="180dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="Sustain:"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+
+		            <Spinner
+		                android:id="@+id/duration_spinner_chord"
+		                android:layout_width="210dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+		        </GridLayout>
+
+		        <GridLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:columnCount="2"
+		            android:visibility="gone" >
+
+		            <TextView
+		                android:layout_width="180dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="Type:"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+
+		            <Spinner
+		                android:id="@+id/sequence_spinner"
+		                android:layout_width="210dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+
+		            <TextView
+		                android:layout_width="180dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="Tempo:"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+
+		            <Spinner
+		                android:id="@+id/sequence_tempo_spinner"
+		                android:layout_width="210dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+		        </GridLayout>
+
+		        <FrameLayout
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:visibility="gone" >
+		        </FrameLayout>
+		    </LinearLayout>
 		    
 		</LinearLayout>
 
@@ -272,155 +388,72 @@
 		    </LinearLayout>
 
 		    <LinearLayout
-		        android:id="@+id/playing_mode_cont"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_marginTop="10dp"
 		        android:background="@drawable/conatiner_shape"
 		        android:orientation="vertical"
-		        android:paddingRight="10dp"
+		        android:paddingBottom="10dp"
 		        android:paddingLeft="10dp"
-		        android:paddingBottom="10dp" >
+		        android:paddingRight="10dp" >
+
 		        <TextView
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="10dp"
 		            android:layout_marginTop="15dp"
-		            android:text="Playing Mode:"
+		            android:text="Virtual Keyboard:"
 		            android:textSize="19sp"
 		            android:textStyle="bold" />
-		        <LinearLayout
+
+		        <GridLayout
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:orientation="horizontal" >
-		            <RadioGroup
-		                android:id="@+id/playing_mode_radio_group"
+		            android:columnCount="2" >
+
+		            <TextView
+		                android:layout_width="200dp"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="Transpose Key:"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+
+		            <Spinner
+		                android:id="@+id/keySpinner"
+		                android:layout_width="210dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+
+		            <TextView
 		                android:layout_width="match_parent"
 		                android:layout_height="wrap_content"
-		                android:orientation="horizontal" >
-		                <RadioButton
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp"
-		                    android:paddingRight="18dp" />
-		                <RadioButton
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp"
-		                    android:paddingRight="18dp" />
-		                <RadioButton
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp"
-		                    android:paddingRight="18dp" />
-		                <RadioButton
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp" />
-		            </RadioGroup>
-		        </LinearLayout>
-
-		        
-		        <GridLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:columnCount="2"
-		            android:id="@+id/instrument_cont">
-		            <TextView 
-				        android:layout_width="180dp"
-					    android:layout_height="wrap_content" 
-					    android:textStyle="bold"
-					    android:textSize="18sp"
-					    android:text="@string/instrument"/>
-					<Spinner
-					    android:id="@+id/instrumentSpinner"
-					    android:layout_width="180dp"
-					    android:layout_height="60dp" />
-		        </GridLayout>
-		        
-		        <GridLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:columnCount="2"
-		            android:visibility="gone" >
-
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
-		                android:text="Sustain:"
+		                android:text="@string/octave"
 		                android:textSize="18sp"
 		                android:textStyle="bold" />
 
 		            <Spinner
-		                android:id="@+id/duration_spinner"
-		                android:layout_width="180dp"
+		                android:id="@+id/octaveSpinner"
+		                android:layout_width="210dp"
+		                android:layout_height="60dp"
+		                android:layout_gravity="fill_horizontal" />
+
+		            <TextView
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="left"
+		                android:text="Highlighted Scale:"
+		                android:textSize="18sp"
+		                android:textStyle="bold" />
+
+		            <Spinner
+		                android:id="@+id/scaleSpinner"
+		                android:layout_width="210dp"
 		                android:layout_height="60dp"
 		                android:layout_gravity="fill_horizontal" />
 		        </GridLayout>
-
-		        <GridLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:columnCount="2"
-		            android:visibility="gone" >
-
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="Chord:"
-		                android:textSize="18sp"
-		                android:textStyle="bold" />
-		            <Spinner
-		                android:id="@+id/chord_spinner"
-		                android:layout_width="180dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="Sustain:"
-		                android:textSize="18sp"
-		                android:textStyle="bold" />
-		            <Spinner
-		                android:id="@+id/duration_spinner_chord"
-		                android:layout_width="180dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		        </GridLayout>
-		        <GridLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:columnCount="2"
-		            android:visibility="gone" >
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="Type:"
-		                android:textSize="18sp"
-		                android:textStyle="bold" />
-		            <Spinner
-		                android:id="@+id/sequence_spinner"
-		                android:layout_width="180dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="Tempo:"
-		                android:textSize="18sp"
-		                android:textStyle="bold" />
-		            <Spinner
-		                android:id="@+id/sequence_tempo_spinner"
-		                android:layout_width="180dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		        </GridLayout>
-		        <FrameLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:visibility="gone" >
-		        </FrameLayout>
 		    </LinearLayout>
+
 		</LinearLayout>
 		    
 		</LinearLayout>

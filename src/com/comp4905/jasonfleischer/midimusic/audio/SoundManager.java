@@ -18,7 +18,7 @@ import android.media.SoundPool.OnLoadCompleteListener;
 public class SoundManager {
 	
 	private static final SoundManager instance = new SoundManager();
-	private static SoundPool metronomePool, soundPool, drumSoundPool, chordSoundPool/*, dynamicSoundPool*/, sequenceSoundPool;
+	private static SoundPool metronomePool, soundPool, drumSoundPool /*,chordSoundPool, dynamicSoundPool*/, sequenceSoundPool;
 	//private MediaPlayer mediaPlayer;
 	private Timer timer, metronomeTimer;
 	
@@ -31,16 +31,16 @@ public class SoundManager {
 	//static private int metronomeLow, metronomeHigh;
 	
 	public enum SoundType{
-		NOTE, CHORD, DRUM;
+		NOTE, CHORD, SEQUENCE, DRUM;
 	}
 	
 	private SoundManager() {
 		
-		soundPool = new SoundPool(25, AudioManager.STREAM_DTMF, 0);
+		soundPool = new SoundPool(35, AudioManager.STREAM_DTMF, 0);
 		metronomePool = new SoundPool(2, AudioManager.STREAM_DTMF, 0);
 		drumSoundPool = new SoundPool(25, AudioManager.STREAM_DTMF, 0);
 		
-		chordSoundPool = new SoundPool(15, AudioManager.STREAM_DTMF, 0);
+		//chordSoundPool = new SoundPool(15, AudioManager.STREAM_DTMF, 0);
 		sequenceSoundPool = new SoundPool(3, AudioManager.STREAM_DTMF, 0);
 		
 		//mediaPlayer = new MediaPlayer();
@@ -91,13 +91,13 @@ public class SoundManager {
 	public void playChordSound(int soundId){
 		soundPool.play(soundId, 1, 1, 0, 0, 1);
 		if(RecordingPane.isRecording){
-			RecordingPane.masterTrack.add(SoundType.NOTE, System.nanoTime(), soundId);
+			RecordingPane.masterTrack.add(SoundType.CHORD, System.nanoTime(), soundId);
 		}
 	}
 	public void playSequenceSound(int soundId){
 		soundPool.play(soundId, 1, 1, 0, 0, 1);
 		if(RecordingPane.isRecording){
-			RecordingPane.masterTrack.add(SoundType.NOTE, System.nanoTime(), soundId);
+			RecordingPane.masterTrack.add(SoundType.SEQUENCE, System.nanoTime(), soundId);
 		}
 	}*/
 	
@@ -112,7 +112,7 @@ public class SoundManager {
 		return drumSoundPool.load(FileManager.getInstance().getAFD("drums/"+fileName), 1);
 	}
 	public void playDrumSound(int soundId) {
-		drumSoundPool.play(soundId, 0.8f, 0.8f, 0, 0, 1);
+		drumSoundPool.play(soundId, 0.5f, 0.5f, 0, 0, 1);
 		if(RecordingPane.isRecording){
 			RecordingPane.masterTrack.add(SoundType.DRUM, System.nanoTime(), soundId);
 		}
@@ -149,8 +149,6 @@ public class SoundManager {
 				for(int i=0; i<ids.size();i++){
 					if(st.get(i) == SoundType.DRUM)
 						timer.schedule(new TrackTimerTimer(ids.get(i), drumSoundPool), times.get(i));
-					else if(st.get(i) == SoundType.CHORD)
-						timer.schedule(new TrackTimerTimer(ids.get(i), chordSoundPool), times.get(i));
 					else
 						timer.schedule(new TrackTimerTimer(ids.get(i), soundPool), times.get(i));
 				}
@@ -167,7 +165,7 @@ public class SoundManager {
 		};
 		
 		if(t==null||t.getSoundIds().isEmpty()){
-			HLog.e("playTrack null");
+			HLog.e("Track is empty");
 			return;
 		}
 		
@@ -205,7 +203,7 @@ public class SoundManager {
 	
 	//CHORD POOL
 	
-	public void playChordSound(int soundId) {
+	/*public void playChordPlayerSound(int soundId) {
 		chordSoundPool.play(soundId, 1, 1, 0, 0, 1);
 	}
 	public void unloadChordSound(int soundId){
@@ -213,7 +211,7 @@ public class SoundManager {
 	}
 	public int addChordSoundPool(String fileName) {
 		return chordSoundPool.load(FileManager.getInstance().EXTERNAL_PATH+fileName, 1);
-	}
+	}*/
 	
 	//SEQUENCE
 

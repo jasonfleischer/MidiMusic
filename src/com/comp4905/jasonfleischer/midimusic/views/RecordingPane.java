@@ -88,6 +88,7 @@ public class RecordingPane extends LinearLayout{
 									}
 								});
 							}else {
+								
 								HLog.i("Dubbing started");
 								SoundManager.getInstance().playTrack(masterTrack, false);
 								masterTrack.setDubStartTime();
@@ -135,6 +136,12 @@ public class RecordingPane extends LinearLayout{
 						HLog.i("Cannot loop empty or uncomplete recording");
 						return;
 					}
+					if(masterTrack.getSoundIds().isEmpty()){
+						HLog.i("Cannot loop empty or uncomplete recording");
+						deleteTrackBtn.callOnClick();
+						return;
+					}
+					
 					isLooping = true;
 					SoundManager.getInstance().playTrack(masterTrack, true);
 					statusTextView.setText("Track playing");
@@ -165,7 +172,6 @@ public class RecordingPane extends LinearLayout{
 			}
 		});
 	}
-
 	
 	private void updateStatus(){
 		if(masterTrack == null){

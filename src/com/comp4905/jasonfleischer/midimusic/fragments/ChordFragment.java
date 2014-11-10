@@ -6,7 +6,6 @@ import java.util.List;
 import com.comp4905.jasonfleischer.midimusic.MainActivity;
 import com.comp4905.jasonfleischer.midimusic.MidiMusicConfig.PlayingMode;
 import com.comp4905.jasonfleischer.midimusic.R;
-import com.comp4905.jasonfleischer.midimusic.audio.SoundManager;
 import com.comp4905.jasonfleischer.midimusic.dialogs.LoadingDialogFragment;
 import com.comp4905.jasonfleischer.midimusic.model.Chord;
 import com.comp4905.jasonfleischer.midimusic.model.Instrument;
@@ -210,13 +209,13 @@ public class ChordFragment extends Fragment{
 			super.onProgressUpdate(values);
 		}
 		protected LinearLayout[] doInBackground(Void... params) {
-			if(chords!=null){//unload
+			/*if(chords!=null){//unload
 				for(ArrayList<Chord> list:chords){
 					for(Chord c: list){
-						SoundManager.getInstance().unloadChordSound(c.getSoundID());
+						//SoundManager.getInstance().unloadChordSound(c.getSoundID());
 					}
 				}
-			}
+			}*/
 			
 			int instrmnt =MainActivity.config.chordInstrument.getValue();
 			chords = new ArrayList<ArrayList<Chord>>(7);
