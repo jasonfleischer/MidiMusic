@@ -4,7 +4,8 @@
     android:layout_width="wrap_content"
    	android:layout_height="wrap_content"
    	android:orientation="horizontal"
-   	android:id="@+id/usb_connection_view">
+   	android:id="@+id/usb_connection_view"
+   	android:visibility="@string/hidden">
     <ImageView 
         android:id="@+id/led"
    	    android:layout_marginTop="2dp"

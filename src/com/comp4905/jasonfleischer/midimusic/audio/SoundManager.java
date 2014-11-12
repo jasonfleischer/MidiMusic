@@ -12,8 +12,11 @@ import com.comp4905.jasonfleischer.midimusic.util.HLog;
 import com.comp4905.jasonfleischer.midimusic.views.RecordingPane;
 
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
+import android.media.audiofx.EnvironmentalReverb;
+import android.media.audiofx.PresetReverb;
 
 public class SoundManager {
 	
@@ -43,7 +46,29 @@ public class SoundManager {
 		//chordSoundPool = new SoundPool(15, AudioManager.STREAM_DTMF, 0);
 		sequenceSoundPool = new SoundPool(3, AudioManager.STREAM_DTMF, 0);
 		
-		//mediaPlayer = new MediaPlayer();
+		
+		/*MediaPlayer mediaPlayer = new MediaPlayer();
+		// permission modify_audio_setting
+		EnvironmentalReverb eReverb = new EnvironmentalReverb(0, mediaPlayer.getAudioSessionId());
+		mediaPlayer.attachAuxEffect(eReverb.getId());
+		mediaPlayer.setAuxEffectSendLevel(1.0f);
+		//eReverb.setPreset(PresetReverb.PRESET_LARGEHALL);
+		eReverb.setDecayHFRatio((short) 1000);
+	       eReverb.setDecayTime(1000);
+	       eReverb.setDensity((short) 1000);
+	       eReverb.setDiffusion((short) 1000);
+	       eReverb.setReverbLevel((short) -1000);
+	       eReverb.setReverbDelay((short) 50);
+		
+	    eReverb.setEnabled(true);
+		
+		PresetReverb pReverb  = new PresetReverb(1,0);
+		mediaPlayer.attachAuxEffect(pReverb.getId());
+		mediaPlayer.setAuxEffectSendLevel(1.0f);
+		pReverb.setPreset(PresetReverb.PRESET_LARGEHALL);
+	    pReverb.setEnabled(true);*/
+	    
+	    
 		//mAudioManager = (AudioManager) MainActivity.getInstance().getSystemService(MainActivity.getInstance().AUDIO_SERVICE);
 		//streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 		//streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
@@ -73,7 +98,7 @@ public class SoundManager {
 	//KEY POOL
 	
 	public int addSoundSoundPool(String fileName){
-		return soundPool.load(FileManager.getInstance().EXTERNAL_PATH+fileName, 1);
+		return soundPool.load(FileManager.getInstance().INTERNAL_PATH+fileName, 1);
 	}
 	public void playSound(int soundId) {	
 		soundPool.play(soundId, 1, 1, 0, 0, 1);
@@ -164,7 +189,7 @@ public class SoundManager {
 			}
 		};
 		
-		if(t==null||t.getSoundIds().isEmpty()){
+		if(t==null){
 			HLog.e("Track is empty");
 			return;
 		}
@@ -219,7 +244,7 @@ public class SoundManager {
 		
 		//String fileName = "dyn_"+midiValue+".mid";
 		//MidiFile.writeNoteFile(midiValue, velocity, fileName, MainActivity.config.tempo.getTempoEvent());
-		lastSequenceId = sequenceSoundPool.load(FileManager.getInstance().EXTERNAL_PATH+"sequence.mid", 1);
+		lastSequenceId = sequenceSoundPool.load(FileManager.getInstance().INTERNAL_PATH+"sequence.mid", 1);
 		sequenceSoundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
 			@Override
 			public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
@@ -337,5 +362,16 @@ public class SoundManager {
 		metronomeTimer = new Timer(); 
 		isPlayingMetronome = true;
 		metronomeTimer.schedule(tt, 0, time*(accent+1));
+	}
+	
+	public static void release(){
+		soundPool.release();
+		soundPool = null;
+		metronomePool.release();
+		metronomePool = null;
+		drumSoundPool.release();
+		drumSoundPool = null;
+		sequenceSoundPool.release();
+		sequenceSoundPool = null;
 	}
 }

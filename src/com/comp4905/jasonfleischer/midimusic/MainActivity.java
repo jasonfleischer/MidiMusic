@@ -126,11 +126,10 @@ public class MainActivity extends Activity {
 			usbManager = (UsbManager) instance.getSystemService(Context.USB_SERVICE);
 		}
 		
-		
 		HashMap<String, UsbDevice> deviceList = usbManager.getDeviceList();
 		Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
 		if(deviceList.isEmpty()){
-			HLog.i("No USB device connected");
+			HLog.i("No USB device detected");
 			FragMentManager.getInstance().updateUSBConnection(false);
 			return;
 		}else{	
@@ -278,6 +277,13 @@ public class MainActivity extends Activity {
 		}
 	}
 	@Override
+	protected void onPause() {
+		super.onPause();
+		if(config != null)
+			FileManager.getInstance().writeMidiMusicConfig(config);
+	}
+	
+	@Override
 	protected void onStop() {
 		super.onStop();
 		//HLog.i("onStop");
@@ -290,8 +296,7 @@ public class MainActivity extends Activity {
 		usbManager = null;
 		stopCheckUsbDetachedTimer();
 		
-		if(config != null)
-			FileManager.getInstance().writeMidiMusicConfig(config);
+		
 	}
 	
 	@Override
@@ -308,5 +313,6 @@ public class MainActivity extends Activity {
 			SoundManager.getInstance().unloadDrumPool(d.getSoundID());
 		}
 		SoundManager.getInstance().unloadMetronome();
+		//SoundManager.release();
 	}
 }

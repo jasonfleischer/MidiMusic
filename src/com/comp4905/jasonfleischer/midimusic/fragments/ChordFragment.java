@@ -170,7 +170,7 @@ public class ChordFragment extends Fragment{
 			
 		});
 		
-		FragMentManager.getInstance().showNavBar();
+		//FragMentManager.getInstance().showNavBar();
 		
 		updateView();
 		

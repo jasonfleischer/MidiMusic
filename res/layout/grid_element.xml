@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     android:background="@drawable/grid_element" >
     <FrameLayout 
-        android:layout_width="71dp"
-   		android:layout_height="108dp">
+        android:layout_width="@dimen/grid_element_width"
+   		android:layout_height="@dimen/grid_element_height">
         <TextView 
 	        android:id="@+id/grid_element_label"
 	        android:padding="5dp"

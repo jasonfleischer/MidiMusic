@@ -39,6 +39,9 @@
 	</RelativeLayout>
 	<ScrollView
 	    android:layout_width="fill_parent"
+    	android:layout_height="fill_parent">
+	<HorizontalScrollView
+	    android:layout_width="fill_parent"
     	android:layout_height="fill_parent"
     	android:background="@drawable/rounded_corners_bg_shape">
 		<LinearLayout
@@ -73,8 +76,8 @@
 			            android:layout_height="wrap_content"
 						android:layout_marginTop="5dp"
 			            android:layout_marginBottom="10dp"
-			            android:text="USB Settings:"
-			            android:textSize="19sp"
+			            android:text="USB Settings"
+			            android:textSize="@dimen/font_title"
 			            android:textStyle="bold" />
 					<Button 
 					    android:id="@+id/usb_btn"
@@ -86,7 +89,7 @@
 					    android:layout_height="wrap_content" 
 					    android:layout_width="200dp"
 					    android:textStyle="bold"
-					    android:textSize="18sp"
+					    android:textSize="@dimen/font_sub_title"
 					    android:text="Modulate USB:"/>
 					<Spinner
 					    android:id="@+id/modulateSpinner"
@@ -100,6 +103,7 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_marginTop="10dp"
+		        android:layout_marginBottom="10dp"
 		        android:background="@drawable/conatiner_shape"
 		        android:orientation="vertical"
 		        android:paddingBottom="10dp"
@@ -110,8 +114,8 @@
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
 		            android:layout_marginTop="15dp"
-		            android:text="Playing Mode:"
-		            android:textSize="19sp"
+		            android:text="Playing Mode"
+		            android:textSize="@dimen/font_title"
 		            android:textStyle="bold" />
 
 		        <LinearLayout
@@ -157,7 +161,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
 		                android:text="@string/instrument"
-		                android:textSize="18sp"
+		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
 
 		            <Spinner
@@ -178,7 +182,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
 		                android:text="Sustain:"
-		                android:textSize="18sp"
+		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
 
 		            <Spinner
@@ -199,7 +203,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
 		                android:text="Chord:"
-		                android:textSize="18sp"
+		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
 
 		            <Spinner
@@ -213,7 +217,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
 		                android:text="Sustain:"
-		                android:textSize="18sp"
+		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
 
 		            <Spinner
@@ -234,7 +238,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
 		                android:text="Type:"
-		                android:textSize="18sp"
+		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
 
 		            <Spinner
@@ -248,7 +252,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
 		                android:text="Tempo:"
-		                android:textSize="18sp"
+		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
 
 		            <Spinner
@@ -290,8 +294,8 @@
 			            android:layout_width="match_parent"
 			            android:layout_height="wrap_content"
 			            android:layout_marginTop="15dp"
-			            android:text="Metronome:"
-			            android:textSize="19sp"
+			            android:text="Metronome"
+			            android:textSize="@dimen/font_title"
 			            android:textStyle="bold" />
 					<LinearLayout  
 					    android:id="@+id/console_metronome_btn_cont"
@@ -321,7 +325,7 @@
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
 			            android:text="Tempo:"
-			            android:textSize="18sp"
+			            android:textSize="@dimen/font_sub_title"
 			            android:textStyle="bold" />
 			        <Spinner
 			            android:id="@+id/consoleTempoSpinner"
@@ -333,7 +337,7 @@
 			            android:layout_height="wrap_content"
 			            android:layout_marginLeft="30dp"
 			            android:text="Accent:"
-			            android:textSize="18sp"
+			            android:textSize="@dimen/font_sub_title"
 			            android:textStyle="bold" />
 			        <Spinner
 			            android:id="@+id/consoleAccentSpinner"
@@ -350,7 +354,7 @@
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
 			            android:text="Spoken:"
-			            android:textSize="18sp"
+			            android:textSize="@dimen/font_sub_title"
 			            android:textStyle="bold" />
 				    <ToggleButton 
 				        android:layout_marginLeft="5dp"
@@ -391,6 +395,7 @@
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_marginTop="10dp"
+		        android:layout_marginBottom="10dp"
 		        android:background="@drawable/conatiner_shape"
 		        android:orientation="vertical"
 		        android:paddingBottom="10dp"
@@ -402,8 +407,8 @@
 		            android:layout_height="wrap_content"
 		            android:layout_marginBottom="10dp"
 		            android:layout_marginTop="15dp"
-		            android:text="Virtual Keyboard:"
-		            android:textSize="19sp"
+		            android:text="Virtual Keyboard"
+		            android:textSize="@dimen/font_title"
 		            android:textStyle="bold" />
 
 		        <GridLayout
@@ -416,7 +421,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
 		                android:text="Transpose Key:"
-		                android:textSize="18sp"
+		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
 
 		            <Spinner
@@ -430,7 +435,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
 		                android:text="@string/octave"
-		                android:textSize="18sp"
+		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
 
 		            <Spinner
@@ -443,7 +448,7 @@
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
 		                android:text="Highlighted Scale:"
-		                android:textSize="18sp"
+		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
 
 		            <Spinner
@@ -457,5 +462,6 @@
 		</LinearLayout>
 		    
 		</LinearLayout>
+	</HorizontalScrollView>
 	</ScrollView>
 </LinearLayout>

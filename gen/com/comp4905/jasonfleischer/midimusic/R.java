@@ -21,17 +21,34 @@ public final class R {
         public static final int yellow=0x7f060002;
     }
     public static final class dimen {
-        public static final int activity_bottom_margin=0x7f070002;
-        /**  Default screen margins, per the Android Design guidelines. 
-
-         Example customization of dimensions originally defined in res/values/dimens.xml
-         (such as screen margins) for screens with more than 820dp of available width. This
-         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
-    
+        public static final int activity_bottom_margin=0x7f080004;
+        /**  gone 
+ visible 
          */
-        public static final int activity_horizontal_margin=0x7f070000;
-        public static final int activity_top_margin=0x7f070001;
-        public static final int keyboard_key_width=0x7f070003;
+        public static final int activity_horizontal_margin=0x7f080000;
+        public static final int activity_top_margin=0x7f080003;
+        /**  fonts 
+ fonts 
+         */
+        public static final int default_font=0x7f080012;
+        public static final int drum_header_indent=0x7f080009;
+        public static final int drum_pad_height=0x7f080008;
+        public static final int drum_pad_width=0x7f080007;
+        public static final int font_large=0x7f080015;
+        public static final int font_sub_title=0x7f080014;
+        public static final int font_title=0x7f080013;
+        public static final int grid_element_height=0x7f080006;
+        public static final int grid_element_width=0x7f080005;
+        public static final int init_height=0x7f080002;
+        public static final int init_width=0x7f080001;
+        public static final int keyboard_black_key_height=0x7f08000b;
+        public static final int keyboard_black_key_indent_1=0x7f08000e;
+        public static final int keyboard_black_key_indent_2=0x7f08000f;
+        public static final int keyboard_black_key_indent_3=0x7f080010;
+        public static final int keyboard_black_key_indent_4=0x7f080011;
+        public static final int keyboard_black_key_width_1=0x7f08000c;
+        public static final int keyboard_black_key_width_2=0x7f08000d;
+        public static final int keyboard_key_width=0x7f08000a;
     }
     public static final class drawable {
         public static final int add=0x7f020000;
@@ -222,26 +239,38 @@ public final class R {
         public static final int usb_connection=0x7f03000e;
     }
     public static final class string {
-        public static final int app_name=0x7f080000;
-        public static final int chord_player=0x7f08000f;
-        public static final int console=0x7f080009;
-        public static final int dash=0x7f080001;
+        public static final int app_name=0x7f070001;
+        public static final int chord_player=0x7f070010;
+        public static final int console=0x7f07000a;
+        public static final int dash=0x7f070002;
         /**  toasts 
  content descriptors 
          */
-        public static final int descp_led=0x7f080010;
-        public static final int drum_machine=0x7f08000b;
-        public static final int duration=0x7f080006;
-        public static final int instrument=0x7f080002;
-        public static final int key=0x7f080003;
-        public static final int loading=0x7f08000d;
-        public static final int note=0x7f080005;
-        public static final int octave=0x7f080004;
-        public static final int sequencer=0x7f08000c;
-        public static final int transpose_keyboard=0x7f08000a;
-        public static final int updating_midi=0x7f08000e;
-        public static final int usb_conn=0x7f080008;
-        public static final int usb_disconn=0x7f080007;
+        public static final int descp_led=0x7f070011;
+        public static final int drum_machine=0x7f07000c;
+        public static final int duration=0x7f070007;
+        /**  Default screen margins, per the Android Design guidelines.
+    
+    small 
+
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+         
+         large
+    
+         */
+        public static final int hidden=0x7f070000;
+        public static final int instrument=0x7f070003;
+        public static final int key=0x7f070004;
+        public static final int loading=0x7f07000e;
+        public static final int note=0x7f070006;
+        public static final int octave=0x7f070005;
+        public static final int sequencer=0x7f07000d;
+        public static final int transpose_keyboard=0x7f07000b;
+        public static final int updating_midi=0x7f07000f;
+        public static final int usb_conn=0x7f070009;
+        public static final int usb_disconn=0x7f070008;
     }
     public static final class style {
         /** 
@@ -253,17 +282,6 @@ public final class R {
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
-
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 

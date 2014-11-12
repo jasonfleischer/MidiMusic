@@ -202,7 +202,7 @@ public class MidiFile {
 		mf.progChange(channel, instrument); // change instrument
 		mf.noteOn(channel, 0, midiValue, velocity);
 		mf.noteOff(channel, noteDuration, midiValue);
-		mf.writeToFile(FileManager.getInstance().EXTERNAL_PATH+fileName,tempo);
+		mf.writeToFile(FileManager.getInstance().INTERNAL_PATH+fileName,tempo);
 	}
 	
 	public static void writeChordFile(int midiValue, int instrument, int velocity, int noteDuration, String fileName, int[] tempo, int[] intervals){
@@ -218,7 +218,7 @@ public class MidiFile {
 		for(int i=0; i<intervals.length;i++){
 			mf.noteOff(channel, 0, midiValue+intervals[i]);
 		}
-		mf.writeToFile(FileManager.getInstance().EXTERNAL_PATH+fileName,tempo);
+		mf.writeToFile(FileManager.getInstance().INTERNAL_PATH+fileName,tempo);
 	}
 	 
 	public static void writeSequenceFile(int midiValue, int instrument, int velocity, String fileName, int[] tempo, int[] sequence){	
@@ -226,6 +226,6 @@ public class MidiFile {
 		MidiFile mf = new MidiFile();
 		mf.progChange(channel, instrument); // change instrument
 		mf.noteSequenceFixedVelocity(channel, sequence, velocity, midiValue);
-		mf.writeToFile(FileManager.getInstance().EXTERNAL_PATH+fileName, tempo);
+		mf.writeToFile(FileManager.getInstance().INTERNAL_PATH+fileName, tempo);
 	}
 }

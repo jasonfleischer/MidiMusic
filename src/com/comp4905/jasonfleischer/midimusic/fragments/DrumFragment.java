@@ -190,7 +190,7 @@ public class DrumFragment extends Fragment{
 				}
 			}
 			@Override
-			public void onNothingSelected(AdapterView<?> parent) {  FragMentManager.getInstance().hideNavBar(); }
+			public void onNothingSelected(AdapterView<?> parent) { }// FragMentManager.getInstance().hideNavBar(); }
 		});
 		
 		return rootView;

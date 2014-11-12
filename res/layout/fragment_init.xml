@@ -23,7 +23,7 @@
 	   		android:layout_height="wrap_content"/>
     	<WebView 
     	    android:id="@+id/webview"
-    	    android:layout_width="500dp"
-   			android:layout_height="220dp"/>
+    	    android:layout_width="@dimen/init_width"
+   			android:layout_height="@dimen/init_height"/>
     </LinearLayout>
 </FrameLayout>

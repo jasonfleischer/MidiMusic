@@ -1,9 +1,10 @@
 package com.comp4905.jasonfleischer.midimusic.fragments;
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.os.Build;
 import android.view.View;
-
 import com.comp4905.jasonfleischer.midimusic.MainActivity;
 import com.comp4905.jasonfleischer.midimusic.R;
 
@@ -98,6 +99,7 @@ public class FragMentManager {
 		
 	}
 	
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	public void hideNavBar(){
 		MainActivity.getInstance().getWindow().getDecorView().setSystemUiVisibility( 
 		  View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -112,9 +114,4 @@ public class FragMentManager {
 		MainActivity.getInstance().getWindow().getDecorView().setSystemUiVisibility( 
 		  View.SYSTEM_UI_FLAG_VISIBLE);
 	}
-	
-	
-	
-	
-	
 }

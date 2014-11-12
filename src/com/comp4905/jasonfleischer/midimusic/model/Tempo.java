@@ -2,8 +2,6 @@ package com.comp4905.jasonfleischer.midimusic.model;
 
 import java.io.Serializable;
 
-import android.util.Log;
-
 public class Tempo implements Serializable {
 
 	private static final long serialVersionUID = -3326218759047829266L;
@@ -117,7 +115,7 @@ public class Tempo implements Serializable {
 		tempoEvent = new int[]{ 0x00, 0xFF, 0x51, 0x03,
 			Integer.decode(slitHexStrg[0]),Integer.decode(slitHexStrg[1]),Integer.decode(slitHexStrg[2])};
 	
-		Log.i("",bpm+": "+mpqn+" "+slitHexStrg[0]+","+slitHexStrg[1]+","+slitHexStrg[2]);
+		//Log.i("",bpm+": "+mpqn+" "+slitHexStrg[0]+","+slitHexStrg[1]+","+slitHexStrg[2]);
 	}
 	
 	public String toString(){

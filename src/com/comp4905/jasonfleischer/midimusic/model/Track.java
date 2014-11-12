@@ -2,8 +2,6 @@ package com.comp4905.jasonfleischer.midimusic.model;
 
 import java.util.ArrayList;
 
-import android.util.Log;
-
 import com.comp4905.jasonfleischer.midimusic.audio.SoundManager.SoundType;
 
 public class Track {
@@ -75,40 +73,45 @@ public class Track {
 			}
 			//long dubEndTime = (System.nanoTime() -dubStartTime) /(long)1000000;
 			
-			Log.e("", "Merge Dub Track");
+			/*Log.e("", "Merge Dub Track");
 			Log.i("", "timesDub"+ timesDub);
 			Log.i("", "times"+times);
 			Log.i("", "soundIdsDub"+soundIdsDub);
 			Log.i("", "soundIds"+soundIds);
 			Log.i("", "soundTypesDub"+soundTypesDub);
-			Log.i("", "soundTypes"+ soundTypes);
+			Log.i("", "soundTypes"+ soundTypes);*/
 			
+			if(times.isEmpty()){
+				times.addAll(timesDub);
+				soundIds.addAll(soundIdsDub);
+				soundTypes.addAll(soundTypesDub);
+			}else{
 			//if(delayBeforeNextLoop>=dubEndTime){
 
-				Log.i("", "timesDub"+ timesDub);
+				/*Log.i("", "timesDub"+ timesDub);
 				Log.i("", "times"+times);
 				Log.i("", "soundIdsDub"+soundIdsDub);
 				Log.i("", "soundIds"+soundIds);
 				Log.i("", "soundTypesDub"+soundTypesDub);
-				Log.i("", "soundTypes"+ soundTypes);
+				Log.i("", "soundTypes"+ soundTypes);*/
 				
 				final int size2 = times.size();
 				for(int m=0; m<timesDub.size(); m++){
 					for(int k=0, l=1; l<size2;k++,l++){	
 						
-						if(k==0 && timesDub.get(m) < times.get(k)){ //first element 
+						if(k==0 && timesDub.get(m) <= times.get(k)){ //first element 
 							times.add(0, timesDub.get(m));
 							soundIds.add(0, soundIdsDub.get(m));
 							soundTypes.add(0, soundTypesDub.get(m));
 							break;
 						}
-						else if(timesDub.get(m) >= times.get(k) && timesDub.get(m) < times.get(l)){
+						else if(timesDub.get(m) > times.get(k) && timesDub.get(m) <= times.get(l)){
 							times.add(l, timesDub.get(m));
 							soundIds.add(l, soundIdsDub.get(m));
 							soundTypes.add(l, soundTypesDub.get(m));
 							break;
 						}		
-						else if(l==timesDub.size()-1&& timesDub.get(m) > times.get(l)){
+						else if(l==timesDub.size()-1&& timesDub.get(m) >= times.get(l)){
 							times.add(times.size(), timesDub.get(m));
 							soundIds.add(soundIds.size(), soundIdsDub.get(m));
 							soundTypes.add(soundTypes.size(), soundTypesDub.get(m));
@@ -117,74 +120,21 @@ public class Track {
 							
 					}
 				}
+			}
 
 				
-			/*//}else{
-				Log.e("", "delayBeforeNextLoop<dubEndTime");
-
-				int numberOfRepeats = (int) Math.floor(dubEndTime/delayBeforeNextLoop);
-				
-				Log.e("", "numberOfrepeats"+ numberOfRepeats);
-				
-				final int size = times.size();
-				for(int j=0;j<numberOfRepeats;j++){			
-					for(int i =0;i<size;i++){
-						times.add(times.get(i)+delayBeforeNextLoop*(j+1));
-						soundIds.add(soundIds.get(i));
-						soundTypes.add(soundTypes.get(i));
-					}
-				}
-				
-				delayBeforeNextLoop = (long) (numberOfRepeats+1) * delayBeforeNextLoop;
-				numberOfBeats = numberOfRepeats+1 * numberOfBeats;
-				
-				Log.e("", "numberOfRepeats"+numberOfRepeats);
-				Log.i("", "timesDub"+ timesDub);
-				Log.i("", "times"+times);
-				Log.i("", "soundIdsDub"+soundIdsDub);
-				Log.i("", "soundIds"+soundIds);
-				Log.i("", "soundTypesDub"+soundTypesDub);
-				Log.i("", "soundTypes"+ soundTypes);
-				
-				final int size2 = times.size();
-				for(int m=0; m<timesDub.size(); m++){
-					for(int k=0, l=1; l<size2;k++,l++){	
-						
-						if(k==0 && timesDub.get(m) < times.get(k)){ //first element 
-							times.add(0, timesDub.get(m));
-							soundIds.add(0, soundIdsDub.get(m));
-							soundTypes.add(0, soundTypesDub.get(m));
-							break;
-						}
-						else if(timesDub.get(m) >= times.get(k) && timesDub.get(m) < times.get(l)){
-							times.add(l, timesDub.get(m));
-							soundIds.add(l, soundIdsDub.get(m));
-							soundTypes.add(l, soundTypesDub.get(m));
-							break;
-						}	
-						else if(l==timesDub.size()-1&& timesDub.get(m) > times.get(l)){
-							times.add(times.size(), timesDub.get(m));
-							soundIds.add(soundIds.size(), soundIdsDub.get(m));
-							soundTypes.add(soundTypes.size(), soundTypesDub.get(m));
-							break;
-						}
-								
-					}
-				}
-			}*/
-			
 			timesDub.clear();
 			soundIdsDub.clear();
 			soundTypesDub.clear();
 			dubStartTime = null;
 			
-			Log.e("", "Merge Dub Track finished");
+			/*Log.e("", "Merge Dub Track finished");
 			Log.i("", "timesDub"+ timesDub);
 			Log.i("", "times"+times);
 			Log.i("", "soundIdsDub"+soundIdsDub);
 			Log.i("", "soundIds"+soundIds);
 			Log.i("", "soundTypesDub"+soundTypesDub);
-			Log.i("", "soundTypes"+ soundTypes);
+			Log.i("", "soundTypes"+ soundTypes);*/
 			
 		}
 	}

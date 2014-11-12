@@ -11,9 +11,11 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
 import android.annotation.SuppressLint;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
+import android.util.Log;
 
 import com.comp4905.jasonfleischer.midimusic.MainActivity;
 import com.comp4905.jasonfleischer.midimusic.MidiMusicConfig;
@@ -26,8 +28,8 @@ public class FileManager {
 	private final AssetManager assets;
 	private final String DIR = "MidiMusic";
 	private final String SAVED_CONFIG_FILENAME ="MidiMusic.ser";
-	public final String EXTERNAL_PATH =  "/sdcard/"+DIR+"/";
-	//public final String INTERNAL_PATH = MainActivity.getInstance().getFilesDir().getPath();
+	//public final String EXTERNAL_PATH =  "/sdcard/"+DIR+"/";
+	public final String INTERNAL_PATH = MainActivity.getInstance().getFilesDir().getPath();
 	
 	public static FileManager getInstance(){
 		return instance;
@@ -35,7 +37,7 @@ public class FileManager {
 	
 	private FileManager(){
 		assets = MainActivity.getInstance().getAssets();
-		File path = new File(EXTERNAL_PATH);
+		File path = new File(INTERNAL_PATH);
         if(!path.exists()) {
             path.mkdirs();
         }
@@ -89,23 +91,33 @@ public class FileManager {
 	}
 	
 	public boolean hasMusicConfigFile(){
-		return (new File(EXTERNAL_PATH+ SAVED_CONFIG_FILENAME)).exists();
+		return (new File(INTERNAL_PATH+ SAVED_CONFIG_FILENAME)).exists();
 	}
-	public void writeMidiMusicConfig(MidiMusicConfig object){	
-		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(EXTERNAL_PATH+ SAVED_CONFIG_FILENAME));
-			out.writeObject(object);
-			ByteArrayOutputStream bos = new ByteArrayOutputStream(); 
-			byte[] buf = bos.toByteArray(); 
-	        out.write(buf); 
-			out.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void writeMidiMusicConfig(final MidiMusicConfig object){	
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(INTERNAL_PATH+ SAVED_CONFIG_FILENAME));
+					try{
+					   out.writeObject(object);
+					   ByteArrayOutputStream bos = new ByteArrayOutputStream(); 
+					   byte[] buf = bos.toByteArray(); 
+					   out.write(buf); 
+					} finally{
+						out.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
+			}
+		}).start();
 	}
 	public MidiMusicConfig readMidiMusicConfig(){	
 		try {
-			FileInputStream in = new FileInputStream(EXTERNAL_PATH+ SAVED_CONFIG_FILENAME);
+			FileInputStream in = new FileInputStream(INTERNAL_PATH+ SAVED_CONFIG_FILENAME);
 			ObjectInputStream reader = new ObjectInputStream(in);
 			MidiMusicConfig result = (MidiMusicConfig) reader.readObject();
 			reader.close();
@@ -113,6 +125,7 @@ public class FileManager {
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
+			Log.e("FileMan", ""+e+e.getMessage()+e.getLocalizedMessage());
 			HLog.e("Problem reading saved configurations");
 			return new MidiMusicConfig();
 		}

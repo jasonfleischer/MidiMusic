@@ -138,7 +138,6 @@ public class RecordingPane extends LinearLayout{
 					}
 					if(masterTrack.getSoundIds().isEmpty()){
 						HLog.i("Cannot loop empty or uncomplete recording");
-						deleteTrackBtn.callOnClick();
 						return;
 					}
 					
