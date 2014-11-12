@@ -27,16 +27,17 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f080000;
         public static final int activity_top_margin=0x7f080003;
+        public static final int console_indent=0x7f080012;
         /**  fonts 
  fonts 
          */
-        public static final int default_font=0x7f080012;
+        public static final int default_font=0x7f080013;
         public static final int drum_header_indent=0x7f080009;
         public static final int drum_pad_height=0x7f080008;
         public static final int drum_pad_width=0x7f080007;
-        public static final int font_large=0x7f080015;
-        public static final int font_sub_title=0x7f080014;
-        public static final int font_title=0x7f080013;
+        public static final int font_large=0x7f080016;
+        public static final int font_sub_title=0x7f080015;
+        public static final int font_title=0x7f080014;
         public static final int grid_element_height=0x7f080006;
         public static final int grid_element_width=0x7f080005;
         public static final int init_height=0x7f080002;

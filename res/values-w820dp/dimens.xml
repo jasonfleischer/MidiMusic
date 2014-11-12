@@ -30,6 +30,8 @@
     <dimen name="keyboard_black_key_indent_3">128dp</dimen>
     <dimen name="keyboard_black_key_indent_4">58dp</dimen>
     
+    <dimen name="console_indent">15dp</dimen>
+    
     <!-- fonts -->
     <dimen name="default_font">14sp</dimen>
     <dimen name="font_title">19sp</dimen>
