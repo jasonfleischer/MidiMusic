@@ -28,7 +28,7 @@ public class FragMentManager {
 		fragmentManager.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out).replace(containerId, newFragment).commit();
 	}
 	
-	public void showDrumFragment(){
+	void showDrumFragment(){
 		replace(new DrumFragment(), R.id.fragment_container);
 	}
 	
@@ -36,27 +36,27 @@ public class FragMentManager {
 		replace(new InstrumentFragment(), R.id.fragment_container);
 	}
 	
-	public void showConsoleFragment(){
+	void showConsoleFragment(){
 		replace(new ConsoleFragment(), R.id.fragment_container);
 	}
 	
-	public void showChordFragment(){
+	void showChordFragment(){
 		replace(new ChordFragment(), R.id.fragment_container);
 	}
 	
-	public void showSequenceFragment() {
+	void showSequenceFragment() {
 		replace(new SequenceFragment(), R.id.fragment_container);
 	}
 	
 	
-	public void setupInstrumentFragment(){
+	void setupInstrumentFragment(){
 		//fragmentManager.executePendingTransactions();
 		fragmentManager.beginTransaction().add(R.id.instrument_fragment,(MainActivity.config.keysAreShowing?new KeysFragment():new GridFragment())).commit();
 	}
-	public void showKeys(){
+	void showKeys(){
 		replace(new KeysFragment(), R.id.instrument_fragment);
 	}
-	public void showGrid() {
+	void showGrid() {
 		replace(new GridFragment(), R.id.instrument_fragment);
 	}
 	
@@ -99,8 +99,8 @@ public class FragMentManager {
 		
 	}
 	
-	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-	public void hideNavBar(){
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN) 
+	void hideNavBar(){
 		MainActivity.getInstance().getWindow().getDecorView().setSystemUiVisibility( 
 		  View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -110,7 +110,7 @@ public class FragMentManager {
         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 	}
 	
-	public void showNavBar(){
+	void showNavBar(){
 		MainActivity.getInstance().getWindow().getDecorView().setSystemUiVisibility( 
 		  View.SYSTEM_UI_FLAG_VISIBLE);
 	}

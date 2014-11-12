@@ -12,11 +12,8 @@ import com.comp4905.jasonfleischer.midimusic.util.HLog;
 import com.comp4905.jasonfleischer.midimusic.views.RecordingPane;
 
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
-import android.media.audiofx.EnvironmentalReverb;
-import android.media.audiofx.PresetReverb;
 
 public class SoundManager {
 	
@@ -100,10 +97,10 @@ public class SoundManager {
 	public int addSoundSoundPool(String fileName){
 		return soundPool.load(FileManager.getInstance().INTERNAL_PATH+fileName, 1);
 	}
-	public void playSound(int soundId) {	
+	public void playSound(int soundId, SoundType st) {	
 		soundPool.play(soundId, 1, 1, 0, 0, 1);
 		if(RecordingPane.isRecording){
-			RecordingPane.masterTrack.add(SoundType.NOTE, System.nanoTime(), soundId);
+			RecordingPane.masterTrack.add(st, System.nanoTime(), soundId);
 		}
 	}
 	
@@ -364,7 +361,7 @@ public class SoundManager {
 		metronomeTimer.schedule(tt, 0, time*(accent+1));
 	}
 	
-	public static void release(){
+	/*public static void release(){
 		soundPool.release();
 		soundPool = null;
 		metronomePool.release();
@@ -373,5 +370,5 @@ public class SoundManager {
 		drumSoundPool = null;
 		sequenceSoundPool.release();
 		sequenceSoundPool = null;
-	}
+	}*/
 }

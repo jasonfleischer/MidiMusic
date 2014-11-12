@@ -156,7 +156,7 @@ public class KeysFragment extends Fragment{
 	private Note[] getKeyBoardNotes(){
 		Note[] notes = new Note[13];
 		Note[] allNotes = MainActivity.config.allNotes;
-		for(int j=0;j<allNotes .length-13;j++){ //TODO Bound
+		for(int j=0;j<allNotes .length-13;j++){ 
 			Note n = allNotes[j];
 			if(n.getName().equals(MainActivity.config.key) && n.getOctave() == MainActivity.config.octave){
 				notes = new Note[13];

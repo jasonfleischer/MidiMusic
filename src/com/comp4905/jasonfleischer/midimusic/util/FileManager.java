@@ -26,8 +26,8 @@ public class FileManager {
 	
 	private static final FileManager instance = new FileManager();
 	private final AssetManager assets;
-	private final String DIR = "MidiMusic";
 	private final String SAVED_CONFIG_FILENAME ="MidiMusic.ser";
+	//private final String DIR = "MidiMusic";
 	//public final String EXTERNAL_PATH =  "/sdcard/"+DIR+"/";
 	public final String INTERNAL_PATH = MainActivity.getInstance().getFilesDir().getPath();
 	

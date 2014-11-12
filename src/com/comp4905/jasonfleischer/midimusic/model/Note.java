@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.comp4905.jasonfleischer.midimusic.MainActivity;
 import com.comp4905.jasonfleischer.midimusic.audio.MidiFile;
 import com.comp4905.jasonfleischer.midimusic.audio.SoundManager;
+import com.comp4905.jasonfleischer.midimusic.audio.SoundManager.SoundType;
 import com.comp4905.jasonfleischer.midimusic.fragments.FragMentManager;
 import com.comp4905.jasonfleischer.midimusic.util.HLog;
 
@@ -74,7 +75,7 @@ public class Note implements Serializable{
 		
 		switch(MainActivity.config.playingMode){
 		case CHORD:
-			SoundManager.getInstance().playSound(chordSoundID);
+			SoundManager.getInstance().playSound(chordSoundID, SoundType.CHORD);
 			MainActivity.getInstance().runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
@@ -92,7 +93,7 @@ public class Note implements Serializable{
 			});
 			break;
 		case SEQUENCE:
-			SoundManager.getInstance().playSound(sequenceSoundID);
+			SoundManager.getInstance().playSound(sequenceSoundID, SoundType.SEQUENCE);
 			MainActivity.getInstance().runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
@@ -101,7 +102,7 @@ public class Note implements Serializable{
 			});
 			break;
 		case SINGLE_NOTE:
-			SoundManager.getInstance().playSound(soundID);
+			SoundManager.getInstance().playSound(soundID, SoundType.NOTE);
 			MainActivity.getInstance().runOnUiThread(new Runnable() {
 				@Override
 				public void run() {

@@ -24,7 +24,7 @@ public class InitFragment extends Fragment{
 		return rootView;
 	}
 
-	public void updateProgress(int percent) {
+	void updateProgress(int percent) {
 		progress.setText(getResources().getString(R.string.loading)+": "+percent+"%"); 
 	}	
 }

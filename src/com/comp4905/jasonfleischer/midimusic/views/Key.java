@@ -13,17 +13,16 @@ public class Key {
 	private View view;
 	private Note note;
 	
-	View[] allOtherKeyViews;
-	
-	static View whiteKeyToRight;
+	//private View[] allOtherKeyViews;
+	//private static View whiteKeyToRight;
 	
 	public Key(View v, Note n, boolean isBlkKey, boolean isHLigt, View[] allOtherKeys, View toRight){
 		view = v;
 		note = n;
 		isBlackKey = isBlkKey;
 		isHighlighted = isHLigt;
-		allOtherKeyViews = allOtherKeys;
-		whiteKeyToRight = toRight;
+		//allOtherKeyViews = allOtherKeys;
+		//whiteKeyToRight = toRight;
 		
 		if(note == null){
 			defaultColor = R.color.grey;

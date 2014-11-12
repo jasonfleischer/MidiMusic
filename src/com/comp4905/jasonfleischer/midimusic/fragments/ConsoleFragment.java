@@ -42,8 +42,6 @@ import android.widget.ToggleButton;
 
 public class ConsoleFragment extends Fragment{
 
-	
-	
 	private ImageButton keyBtn, metronomeBtn;
 	private Button usbBtn;
 	private ToggleButton spokenBtn;

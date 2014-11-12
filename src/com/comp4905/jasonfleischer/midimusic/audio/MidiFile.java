@@ -152,13 +152,13 @@ public class MidiFile {
 
 	/** Store a note-on event followed by a note-off event a note length
 	    later. There is no delta value — the note is assumed to
-	    follow the previous one with no gap. */
+	    follow the previous one with no gap. * /
 	public void noteOnOffNow (int channel, int duration, int note, int velocity){
 		noteOn (channel, 0, note, velocity);
 		noteOff (channel, duration, note);
-	}
+	}*/
 
-	public void noteSequenceFixedVelocity (int channel, int[] sequence, int velocity, int midiValue){
+	private void noteSequenceFixedVelocity (int channel, int[] sequence, int velocity, int midiValue){
 		boolean lastWasRest = false;
 		int restDelta = 0;
 		for (int i = 0; i < sequence.length; i += 2){

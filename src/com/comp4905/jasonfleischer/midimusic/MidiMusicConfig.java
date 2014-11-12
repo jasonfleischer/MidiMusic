@@ -181,7 +181,7 @@ public class MidiMusicConfig implements Serializable{
 		midiDrumSounds[11] = allDrumSounds[17];
 	}
 	
-	public void setNotes(int index, int oct, NoteName name, int midiV){
+	void setNotes(int index, int oct, NoteName name, int midiV){
 		allNotes[index] = new Note(oct, name, midiV);
 	}
 	
