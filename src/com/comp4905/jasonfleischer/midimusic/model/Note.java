@@ -73,6 +73,7 @@ public class Note implements Serializable{
 	
 	public void playNote(){
 		
+		//HLog.i("midiValue="+midiValue);
 		switch(MainActivity.config.playingMode){
 		case CHORD:
 			SoundManager.getInstance().playSound(chordSoundID, SoundType.CHORD);

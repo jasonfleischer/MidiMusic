@@ -51,6 +51,12 @@ public class InstrumentFragment extends Fragment{
 		}else{
 			instrumentTV.setText("Drums");
 		}
+		instrumentTV.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FragMentManager.getInstance().showConsoleFragment();
+			}
+		});
 		
 		usbConn.updateUSBConn(MainActivity.midiInputDevice!=null);
 		

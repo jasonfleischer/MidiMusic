@@ -101,7 +101,7 @@ public class SequenceFragment extends Fragment{
 				iterations = Math.max(nd.getValue()/4, noteDuration.getValue()/4);
 			
 			if(nd.getValue()/4>numberOfCol-column){
-				HLog.i(nd.toString() +" note will not fit in selected space");
+				HLog.i(nd.toString() +" "+getResources().getString(R.string.note_too_large));
 				return;
 			}
 			boolean isAdding = true;
@@ -225,13 +225,13 @@ public class SequenceFragment extends Fragment{
 			public void onClick(View v) {
 				Sequence seq = MainActivity.config.addSequence(new int[]{0,  NoteDuration.Quarter.getValue()}, 16);
 				if(seq == null){
-					HLog.i("Cannot create move than 30 sequences");
+					HLog.i(getResources().getString(R.string.create_sequence_limit));
 					return;
 				}
 				MainActivity.config.sequence  = seq;
 				sequenceNameTv.setText(MainActivity.config.sequence.getName());
 				loadSequence();
-				HLog.i("New Sequence");
+				HLog.i(getResources().getString(R.string.new_sequence));
 				reloadSequenceSpinner();
 			}
 		});
@@ -240,14 +240,14 @@ public class SequenceFragment extends Fragment{
 			public void onClick(View v) {
 				if(MainActivity.config.removeSequence()){
 					sequenceNameTv.setText(MainActivity.config.sequence.getName());
-					HLog.i("Sequence Deleted");
+					HLog.i(getResources().getString(R.string.sequence_deleted));
 					numberOfCol = MainActivity.config.sequence.getLength();
 					loadSequence();
 					columnsSpinner.setSelection((numberOfCol/16)-1);
 					
 					reloadSequenceSpinner();
 				}else{
-					HLog.i("Cannot deleted last sequence");
+					HLog.i(getResources().getString(R.string.cannot_delete_last_sequence));
 				}
 			}
 		});
@@ -283,11 +283,11 @@ public class SequenceFragment extends Fragment{
 					connectBtn.setImageResource(R.drawable.connected);
 					lastSelectedPlayingMode = MainActivity.config.playingMode;
 					MainActivity.config.playingMode = PlayingMode.SEQUENCE;
-					HLog.i("Midi Device and virtual keyboard is now attached to sequence sounds");
+					HLog.i(getResources().getString(R.string.attach_sequence));
 				}else{
 					connectBtn.setImageResource(R.drawable.connect);
 					MainActivity.config.playingMode = lastSelectedPlayingMode;
-					HLog.i("Midi Device and virtual keyboard is now detached from sequence sounds");	
+					HLog.i(getResources().getString(R.string.detach_sequence));	
 				}
 				if(MainActivity.midiInputDevice != null){
 					new UpdateSelections().execute();

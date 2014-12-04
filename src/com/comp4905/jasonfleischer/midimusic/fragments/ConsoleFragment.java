@@ -111,7 +111,7 @@ public class ConsoleFragment extends Fragment{
 					int radioButtonID = spokenModeRG.getCheckedRadioButtonId();
 					int indexOfSpokenOption = spokenModeRG.indexOfChild(spokenModeRG.findViewById(radioButtonID));
 					if(SoundManager.isMetronomeSpeakState && indexOfSpokenOption == 2 && MainActivity.config.tempo.getBpm() > 110){
-						HLog.i("Please try a smaller tempo. Spoken option incoherent over 110 BPM");
+						HLog.i(getResources().getString(R.string.try_smaller_tempo));
 						return;
 					}
 					metronomeBtn.setImageResource(R.drawable.stop);

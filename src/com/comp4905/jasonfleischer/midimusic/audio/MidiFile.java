@@ -55,57 +55,67 @@ public class MidiFile {
 
 	// The collection of events to play, in time order
 	private Vector<int[]> playEvents;
+	private Vector<int[]> allBytes;
 
 	/** Construct a new MidiFile with an empty playback event list */
 	public MidiFile() {
 		playEvents = new Vector<int[]>();
+		allBytes = new Vector<int[]>();
 	}
 
+	public String toString(){
+		String result = "[ ";
+		for(int[] is: allBytes ){
+			result += "{";
+			for(int i: is){
+				result += Integer.toHexString(i)+" ";
+			}
+			result += "} ";
+		}
+		result += " ]";
+		return result;
+	}
 
 	/** Write the stored MIDI events to a file 
 	 * @param tempo */
 	private void writeToFile (String filename, int[] tempoEvent) {
 		
 		try{
-			FileOutputStream fos = new FileOutputStream (filename);
-			fos.write (intArrayToByteArray (header));
-	
+			allBytes.add(header);
 			// Calculate the amount of track data
 			// _Do_ include the footer but _do not_ include the 
 			// track header
 		
-			int size = tempoEvent.length + keySigEvent.length + timeSigEvent.length + footer.length;
-		
-			// size = 7 + 6 + 8 + 4 = 25 0x19
-			
+			int size = tempoEvent.length + keySigEvent.length + timeSigEvent.length + footer.length;		
 			for (int i = 0; i < playEvents.size(); i++)
 				size += playEvents.elementAt(i).length;
-	
-			//size += 
 			
 			// Write out the track data size in big-endian format
 			// Note that this math is only valid for up to 64k of data
 			//  (but that's a lot of notes) 
 			int high = size / 256;  
 			int low = size - (high * 256);
-			fos.write ((byte) 0); // 8bits
-			fos.write ((byte) 0);
-			fos.write ((byte) high);
-			fos.write ((byte) low);
-	
+			int[] trackSize = {0, 0, high, low };
+			allBytes.add(trackSize);
+			
 			// Write the standard metadata — tempo, etc
 			// At present, tempo is stuck at crotchet=60 
-			fos.write (intArrayToByteArray (tempoEvent));
-			fos.write (intArrayToByteArray (keySigEvent));
-			fos.write (intArrayToByteArray (timeSigEvent));
-	
+			allBytes.add(tempoEvent);
+			allBytes.add(keySigEvent);
+			allBytes.add(timeSigEvent);
+			
 			// Write out the note, etc., events
 			for (int i = 0; i < playEvents.size(); i++){
-				fos.write (intArrayToByteArray (playEvents.elementAt(i)));
+				allBytes.add(playEvents.elementAt(i));
 			}
 	
 			// Write the footer and close
-			fos.write (intArrayToByteArray (footer));
+			allBytes.add(footer);
+			
+			FileOutputStream fos = new FileOutputStream (filename);
+			for(int[] is: allBytes){
+				fos.write(intArrayToByteArray(is));
+			}
 			fos.close();
 		}catch(Exception ex){  }
 	}
@@ -203,6 +213,7 @@ public class MidiFile {
 		mf.noteOn(channel, 0, midiValue, velocity);
 		mf.noteOff(channel, noteDuration, midiValue);
 		mf.writeToFile(FileManager.getInstance().INTERNAL_PATH+fileName,tempo);
+		//Log.e("", "midiValue="+midiValue+" "+mf.toString());
 	}
 	
 	public static void writeChordFile(int midiValue, int instrument, int velocity, int noteDuration, String fileName, int[] tempo, int[] intervals){

@@ -126,7 +126,7 @@ public class Track {
 			timesDub.clear();
 			soundIdsDub.clear();
 			soundTypesDub.clear();
-			dubStartTime = null;
+			//dubStartTime = null;
 			
 			/*Log.e("", "Merge Dub Track finished");
 			Log.i("", "timesDub"+ timesDub);

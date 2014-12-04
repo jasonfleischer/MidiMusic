@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import android.annotation.SuppressLint;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
-import android.util.Log;
 
 import com.comp4905.jasonfleischer.midimusic.MainActivity;
 import com.comp4905.jasonfleischer.midimusic.MidiMusicConfig;
@@ -51,9 +50,9 @@ public class FileManager {
 			BufferedReader br = new BufferedReader(isr);
 			String line;
 			while ((line = br.readLine()) != null) {
-			   int value = Integer.valueOf(line.substring(0, line.indexOf(" ")));
-			   String name = line.substring(line.indexOf(" ")+1, line.length() );
-			   instruments.add( new Instrument(value, name));
+			   String[] tok = line.split(",");
+			   instruments.add( new Instrument(Integer.valueOf(tok[0]), tok[1], 
+					   Integer.valueOf(tok[2]), Integer.valueOf(tok[3])));
 			}
 			is.close();
 			isr.close();
@@ -125,7 +124,6 @@ public class FileManager {
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
-			Log.e("FileMan", ""+e+e.getMessage()+e.getLocalizedMessage());
 			HLog.e("Problem reading saved configurations");
 			return new MidiMusicConfig();
 		}

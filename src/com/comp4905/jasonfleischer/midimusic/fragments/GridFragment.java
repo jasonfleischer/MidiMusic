@@ -8,7 +8,6 @@ import com.comp4905.jasonfleischer.midimusic.views.GridElement;
 import android.app.Fragment;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -76,8 +75,8 @@ public class GridFragment extends Fragment{
 				
 				if (event.getAction() == MotionEvent.ACTION_UP){
 					try{
-					ges[lastPressedGrid].setDefaultResource();
-					}catch(Exception ex){Log.e(this.getClass().getName(),"setDefaultRes");}
+						ges[lastPressedGrid].setDefaultResource();
+					}catch(Exception ex){}
 					lastPressedGrid = -1;
 				}
 				

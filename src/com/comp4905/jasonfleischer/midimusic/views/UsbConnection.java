@@ -2,9 +2,11 @@ package com.comp4905.jasonfleischer.midimusic.views;
 
 import com.comp4905.jasonfleischer.midimusic.MainActivity;
 import com.comp4905.jasonfleischer.midimusic.R;
+import com.comp4905.jasonfleischer.midimusic.fragments.FragMentManager;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,5 +34,11 @@ public class UsbConnection extends LinearLayout{
 			}
 		});
 		
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		FragMentManager.getInstance().showConsoleFragment();
+		return super.onTouchEvent(event);
 	}
 }

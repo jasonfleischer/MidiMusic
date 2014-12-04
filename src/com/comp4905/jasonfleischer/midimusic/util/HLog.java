@@ -24,7 +24,7 @@ public class HLog {
 			@Override
 			public void run() {
 				Log.e(TAG, "ERROR:"+s);
-				Toast.makeText(MainActivity.getInstance(), "ERROR: "+s, Toast.LENGTH_LONG).show();
+				//Toast.makeText(MainActivity.getInstance(), "ERROR: "+s, Toast.LENGTH_LONG).show();
 			}
 		});
 	}

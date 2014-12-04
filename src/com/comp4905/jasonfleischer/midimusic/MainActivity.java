@@ -31,11 +31,9 @@ import android.hardware.usb.UsbInterface;
 import android.hardware.usb.UsbManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 
 public class MainActivity extends Activity {
 
-	private static final String TAG= "mainActivity";
 	private static final String ACTION_USB_PERMISSION = "com.comp4905.jasonfleischer.midimusic";
 	private static final int CHECK_USB_CONN_TIME_MS = 2500;
 	private static Timer checkUsbDetachedTimer;
@@ -52,7 +50,6 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.i(TAG, "onCreate");
 		setContentView(R.layout.activity_main);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		if (savedInstanceState == null) {
@@ -89,12 +86,13 @@ public class MainActivity extends Activity {
 			}else{
 				config = new MidiMusicConfig();
 			}
-				
+			publishProgress(5);
 			//populate drums Sounds
 			for(int i=0;i< config.allDrumSounds.length;i++){
+				publishProgress((int)(5+((45.0f/config.allDrumSounds.length)*i)));
 				config.allDrumSounds[i].setSoundId();
 			}
-			
+			publishProgress(50);
 			// populate notes
 			int i = 0;
 			int oct = 0;
@@ -103,7 +101,7 @@ public class MainActivity extends Activity {
 			config.setNotes(i++, oct, NoteName.Bb, midiV++);
 			config.setNotes(i++, oct, NoteName.B, midiV++);
 			for(int j=0;j<7;j++){
-				publishProgress(j*16);
+				publishProgress(51+((50/7)*j));
 				oct++;
 				for(NoteName n: NoteName.values()){
 					config.setNotes(i++, oct, n, midiV++);
@@ -119,7 +117,7 @@ public class MainActivity extends Activity {
 	
 	public static void connectUSBDevice(){
 		if(midiInputDevice != null){
-    		HLog.i("Usb device already connected");
+    		HLog.i(MainActivity.getInstance().getResources().getString(R.string.usb_already_connected));
     		return;
     	}
 		if(usbManager == null){
@@ -129,7 +127,7 @@ public class MainActivity extends Activity {
 		HashMap<String, UsbDevice> deviceList = usbManager.getDeviceList();
 		Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
 		if(deviceList.isEmpty()){
-			HLog.i("No USB device detected");
+			HLog.i(MainActivity.getInstance().getResources().getString(R.string.no_usb_dectected));
 			FragMentManager.getInstance().updateUSBConnection(false);
 			return;
 		}else{	
@@ -153,7 +151,7 @@ public class MainActivity extends Activity {
 	                   }
 	                } 
 	                else {
-	                    HLog.i("Permission denied for device");
+	                    HLog.i(getResources().getString(R.string.permission_denied_for_usb));
 	                }
 	            }
 	        }  
@@ -203,7 +201,7 @@ public class MainActivity extends Activity {
 			}, 0, CHECK_USB_CONN_TIME_MS);
 			
 		}else{
-			HLog.i("USB device not supported");
+			HLog.i(getResources().getString(R.string.usb_not_supported));
 		}
 	}
 	
@@ -269,7 +267,6 @@ public class MainActivity extends Activity {
 	}*/
 	
 	private static void stopCheckUsbDetachedTimer(){
-		Log.i(TAG, "stopCheckUsbDetachedTimer");
 		if(checkUsbDetachedTimer!=null){
 			checkUsbDetachedTimer.purge();
 			checkUsbDetachedTimer.cancel();

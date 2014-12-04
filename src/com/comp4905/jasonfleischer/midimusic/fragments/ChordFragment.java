@@ -79,11 +79,11 @@ public class ChordFragment extends Fragment{
 				if(MainActivity.config.playingMode != PlayingMode.CHORD){
 					connectBtn.setImageResource(R.drawable.connected);
 					lastSelectedPlayingMode = MainActivity.config.playingMode;
-					HLog.i("Midi Device and virtual keyboard is now attached to chord sounds");
+					HLog.i(getResources().getString(R.string.attach_chord));
 					MainActivity.config.playingMode = PlayingMode.CHORD;
 				}else{
 					connectBtn.setImageResource(R.drawable.connect);
-					HLog.i("Midi Device and virtual keyboard is now detached from chord sounds");
+					HLog.i(getResources().getString(R.string.detach_chords));
 					MainActivity.config.playingMode = lastSelectedPlayingMode;
 				}
 				
@@ -170,7 +170,7 @@ public class ChordFragment extends Fragment{
 			
 		});
 		
-		//FragMentManager.getInstance().showNavBar();
+		FragMentManager.getInstance().hideNavBar();//.showNavBar();
 		
 		updateView();
 		

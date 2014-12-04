@@ -36,7 +36,7 @@ public class FragMentManager {
 		replace(new InstrumentFragment(), R.id.fragment_container);
 	}
 	
-	void showConsoleFragment(){
+	public void showConsoleFragment(){
 		replace(new ConsoleFragment(), R.id.fragment_container);
 	}
 	

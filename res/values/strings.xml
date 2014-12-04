@@ -27,6 +27,33 @@
 	<string name="chord_player">Chord Player</string>
 	
 	<!-- toasts -->
+	<string name="usb_not_supported">USB device not supported</string>
+	<string name="usb_already_connected">USB device already connected</string>
+	<string name="usb_connected">USB device connected</string>
+	<string name="no_usb_dectected">No USB device detected</string>
+	<string name="permission_denied_for_usb">Permission denied for USB device</string>
+	
+	<string name="attach_chord">Midi Device and virtual keyboard is now attached to chord sounds</string>
+	<string name="detach_chords">Midi Device and virtual keyboard is now detached from chord sounds</string>
+	<string name="attach_drum">Midi Device and virtual keyboard is now attached to drum sounds</string>
+	<string name="detach_drum">Midi Device and virtual keyboard is now detached from drum sounds</string>
+	<string name="attach_sequence">Midi Device and virtual keyboard is now attached to sequence sounds</string>
+	<string name="detach_sequence">Midi Device and virtual keyboard is now detached from sequence sounds</string>
+	
+	<string name="create_sequence_limit">Cannot create more than 30 sequences</string>
+	<string name="new_sequence">New sequence</string>
+	<string name="note_too_large"> note will not fit in selected space</string>
+	<string name="cannot_delete_last_sequence">Cannot deleted last sequence</string>
+	<string name="sequence_deleted">Sequence deleted</string>
+	
+	<string name="clear_recording">Cleared recording</string>
+	<string name="cannot_loop_uncomplete">Cannot loop empty or uncomplete recording</string>
+	<string name="cannot_record_while_looping">Cannot record while track is looping</string>
+	<string name="recording_started">Recording started</string>
+	<string name="dubbing_started">Dubbing started</string>
+	
+	<string name="try_smaller_tempo">Please try a smaller tempo. Spoken option incoherent over 110 BPM</string>
+	<string name="out_of_range">Note is out of instrument range</string>
 	
 	<!-- content descriptors -->
 	<string name="descp_led">led indicator</string>

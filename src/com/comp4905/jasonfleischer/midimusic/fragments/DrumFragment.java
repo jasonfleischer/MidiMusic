@@ -141,11 +141,11 @@ public class DrumFragment extends Fragment{
 				if(MainActivity.config.playingMode != PlayingMode.DRUMS){
 					connectBtn.setImageResource(R.drawable.connected);
 					lastSelectedPlayingMode = MainActivity.config.playingMode;
-					HLog.i("Midi Device and virtual keyboard is now attached to drum sounds");
+					HLog.i(getResources().getString(R.string.attach_drum));
 					MainActivity.config.playingMode = PlayingMode.DRUMS;
 				}else{
 					connectBtn.setImageResource(R.drawable.connect);
-					HLog.i("Midi Device and virtual keyboard is now detached from drum sounds");
+					HLog.i(getResources().getString(R.string.detach_drum));
 					MainActivity.config.playingMode = lastSelectedPlayingMode;
 				}
 				

@@ -1,5 +1,7 @@
 package com.comp4905.jasonfleischer.midimusic.midi;
 
+import com.comp4905.jasonfleischer.midimusic.MainActivity;
+import com.comp4905.jasonfleischer.midimusic.R;
 import com.comp4905.jasonfleischer.midimusic.fragments.FragMentManager;
 import com.comp4905.jasonfleischer.midimusic.util.HLog;
 
@@ -134,7 +136,7 @@ public final class MidiInputDevice {
 			int length, cable, codeIndexNumber, byte1, byte2, byte3, i;
 
 			// Don't allocate instances in the loop, as much as possible.
-			HLog.i("Usb device connected");
+			HLog.i(MainActivity.getInstance().getResources().getString(R.string.usb_connected));
 			//FragMentManager.getInstance().updateUSBConnection(true);
 			while (!stopFlag) {
 				length = deviceConnection.bulkTransfer(usbEndpoint, bulkReadBuffer, maxPacketSize, 0);

@@ -36,12 +36,12 @@ public class SoundManager {
 	
 	private SoundManager() {
 		
-		soundPool = new SoundPool(35, AudioManager.STREAM_DTMF, 0);
-		metronomePool = new SoundPool(2, AudioManager.STREAM_DTMF, 0);
-		drumSoundPool = new SoundPool(25, AudioManager.STREAM_DTMF, 0);
+		soundPool = new SoundPool(35, AudioManager.STREAM_MUSIC, 0);
+		metronomePool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+		drumSoundPool = new SoundPool(25, AudioManager.STREAM_MUSIC, 0);
 		
 		//chordSoundPool = new SoundPool(15, AudioManager.STREAM_DTMF, 0);
-		sequenceSoundPool = new SoundPool(3, AudioManager.STREAM_DTMF, 0);
+		sequenceSoundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
 		
 		
 		/*MediaPlayer mediaPlayer = new MediaPlayer();

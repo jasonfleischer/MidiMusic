@@ -59,7 +59,7 @@ public class RecordingPane extends LinearLayout{
 			public void onClick(View v) {
 				
 				if(isLooping){
-					HLog.i("Cannot record while track is looping");
+					HLog.i(getResources().getString(R.string.cannot_record_while_looping));
 					return;
 				}
 				
@@ -78,7 +78,7 @@ public class RecordingPane extends LinearLayout{
 							SoundManager.getInstance().startMetronome(0, 0);
 							
 							if(masterTrack == null){
-								HLog.i("Recording started");
+								HLog.i(getResources().getString(R.string.recording_started));
 								masterTrack = new Track(tempo);
 								MainActivity.getInstance().runOnUiThread(new Runnable() {
 									@Override
@@ -89,7 +89,7 @@ public class RecordingPane extends LinearLayout{
 								});
 							}else {
 								
-								HLog.i("Dubbing started");
+								HLog.i(getResources().getString(R.string.dubbing_started));
 								SoundManager.getInstance().playTrack(masterTrack, false);
 								masterTrack.setDubStartTime();
 								MainActivity.getInstance().runOnUiThread(new Runnable() {
@@ -132,12 +132,8 @@ public class RecordingPane extends LinearLayout{
 			@Override
 			public void onClick(View v) {
 				if(!isLooping){//start loop
-					if(masterTrack ==null || masterTrack.getDelayBeforeNextLoop()==null){
-						HLog.i("Cannot loop empty or uncomplete recording");
-						return;
-					}
-					if(masterTrack.getSoundIds().isEmpty()){
-						HLog.i("Cannot loop empty or uncomplete recording");
+					if(masterTrack ==null || masterTrack.getDelayBeforeNextLoop()==null || masterTrack.getSoundIds().isEmpty()){
+						HLog.i(getResources().getString(R.string.cannot_loop_uncomplete));
 						return;
 					}
 					
@@ -165,9 +161,9 @@ public class RecordingPane extends LinearLayout{
 				loopBtn.setImageResource(R.drawable.loop);
 				recordBtn.setImageResource(R.drawable.record);
 				masterTrack = null;
-				HLog.i("Cleared recording");
+				HLog.i(getResources().getString(R.string.clear_recording));
 				statusTextView.setText("Track cleared");
-				timeTextView.setText("");
+				timeTextView.setText(" ");
 			}
 		});
 	}
