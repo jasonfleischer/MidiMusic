@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 
 /**
  * {@link ByteArrayOutputStream} that can reset without memory leak.
- * 
  * @author K.Shoji
  */
 public class ReusableByteArrayOutputStream extends ByteArrayOutputStream {
@@ -13,7 +12,6 @@ public class ReusableByteArrayOutputStream extends ByteArrayOutputStream {
 
 	/**
 	 * Construct instance
-	 * 
 	 * @param size
 	 */
 	private ReusableByteArrayOutputStream(int size) {
@@ -29,16 +27,15 @@ public class ReusableByteArrayOutputStream extends ByteArrayOutputStream {
 		this(DEFAULT_BUFFER_LIMIT);
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.io.ByteArrayOutputStream#reset()
 	 */
 	@Override
 	public synchronized void reset() {
 		super.reset();
-		
-		// reset buffer size when the buffer has been extended
-		if (this.buf.length > fixedSizeBuffer.length) {
+
+		if (this.buf.length > fixedSizeBuffer.length) { // reset buffer size when the buffer has been extended
 			this.buf = fixedSizeBuffer;
 		}
 	}

@@ -16,14 +16,19 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowNoTitle">true</item>
-        <item name="android:imageButtonStyle">@style/BtnPressedStyle</item>
+        <item name="android:imageButtonStyle">@style/ImgBtnStyle</item>
+        <item name="android:buttonStyle">@style/BtnStyle</item>
         <item name="android:textSize">@dimen/default_font</item>
     </style>
 
     
-    <style name="BtnPressedStyle" >
-  		<item name="android:background">@drawable/button</item>
+    <style name="ImgBtnStyle" >
+  		<item name="android:background">@drawable/img_button</item>
   		<item name="android:padding">10dp</item>
 	</style>
 
+    <style name="BtnStyle" >
+  		<item name="android:background">@drawable/button</item>
+  		<item name="android:gravity">center</item>
+	</style>
 </resources>

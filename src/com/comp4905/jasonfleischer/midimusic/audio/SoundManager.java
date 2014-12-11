@@ -16,34 +16,32 @@ import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 
 public class SoundManager {
-	
+
 	private static final SoundManager instance = new SoundManager();
 	private static SoundPool metronomePool, soundPool, drumSoundPool /*,chordSoundPool, dynamicSoundPool*/, sequenceSoundPool;
 	//private MediaPlayer mediaPlayer;
 	private Timer timer, metronomeTimer;
-	
+
 	private int lastSequenceId;
-	
+
 	public static boolean isPlayingMetronome = false;
-	public static boolean isMetronomeSpeakState = false; 
-	
+	public static boolean isMetronomeSpeakState = false;
+
 	static private HashMap<String, Integer> metronomeSoundMap;
-	//static private int metronomeLow, metronomeHigh;
-	
+
 	public enum SoundType{
 		NOTE, CHORD, SEQUENCE, DRUM;
 	}
-	
+
 	private SoundManager() {
-		
+
 		soundPool = new SoundPool(35, AudioManager.STREAM_MUSIC, 0);
 		metronomePool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
 		drumSoundPool = new SoundPool(25, AudioManager.STREAM_MUSIC, 0);
-		
+
 		//chordSoundPool = new SoundPool(15, AudioManager.STREAM_DTMF, 0);
 		sequenceSoundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
-		
-		
+
 		/*MediaPlayer mediaPlayer = new MediaPlayer();
 		// permission modify_audio_setting
 		EnvironmentalReverb eReverb = new EnvironmentalReverb(0, mediaPlayer.getAudioSessionId());
@@ -56,27 +54,27 @@ public class SoundManager {
 	       eReverb.setDiffusion((short) 1000);
 	       eReverb.setReverbLevel((short) -1000);
 	       eReverb.setReverbDelay((short) 50);
-		
+
 	    eReverb.setEnabled(true);
-		
+
 		PresetReverb pReverb  = new PresetReverb(1,0);
 		mediaPlayer.attachAuxEffect(pReverb.getId());
 		mediaPlayer.setAuxEffectSendLevel(1.0f);
 		pReverb.setPreset(PresetReverb.PRESET_LARGEHALL);
 	    pReverb.setEnabled(true);*/
-	    
-	    
+
+
 		//mAudioManager = (AudioManager) MainActivity.getInstance().getSystemService(MainActivity.getInstance().AUDIO_SERVICE);
 		//streamVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 		//streamVolume = streamVolume / mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 	}
-	
+
 	public static SoundManager getInstance(){
 		return instance;
 	}
-	
-	
-	
+
+
+
 	/*public void createAndPlayNoteDynamically(int midiValue, int velocity){
 		if(dynamicSoundPool ==null){
 			dynamicSoundPool = new SoundPool(88, AudioManager.STREAM_MUSIC, 0);
@@ -91,19 +89,19 @@ public class SoundManager {
 			}
 		});
 	}*/
-	
+
 	//KEY POOL
-	
+
 	public int addSoundSoundPool(String fileName){
 		return soundPool.load(FileManager.getInstance().INTERNAL_PATH+fileName, 1);
 	}
-	public void playSound(int soundId, SoundType st) {	
+	public void playSound(int soundId, SoundType st) {
 		soundPool.play(soundId, 1, 1, 0, 0, 1);
 		if(RecordingPane.isRecording){
 			RecordingPane.masterTrack.add(st, System.nanoTime(), soundId);
 		}
 	}
-	
+
 	/*public void playSingleNoteSound(int soundId){
 		soundPool.play(soundId, 1, 1, 0, 0, 1);
 		if(RecordingPane.isRecording){
@@ -122,14 +120,14 @@ public class SoundManager {
 			RecordingPane.masterTrack.add(SoundType.SEQUENCE, System.nanoTime(), soundId);
 		}
 	}*/
-	
-	
+
+
 	public void unloadFromSoundPool(int soundID){
 		soundPool.unload(soundID);
 	}
-	
+
 	//DRUM POOL
-	
+
 	public int addSoundToDrumSoundPool(String fileName){
 		return drumSoundPool.load(FileManager.getInstance().getAFD("drums/"+fileName), 1);
 	}
@@ -142,12 +140,12 @@ public class SoundManager {
 	public void unloadDrumPool(int soundIDs){
 		drumSoundPool.unload(soundIDs);
 	}
-	
+
 	public long playCountIn(){
 		final long tempoTime = MainActivity.config.tempo.getMS();
 		stopMetronome();
-		metronomeTimer = new Timer(); 
-		
+		metronomeTimer = new Timer();
+
 		metronomePool.play(metronomeSoundMap.get("four.mp3"), 1, 1, 0, 0, 1);
 		String[] fileNames =  new String[]{"three.mp3", "two.mp3", "one.mp3"};
 		for(int i=0; i<3;i++){
@@ -155,19 +153,19 @@ public class SoundManager {
 		}
 		return tempoTime*4;
 	}
-	
+
 	//Track
 	public void playTrack(final Track t, final boolean repeat){
 		stopTimer(timer);
-		timer = new Timer(); 
-		
+		timer = new Timer();
+
 		TimerTask tt = new TimerTask() {
 			@Override
 			public void run() {
 				ArrayList<Integer> ids = t.getSoundIds();
 				ArrayList<Long> times = t.getTimes();
 				ArrayList<SoundType> st = t.getSoundTypes();
-				
+
 				for(int i=0; i<ids.size();i++){
 					if(st.get(i) == SoundType.DRUM)
 						timer.schedule(new TrackTimerTimer(ids.get(i), drumSoundPool), times.get(i));
@@ -176,7 +174,7 @@ public class SoundManager {
 				}
 				if(!repeat){
 					timer.schedule(new TimerTask() {
-						
+
 						@Override
 						public void run() {
 							RecordingPane.stopDub();
@@ -185,23 +183,23 @@ public class SoundManager {
 				}
 			}
 		};
-		
+
 		if(t==null){
 			HLog.e("Track is empty");
 			return;
 		}
-		
+
 		if (repeat)
 			timer.scheduleAtFixedRate(tt, 0, t.getDelayBeforeNextLoop());
 		else
 			timer.schedule(tt, 0);
 	}
-	
+
 	public void stopTrack(){
 		stopTimer(timer);
 		stopTimer(metronomeTimer);
 	}
-	
+
 	private class TrackTimerTimer extends TimerTask{
 		private int soundId;
 		private SoundPool sundPool;
@@ -222,9 +220,9 @@ public class SoundManager {
 			timer = null;
 		}
 	}
-	
+
 	//CHORD POOL
-	
+
 	/*public void playChordPlayerSound(int soundId) {
 		chordSoundPool.play(soundId, 1, 1, 0, 0, 1);
 	}
@@ -234,11 +232,11 @@ public class SoundManager {
 	public int addChordSoundPool(String fileName) {
 		return chordSoundPool.load(FileManager.getInstance().EXTERNAL_PATH+fileName, 1);
 	}*/
-	
+
 	//SEQUENCE
 
 	public void playSequence(final boolean loop) {
-		
+
 		//String fileName = "dyn_"+midiValue+".mid";
 		//MidiFile.writeNoteFile(midiValue, velocity, fileName, MainActivity.config.tempo.getTempoEvent());
 		lastSequenceId = sequenceSoundPool.load(FileManager.getInstance().INTERNAL_PATH+"sequence.mid", 1);
@@ -248,26 +246,26 @@ public class SoundManager {
 				sequenceSoundPool.play(lastSequenceId, 1, 1, 0, (loop?-1:0), 1);
 			}
 		});
-		
+
 		/*try {
 			mediaPlayer.reset();
 			mediaPlayer.setDataSource(FileManager.getInstance().EXTERNAL_PATH+"sequence.mid");
 			mediaPlayer.setLooping(loop);
-			mediaPlayer.prepare();		                
+			mediaPlayer.prepare();
 			mediaPlayer.start();
 		} catch (Exception e) {
 			HLog.e("Media Player Failure");
 			e.printStackTrace();
 		}*/
 	}
-	
+
 	public void stopLoop(){
 		//sequenceSoundPool.
 		sequenceSoundPool.stop(lastSequenceId);
 		//sequenceSoundPool.setLoop(lastSequence, 0);
 		//mediaPlayer.reset();
 	}
-	
+
 	/*public void releaseMediaPlayer(){
 	   /*if (mediaPlayer != null) {
 		   mediaPlayer.reset();
@@ -277,7 +275,7 @@ public class SoundManager {
 	}*/
 
 	// Metronome
-	
+
 	private class MetronomeTimerTimer extends TimerTask{
 		private String fileName;
 		public MetronomeTimerTimer(String string) {
@@ -289,21 +287,21 @@ public class SoundManager {
 			metronomePool.play(metronomeSoundMap.get(fileName), 1, 1, 0, 0, 1);
 		}
 	}
-	
-	public void initMetronome(){ // onCreate	
-		metronomeSoundMap = new HashMap<String, Integer>(); 
+
+	public void initMetronome(){ // onCreate
+		metronomeSoundMap = new HashMap<String, Integer>();
 		for (String fileName: FileManager.getInstance().getMetronomeSoundsFromAssets()){
 			metronomeSoundMap.put(fileName, metronomePool.load(FileManager.getInstance().getAFD("metronome/"+fileName), 1));
 		}
 	}
-	
+
 	public void unloadMetronome(){ // onDestroy
 		for (String fileName: FileManager.getInstance().getMetronomeSoundsFromAssets()){
 			metronomePool.unload(metronomeSoundMap.get(fileName));
 		}
 		stopMetronome();
 	}
-	
+
 	public void stopMetronome() {
 		isPlayingMetronome = false;
 		stopTimer(metronomeTimer);;
@@ -311,7 +309,7 @@ public class SoundManager {
 	public void startMetronome(final int accent, final int indexOfSpokenOption) {
 		// accent == 0->none, 1->"2" ,2->"3" or 3->"4"
 		// indexOfSpokenOption 0-> -, 1-> &, 2-> e & a
-		
+
 		final long time = MainActivity.config.tempo.getMS();
 		final long halfTime = time/2;
 		final long quarterTime = time/4;
@@ -320,7 +318,7 @@ public class SoundManager {
 			tt = new TimerTask() {
 				@Override
 				public void run() {
-					
+
 					metronomePool.play(metronomeSoundMap.get("one.mp3"), 1, 1, 0, 0, 1);
 					if(indexOfSpokenOption == 1){
 						metronomeTimer.schedule(new MetronomeTimerTimer("n.mp3"), halfTime);
@@ -334,7 +332,7 @@ public class SoundManager {
 					for(int i=0; i<accent;i++){
 						long timeSurplus = time*(i+1);
 						metronomeTimer.schedule(new MetronomeTimerTimer(fileNames[i]), timeSurplus);
-						if(indexOfSpokenOption == 1){				
+						if(indexOfSpokenOption == 1){
 							metronomeTimer.schedule(new MetronomeTimerTimer("n.mp3"), timeSurplus+halfTime);
 						}
 						if(indexOfSpokenOption == 2){
@@ -348,7 +346,7 @@ public class SoundManager {
 		}else{
 			tt = new TimerTask() {
 				@Override
-				public void run() {				
+				public void run() {
 					metronomePool.play(metronomeSoundMap.get("Low.wav"), 1, 1, 0, 0, 1);
 					for(int i=0; i<accent;i++){
 						metronomeTimer.schedule(new MetronomeTimerTimer("High.wav"), time*(i+1));
@@ -356,11 +354,11 @@ public class SoundManager {
 				}
 			};
 		}
-		metronomeTimer = new Timer(); 
+		metronomeTimer = new Timer();
 		isPlayingMetronome = true;
 		metronomeTimer.schedule(tt, 0, time*(accent+1));
 	}
-	
+
 	/*public static void release(){
 		soundPool.release();
 		soundPool = null;

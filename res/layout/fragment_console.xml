@@ -28,13 +28,13 @@
 		    android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
 	    	android:layout_alignParentRight="true"> 
-	   	     
 		    <ImageButton 
 		        android:id="@+id/console_key_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/keys"/>
+		        android:src="@drawable/keys"
+		        android:contentDescription="@string/descp_intrument_screen"/>
 		</LinearLayout>
 	</RelativeLayout>
 	<ScrollView
@@ -366,7 +366,6 @@
 				    <RadioGroup android:id="@+id/console_spoken_options"
 		                android:layout_width="match_parent"
 		                android:layout_height="wrap_content"
-		                android:layout_row="3"
 		                android:layout_marginLeft="5dp"
 		                android:checkedButton="@+id/console_spoken_option_1"
 		                android:orientation="horizontal">
@@ -403,35 +402,30 @@
 		        android:paddingBottom="10dp"
 		        android:paddingLeft="10dp"
 		        android:paddingRight="10dp" >
-
 		        <TextView
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
 		            android:layout_marginBottom="10dp"
 		            android:layout_marginTop="15dp"
-		            android:text="Virtual Keyboard"
+		            android:text="@string/virtual_keyboard"
 		            android:textSize="@dimen/font_title"
 		            android:textStyle="bold" />
-
 		        <GridLayout
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:columnCount="2" >
-
 		            <TextView
 		                android:layout_width="200dp"
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
-		                android:text="Transpose Key:"
+		                android:text="@string/transpose_key"
 		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
-
 		            <Spinner
 		                android:id="@+id/keySpinner"
 		                android:layout_width="210dp"
 		                android:layout_height="60dp"
 		                android:layout_gravity="fill_horizontal" />
-
 		            <TextView
 		                android:layout_width="match_parent"
 		                android:layout_height="wrap_content"
@@ -439,20 +433,17 @@
 		                android:text="@string/octave"
 		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
-
 		            <Spinner
 		                android:id="@+id/octaveSpinner"
 		                android:layout_width="210dp"
 		                android:layout_height="60dp"
 		                android:layout_gravity="fill_horizontal" />
-
 		            <TextView
 		                android:layout_height="wrap_content"
 		                android:layout_gravity="left"
-		                android:text="Highlighted Scale:"
+		                android:text="@string/highlighted_scale"
 		                android:textSize="@dimen/font_sub_title"
 		                android:textStyle="bold" />
-
 		            <Spinner
 		                android:id="@+id/scaleSpinner"
 		                android:layout_width="210dp"
@@ -460,7 +451,6 @@
 		                android:layout_gravity="fill_horizontal" />
 		        </GridLayout>
 		    </LinearLayout>
-
 		</LinearLayout>
 		    
 		</LinearLayout>

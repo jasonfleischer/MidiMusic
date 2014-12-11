@@ -10,7 +10,7 @@ public class DrumSound implements Serializable{
 	private String name;
 	private String fileName;
 	private int soundID;
-	
+
 	public DrumSound(String fN){
 		fileName=fN;
 		name = fileName.replace(".wav", "");
@@ -25,7 +25,7 @@ public class DrumSound implements Serializable{
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setSoundId(){
 		soundID = SoundManager.getInstance().addSoundToDrumSoundPool(fileName);
 	}

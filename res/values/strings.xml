@@ -1,60 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Midi Music</string>
-    <string name="dash">-</string>
-    
-    <string name="instrument">Instrument:</string>
-    <string name="key">Key:</string>
-    <string name="octave">Octave:</string>
-    <string name="note">Note:</string>
-    <string name="duration">Duration:</string>
-    
-    <string name="usb_disconn">USB Device Disconnected</string>
+	<string name="app_name">Midi Music</string>
+	<string name="dash">-</string>
+	<string name="note">Note:</string>
+	<string name="usb_disconn">USB Device Disconnected</string>
 	<string name="usb_conn">USB Device Connected</string>
 	
+	
+	<string name="octave">Octave:</string>
+	<string name="instrument">Instrument:</string>
+	<string name="key">Key:</string>
+	<string name="duration">Duration:</string>
+	
+	
+	<string name="virtual_keyboard">Virtual Keyboard</string>
+	<string name="transpose_key">Transpose Key:</string>
+	<string name="highlighted_scale">Highlighted Scale:</string>
+
 	<string name="console">Console</string>
-	<string name="transpose_keyboard">Transpose Keyboard:</string>
-	
 	<string name="drum_machine">Drum Machine</string>
-	
+	<string name="chord_player">Chord Player</string>
 	<string name="sequencer">Sequencer</string>
-	
+
 	<string name="loading">Loading</string>
 	<string name="updating_midi">Updating Midi Files</string>
-	
-	
-	<string name="chord_player">Chord Player</string>
-	
+
+	<string name="seq_very_slow">Very Slow</string>
+	<string name="seq_slow">Slow</string>
+	<string name="seq_med">Medium</string>
+	<string name="seq_fast">Fast</string>
+	<string name="seq_very_fast">Very Fast</string>
+
+	<string name="note_very_short">Very Short</string>
+	<string name="note_short">Short</string>
+	<string name="note_med">Medium</string>
+	<string name="note_long">Long</string>
+	<string name="note_very_long">Very Long</string>
+
 	<!-- toasts -->
 	<string name="usb_not_supported">USB device not supported</string>
 	<string name="usb_already_connected">USB device already connected</string>
 	<string name="usb_connected">USB device connected</string>
 	<string name="no_usb_dectected">No USB device detected</string>
 	<string name="permission_denied_for_usb">Permission denied for USB device</string>
-	
-	<string name="attach_chord">Midi Device and virtual keyboard is now attached to chord sounds</string>
-	<string name="detach_chords">Midi Device and virtual keyboard is now detached from chord sounds</string>
-	<string name="attach_drum">Midi Device and virtual keyboard is now attached to drum sounds</string>
-	<string name="detach_drum">Midi Device and virtual keyboard is now detached from drum sounds</string>
-	<string name="attach_sequence">Midi Device and virtual keyboard is now attached to sequence sounds</string>
-	<string name="detach_sequence">Midi Device and virtual keyboard is now detached from sequence sounds</string>
-	
+
+	<string name="attach_chord">Midi Device and virtual keyboard is now attached to
+		chord sounds</string>
+	<string name="detach_chords">Midi Device and virtual keyboard is now detached
+		from chord sounds</string>
+	<string name="attach_drum">Midi Device and virtual keyboard is now attached to
+		drum sounds</string>
+	<string name="detach_drum">Midi Device and virtual keyboard is now detached
+		from drum sounds</string>
+	<string name="attach_sequence">Midi Device and virtual keyboard is now attached to
+		sequence sounds</string>
+	<string name="detach_sequence">Midi Device and virtual keyboard is now detached
+		from sequence sounds</string>
+
 	<string name="create_sequence_limit">Cannot create more than 30 sequences</string>
 	<string name="new_sequence">New sequence</string>
 	<string name="note_too_large"> note will not fit in selected space</string>
 	<string name="cannot_delete_last_sequence">Cannot deleted last sequence</string>
 	<string name="sequence_deleted">Sequence deleted</string>
-	
+
 	<string name="clear_recording">Cleared recording</string>
 	<string name="cannot_loop_uncomplete">Cannot loop empty or uncomplete recording</string>
 	<string name="cannot_record_while_looping">Cannot record while track is looping</string>
 	<string name="recording_started">Recording started</string>
 	<string name="dubbing_started">Dubbing started</string>
-	
-	<string name="try_smaller_tempo">Please try a smaller tempo. Spoken option incoherent over 110 BPM</string>
+
+	<string name="try_smaller_tempo">Please try a smaller tempo. Spoken option
+		incoherent over 110 BPM</string>
 	<string name="out_of_range">Note is out of instrument range</string>
-	
+
 	<!-- content descriptors -->
+	<string name="descp_intrument_screen">instrument screen</string>
 	<string name="descp_led">led indicator</string>
+
 </resources>

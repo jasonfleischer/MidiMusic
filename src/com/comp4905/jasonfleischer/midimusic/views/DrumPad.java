@@ -14,11 +14,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class DrumPad extends RelativeLayout{
-	
-	private	ImageView wrench; 
+
+	private	ImageView wrench;
 	private TextView label;
 	private RelativeLayout base;
-	
+
 	private DrumSound drumSound;
 	private boolean isEditMode;
 
@@ -35,9 +35,9 @@ public class DrumPad extends RelativeLayout{
 		label.setText(drumSound.getName());
 		setOnTouch();
 	}
-	
+
 	public void setMode(boolean mode){
-		
+
 		isEditMode = mode;
 		setOnTouch();
 	}
@@ -46,12 +46,12 @@ public class DrumPad extends RelativeLayout{
 		label.setText(drumSound.getName());
 		setOnTouch();
 	}
-	
+
 	private void setOnTouch(){
 		if(isEditMode){
 			wrench.setVisibility(View.VISIBLE);
 			setOnTouchListener(null);
-			setOnClickListener(new OnClickListener() {			
+			setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					DrumFragment.deploySpinner(drumSound);
@@ -61,14 +61,14 @@ public class DrumPad extends RelativeLayout{
 			wrench.setVisibility(View.GONE);
 			setOnClickListener(null);
 			setOnTouchListener(new OnTouchListener() {
-				
+
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
 					int action = event.getAction();
 					if(action == MotionEvent.ACTION_UP){
 						base.setBackgroundResource(R.drawable.conatiner_shape);
 						return true;
-					} 
+					}
 					else if(action == MotionEvent.ACTION_CANCEL){
 						base.setBackgroundResource(R.drawable.conatiner_shape);
 						return true;
@@ -77,7 +77,7 @@ public class DrumPad extends RelativeLayout{
 						base.setBackgroundResource(R.drawable.drum_shape_pressed);
 						SoundManager.getInstance().playDrumSound(drumSound.getSoundID());
 						return true;
-					}	
+					}
 					return false;
 				}
 			});

@@ -17,18 +17,17 @@ import android.widget.GridLayout;
 
 public class GridFragment extends Fragment{
 	private GridElement[] ges;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		GridLayout rootView = (GridLayout) inflater.inflate(R.layout.fragment_grid, container, false);
 
-		
-		int indexOfAllNotes = 0+3+MainActivity.config.key.ordinal();		
+		int indexOfAllNotes = 0+3+MainActivity.config.key.ordinal();
 		int scale[] = MainActivity.config.choosenScale.getIntervals();
 		if(scale.length==0){
 			scale = Scale.Major.getIntervals();
 		}
-		
+
 		ges = new GridElement[rootView.getChildCount()];
 		for(int i=0;i<rootView.getChildCount();i++){
 			GridElement ge = (GridElement) rootView.getChildAt(i);
@@ -44,46 +43,46 @@ public class GridFragment extends Fragment{
 				indexOfAllNotes++;
 			}
 		}
-		
+
 		rootView.setOnTouchListener(new OnTouchListener() {
-			
+
 			private int lastPressedGrid = -1;
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				float xPos = event.getX();
 				float yPos = event.getY();
-				
+
 				if (event.getAction() == MotionEvent.ACTION_DOWN){
-	            	lastPressedGrid = -1;
+					lastPressedGrid = -1;
 				}
-					
+
 				for(int i=0;i<ges.length;i++){
 					GridElement ge = ges[i];
-				    Rect r = new Rect();
-		            ge.getHitRect(r); 
-		            if(r.contains((int)xPos,(int)yPos)){
-		                if(lastPressedGrid != i){
-		                	if(lastPressedGrid != -1)
-		                		ges[lastPressedGrid].setDefaultResource();
-		                    lastPressedGrid = i;
-		                    ge.playNote();
-		                    ge.setBackgroundResource(R.drawable.grid_element_pressed);
-		                    break;
-		                }
-		            }       
+					Rect r = new Rect();
+					ge.getHitRect(r);
+					if(r.contains((int)xPos,(int)yPos)){
+						if(lastPressedGrid != i){
+							if(lastPressedGrid != -1)
+								ges[lastPressedGrid].setDefaultResource();
+							lastPressedGrid = i;
+							ge.playNote();
+							ge.setBackgroundResource(R.drawable.grid_element_pressed);
+							break;
+						}
+					}
 				}
-				
+
 				if (event.getAction() == MotionEvent.ACTION_UP){
 					try{
 						ges[lastPressedGrid].setDefaultResource();
 					}catch(Exception ex){}
 					lastPressedGrid = -1;
 				}
-				
+
 				return true;
 			}
 		});
-		
+
 		return rootView;
 	}
 }

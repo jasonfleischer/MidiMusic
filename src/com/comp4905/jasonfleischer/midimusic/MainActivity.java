@@ -37,16 +37,16 @@ public class MainActivity extends Activity {
 	private static final String ACTION_USB_PERMISSION = "com.comp4905.jasonfleischer.midimusic";
 	private static final int CHECK_USB_CONN_TIME_MS = 2500;
 	private static Timer checkUsbDetachedTimer;
-	
+
 	private static MainActivity instance;
-	private static UsbManager usbManager; 
-	public static MidiMusicConfig config = null; 
+	private static UsbManager usbManager;
+	public static MidiMusicConfig config = null;
 	public static MidiInputDevice midiInputDevice;
-	
+
 	private static PendingIntent mPermissionIntent;
-	
+
 	public static Activity getInstance() { return instance; }
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,23 +56,23 @@ public class MainActivity extends Activity {
 			FragMentManager.getInstance().init(getFragmentManager());
 		}
 		instance = this;
-		
-		usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);	
-	    mPermissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
+
+		usbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
+		mPermissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
 		IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
 		registerReceiver(mUsbReceiver, filter);
-		
+
 		connectUSBDevice();
-		
+
 		new BuildModel().execute();
 	}
-	
+
 	private class BuildModel extends AsyncTask<Void, Integer, Void> {
-	    @Override
+		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			FragMentManager.getInstance().showInstrumentFragment();
-			
+
 		}
 		@Override
 		protected void onProgressUpdate(Integer... values) {
@@ -83,6 +83,7 @@ public class MainActivity extends Activity {
 			publishProgress(0);
 			if(FileManager.getInstance().hasMusicConfigFile()){
 				config = FileManager.getInstance().readMidiMusicConfig();
+				//config = new MidiMusicConfig();
 			}else{
 				config = new MidiMusicConfig();
 			}
@@ -108,73 +109,73 @@ public class MainActivity extends Activity {
 				}
 			}
 			config.setNotes(i++, ++oct, NoteName.C, midiV++);
-			
+
 			SoundManager.getInstance().initMetronome();
 			publishProgress(100);
-	 		return null;
+			return null;
 		}
 	}
-	
+
 	public static void connectUSBDevice(){
 		if(midiInputDevice != null){
-    		HLog.i(MainActivity.getInstance().getResources().getString(R.string.usb_already_connected));
-    		return;
-    	}
+			HLog.i(MainActivity.getInstance().getResources().getString(R.string.usb_already_connected));
+			return;
+		}
 		if(usbManager == null){
 			usbManager = (UsbManager) instance.getSystemService(Context.USB_SERVICE);
 		}
-		
+
 		HashMap<String, UsbDevice> deviceList = usbManager.getDeviceList();
 		Iterator<UsbDevice> deviceIterator = deviceList.values().iterator();
 		if(deviceList.isEmpty()){
 			HLog.i(MainActivity.getInstance().getResources().getString(R.string.no_usb_dectected));
 			FragMentManager.getInstance().updateUSBConnection(false);
 			return;
-		}else{	
-			UsbDevice device = deviceIterator.next();	 	
+		}else{
+			UsbDevice device = deviceIterator.next();
 			usbManager.requestPermission(device, mPermissionIntent);
 		}
 	}
-	
+
 	private final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
 
-	    public void onReceive(Context context, Intent intent) {
-	        String action = intent.getAction();
-	        if (ACTION_USB_PERMISSION.equals(action)) {
-	            synchronized (this) {
-	                UsbDevice device = (UsbDevice)intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+		public void onReceive(Context context, Intent intent) {
+			String action = intent.getAction();
+			if (ACTION_USB_PERMISSION.equals(action)) {
+				synchronized (this) {
+					UsbDevice device = (UsbDevice)intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
 
-	                if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
-	                   if(device != null){
-	                      //call method to set up device communication
-	                      connectToKeyboard(device);
-	                   }
-	                } 
-	                else {
-	                    HLog.i(getResources().getString(R.string.permission_denied_for_usb));
-	                }
-	            }
-	        }  
-	    }
+					if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
+						if(device != null){
+							//call method to set up device communication
+							connectToKeyboard(device);
+						}
+					}
+					else {
+						HLog.i(getResources().getString(R.string.permission_denied_for_usb));
+					}
+				}
+			}
+		}
 	};
-	
+
 	private void connectToKeyboard(UsbDevice device){
 		int vendorId = device.getVendorId();
 		if(vendorId == 9319){ // keyboard
-			
+
 			//HLog.i("Keyboard detected");
 			final UsbDeviceConnection conn = usbManager.openDevice(device);
-			
+
 			conn.controlTransfer(0x40, 0, 0, 0, null, 0, 0);//reset
 			conn.controlTransfer(0x40, 0, 1, 0, null, 0, 0);//clear Rx
 			conn.controlTransfer(0x40, 0, 2, 0, null, 0, 0);//clear Tx
 			conn.controlTransfer(0x40, 0x03, 0x4138, 0, null, 0, 0);//baudrate 9600
 
 			UsbEndpoint endPoint = null;
-			final UsbInterface usbIf = device.getInterface(1);	
+			final UsbInterface usbIf = device.getInterface(1);
 			for(int i = 0; i < usbIf.getEndpointCount(); i++){ // 1
-				if(usbIf.getEndpoint(i).getType() == UsbConstants.USB_ENDPOINT_XFER_BULK && 
-					usbIf.getEndpoint(i).getDirection() == UsbConstants.USB_DIR_IN){
+				if(usbIf.getEndpoint(i).getType() == UsbConstants.USB_ENDPOINT_XFER_BULK &&
+						usbIf.getEndpoint(i).getDirection() == UsbConstants.USB_DIR_IN){
 					endPoint = usbIf.getEndpoint(i);
 				}
 			}
@@ -184,75 +185,75 @@ public class MainActivity extends Activity {
 				return;
 			}
 			midiInputDevice = new MidiInputDevice(device, conn, usbIf, endPoint, new MidiListener());
-			
+
 			//setup device detached listener
-			
+
 			checkUsbDetachedTimer = new Timer();
 			checkUsbDetachedTimer.scheduleAtFixedRate(new TimerTask() {
 				@Override
 				public void run() {
 					if(usbManager.getDeviceList().isEmpty()){
-			    		 FragMentManager.getInstance().updateUSBConnection(false);
-			    		 midiInputDevice.stop();
-			    		 midiInputDevice = null;
-			    		 stopCheckUsbDetachedTimer();
-			    	 }
+						FragMentManager.getInstance().updateUSBConnection(false);
+						midiInputDevice.stop();
+						midiInputDevice = null;
+						stopCheckUsbDetachedTimer();
+					}
 				}
 			}, 0, CHECK_USB_CONN_TIME_MS);
-			
+
 		}else{
 			HLog.i(getResources().getString(R.string.usb_not_supported));
 		}
 	}
-	
+
 	/*private void connectToGuitar(UsbDevice device){
-		
+
 		int vendorId = device.getVendorId();
-		
+
 		if(vendorId == 2235){ // guitar
-			
+
 			HLog.i("Guitar detected");
-			
+
 			UsbDeviceConnection conn = usbManager.openDevice(device);
 			// need this??
 			conn.controlTransfer(0x40, 0, 0, 0, null, 0, 0);//reset
 			conn.controlTransfer(0x40, 0, 1, 0, null, 0, 0);//clear Rx
 			conn.controlTransfer(0x40, 0, 2, 0, null, 0, 0);//clear Tx
 			conn.controlTransfer(0x40, 0x03, 0x4138, 0, null, 0, 0);//baudrate 9600
-			
+
 			UsbEndpoint endPoint = null;
 			HLog.i("num of int: "+device.getInterfaceCount());
-			
+
 			for(int i=0; i<device.getInterfaceCount(); i++){
 				UsbInterface usbIf = device.getInterface(i);
 				//HLog.i(i+"  num of ep: "+usbIf.getEndpointCount());
 				for(int j=0; j<usbIf.getEndpointCount(); j++){
 					UsbEndpoint tempEndPoint = usbIf.getEndpoint(j);
 					//HLog.i(j+"  ep details: "+tempEndPoint.getType()+":"+tempEndPoint.getDirection()+":");
-					
+
 					if(tempEndPoint.getDirection() == UsbConstants.USB_DIR_IN){
-						
+
 						//tempEndPoint.getType() == UsbConstants.USB
 						HLog.i("MATCH!!!! "+i+": "+j+" type: "+tempEndPoint.getType());
 						//1:0
 						//to
 						//27:0
-						
+
 						//type 0 =  USB_ENDPOINT_XFER_CONTROL
 						//type 3 = USB_ENDPOINT_XFER_INT
-						
+
 						//all type 1 exc
 						//27 type 3
 						//endPoint = tempEndPoint;
 					}
 				}
-				
+
 			}
-			
+
 			UsbInterface usbIf = device.getInterface(0);
-			
+
 			/*for(int i = 0; i < usbIf.getEndpointCount(); i++){ // 1
-				if(usbIf.getEndpoint(i).getType() == UsbConstants.USB_ENDPOINT_XFER_BULK && 
+				if(usbIf.getEndpoint(i).getType() == UsbConstants.USB_ENDPOINT_XFER_BULK &&
 					usbIf.getEndpoint(i).getDirection() == UsbConstants.USB_DIR_IN){
 					endPoint = usbIf.getEndpoint(i);
 				}
@@ -265,7 +266,7 @@ public class MainActivity extends Activity {
 			midiInputDevice = new MidiInputDevice(device, conn, usbIf, endPoint, new MidiListener());* /
 		}
 	}*/
-	
+
 	private static void stopCheckUsbDetachedTimer(){
 		if(checkUsbDetachedTimer!=null){
 			checkUsbDetachedTimer.purge();
@@ -279,30 +280,26 @@ public class MainActivity extends Activity {
 		if(config != null)
 			FileManager.getInstance().writeMidiMusicConfig(config);
 	}
-	
+
 	@Override
 	protected void onStop() {
 		super.onStop();
-		//HLog.i("onStop");
-		
+
 		FragMentManager.getInstance().updateUSBConnection(false);
 		if(midiInputDevice!= null){
-		    midiInputDevice.stop();
-		    midiInputDevice = null;
+			midiInputDevice.stop();
+			midiInputDevice = null;
 		}
 		usbManager = null;
 		stopCheckUsbDetachedTimer();
-		
-		
+
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		//HLog.i("onDestroy");
 		unregisterReceiver(mUsbReceiver);
-		
-		
+
 		for(Note n : config.allNotes){
 			n.unLoad();
 		}

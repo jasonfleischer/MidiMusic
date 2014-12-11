@@ -50,34 +50,32 @@ public class SequenceFragment extends Fragment{
 	private static boolean isLooping = false;
 	private static final int NUM_OF_ROWS = 25;
 	private static final String[] VERT_MARKERS = new String[]{"-","-","m3","M3","-","-","5","-","6","-","-","Oct"};
-	
-	private static final String[] tempoList = new String[]{"Very Slow", "Slow", "Medium", "Fast", "Very Fast"};
 	private HashMap<String, Integer> tempoMap;
-	
+
 	//Config
 	private static PlayingMode lastSelectedPlayingMode = PlayingMode.SINGLE_NOTE;
 	private static NoteName key = NoteName.C;;
 	private static int octave = 2;
 	private static int numberOfCol;
-	private static NoteDuration noteDuration = NoteDuration.Eighth; 
-	
-	
+	private static NoteDuration noteDuration = NoteDuration.Eighth;
+
+
 	private class SequenceElement{
 		private FrameLayout view;
 		private boolean colored;
 		private boolean selected;
-		
+
 		private Integer id;
 		private int interval;
 		private int column;
 		private int defaultDrawable;
 		private NoteDuration noteDuration;
-		
+
 		private ArrayList<Integer> ids; // other associated fms
-		
+
 		private static final int selectedDrawable = R.drawable.sequence_shape_selected;
 		private static final int coloredDrawable = R.drawable.sequence_shape_colored;
-		
+
 		private SequenceElement(int i, int c, FrameLayout v, int idz){
 			id = idz;
 			interval=i;
@@ -94,23 +92,23 @@ public class SequenceFragment extends Fragment{
 			selected = false;
 			colored = false;
 		}
-		
+
 		private void update(NoteDuration nd){
 			int iterations = nd.getValue()/4;
 			if(noteDuration!=null)
 				iterations = Math.max(nd.getValue()/4, noteDuration.getValue()/4);
-			
+
 			if(nd.getValue()/4>numberOfCol-column){
 				HLog.i(nd.toString() +" "+getResources().getString(R.string.note_too_large));
 				return;
 			}
 			boolean isAdding = true;
-			
-			for(int i=0;i<iterations;i++){	
+
+			for(int i=0;i<iterations;i++){
 				SequenceElement element = getSeqElement(interval, column+i);
 
-				if(i==0){ 
-					if(selected){						
+				if(i==0){
+					if(selected){
 						isAdding = false;
 						ids.remove(id);
 						if(ids.isEmpty())
@@ -120,19 +118,19 @@ public class SequenceFragment extends Fragment{
 					}else {
 						select(nd);
 						ids.add(id);
-						
+
 						for(int j=-12;j<=12;j++){
 							if(j!=interval){
-								
+
 								SequenceElement otherSeqElementInCol = getSeqElement(j, column) ;
 								NoteDuration otherNd = otherSeqElementInCol.getNoteDuration();
 								if(otherNd!=null && otherSeqElementInCol.selected){
 									otherSeqElementInCol.update(otherNd);
 								}
-							}	
-						}	
-				   }
-				}else{ 
+							}
+						}
+					}
+				}else{
 					if(isAdding){
 						if(!element.selected){  //unselected
 							element.color();
@@ -140,7 +138,7 @@ public class SequenceFragment extends Fragment{
 						element.ids.add(id);
 					}else{ // removing
 						element.ids.remove(id);
-						 if(element.colored){	
+						if(element.colored){
 							if(element.ids.isEmpty())
 								element.unSelect();
 						}
@@ -148,10 +146,10 @@ public class SequenceFragment extends Fragment{
 				}
 			}
 		}
-		
+
 		private SequenceElement getSeqElement(int interval, int col){
 			int row = (-1*interval+12)%24;
-			if (interval == -12 ) row = 24;				
+			if (interval == -12 ) row = 24;
 			return sequenceElements.get(row*numberOfCol+col);
 		}
 
@@ -161,7 +159,7 @@ public class SequenceFragment extends Fragment{
 			selected = false;
 			colored = false;
 		}
-		
+
 		private void select(NoteDuration nd){
 			view.setBackgroundResource(selectedDrawable);
 			noteDuration = nd;
@@ -179,18 +177,18 @@ public class SequenceFragment extends Fragment{
 			return noteDuration;
 		}
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_sequence, container, false);
 		FragMentManager.getInstance().showNavBar();
-		
+
 		// defaults
 
-		numberOfCol = MainActivity.config.sequence.getLength();		
+		numberOfCol = MainActivity.config.sequence.getLength();
 		sequenceNameTv = (TextView) rootView.findViewById(R.id.sequence_name);
 		usbConn = (UsbConnection) rootView.findViewById(R.id.usb_connection_view);
-		
+
 		addBtn = (ImageButton) rootView.findViewById(R.id.sequence_save_btn);
 		deleteBtn = (ImageButton) rootView.findViewById(R.id.sequence_delete_btn);
 		playBtn = (ImageButton) rootView.findViewById(R.id.sequence_play_btn);
@@ -198,27 +196,27 @@ public class SequenceFragment extends Fragment{
 		connectBtn = (ImageButton) rootView.findViewById(R.id.sequence_connect_btn);
 		expandBtn =  (ImageButton) rootView.findViewById(R.id.sequence_expand_btn);
 		keyBtn = (ImageButton) rootView.findViewById(R.id.sequence_key_btn);
-	
+
 		sequenceSpinner = (Spinner) rootView.findViewById(R.id.seqSeqSpinner);
 		tempoSpinner = (Spinner) rootView.findViewById(R.id.seqTempoSpinner);
 		keySpinner = (Spinner) rootView.findViewById(R.id.seqKeySpinner);
 		octaveSpinner = (Spinner) rootView.findViewById(R.id.seqOctaveSpinner);
 		instrumentSpinner = (Spinner) rootView.findViewById(R.id.seqInstrumentSpinner);
 		durationSpinner = (Spinner) rootView.findViewById(R.id.seqDurationSpinner);
-        columnsSpinner = (Spinner) rootView.findViewById(R.id.seqColSpinner);
-		
+		columnsSpinner = (Spinner) rootView.findViewById(R.id.seqColSpinner);
+
 		gridLayout = (GridLayout) rootView.findViewById(R.id.sequence_grid_layout);
-		configGridLayout = (GridLayout) rootView.findViewById(R.id.seqGridLayout); 
+		configGridLayout = (GridLayout) rootView.findViewById(R.id.seqGridLayout);
 		verticalMarkers =(LinearLayout) rootView.findViewById(R.id.seq_vertical_markers);
-		
+
 		sequenceNameTv.setText(MainActivity.config.sequence.getName());
 		usbConn.updateUSBConn(MainActivity.midiInputDevice!=null);
-		
+
 		populateMarkers();
 		gridLayout.setRowCount(NUM_OF_ROWS);
 		loadSequence();
-		
-		
+
+
 		//BUTTONS
 		addBtn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -244,7 +242,7 @@ public class SequenceFragment extends Fragment{
 					numberOfCol = MainActivity.config.sequence.getLength();
 					loadSequence();
 					columnsSpinner.setSelection((numberOfCol/16)-1);
-					
+
 					reloadSequenceSpinner();
 				}else{
 					HLog.i(getResources().getString(R.string.cannot_delete_last_sequence));
@@ -278,7 +276,7 @@ public class SequenceFragment extends Fragment{
 		connectBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+
 				if(MainActivity.config.playingMode != PlayingMode.SEQUENCE){
 					connectBtn.setImageResource(R.drawable.connected);
 					lastSelectedPlayingMode = MainActivity.config.playingMode;
@@ -287,7 +285,7 @@ public class SequenceFragment extends Fragment{
 				}else{
 					connectBtn.setImageResource(R.drawable.connect);
 					MainActivity.config.playingMode = lastSelectedPlayingMode;
-					HLog.i(getResources().getString(R.string.detach_sequence));	
+					HLog.i(getResources().getString(R.string.detach_sequence));
 				}
 				if(MainActivity.midiInputDevice != null){
 					new UpdateSelections().execute();
@@ -316,9 +314,9 @@ public class SequenceFragment extends Fragment{
 				new UpdateSelections().execute();
 			}
 		});
-		
+
 		//SPINNERS
-		List<String> list = new ArrayList<String>();		
+		List<String> list = new ArrayList<String>();
 		for(NoteName nn: NoteName.values()){
 			list.add(nn.toString());
 		}
@@ -335,24 +333,24 @@ public class SequenceFragment extends Fragment{
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) { }
 		});
-	  	
+
 		tempoMap = new HashMap<String, Integer>();
-		tempoMap.put(tempoList[0], 60); 
-		tempoMap.put(tempoList[1], 78); 	
-		tempoMap.put(tempoList[2], 40); 	
-		tempoMap.put(tempoList[3], 180);	
-		tempoMap.put(tempoList[4], 48);	
-		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, tempoList);
+		tempoMap.put(Sequence.tempoList[0], 60);
+		tempoMap.put(Sequence.tempoList[1], 78);
+		tempoMap.put(Sequence.tempoList[2], 40);
+		tempoMap.put(Sequence.tempoList[3], 180);
+		tempoMap.put(Sequence.tempoList[4], 48);
+		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, Sequence.tempoList);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		tempoSpinner.setAdapter(dataAdapter);
 		tempoSpinner.setSelection(2);
 		tempoSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				
+
 				ArrayList<Tempo> tempos = MainActivity.config.tempos;
 				for(Tempo temp: tempos){
-					if(temp.getBpm() == tempoMap.get(tempoList[position])){
+					if(temp.getBpm() == tempoMap.get(Sequence.tempoList[position])){
 						MainActivity.config.sequenceTempo = temp;
 					}
 				}
@@ -360,15 +358,15 @@ public class SequenceFragment extends Fragment{
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) { }
 		});
-		
-		List<Integer> intList = new ArrayList<Integer>();		
+
+		List<Integer> intList = new ArrayList<Integer>();
 		for(int i=1;i<7;i++){
 			intList.add(i);
 		}
 		ArrayAdapter<Integer> octDataAdapter = new ArrayAdapter<Integer>(getActivity(),android.R.layout.simple_spinner_item, intList);
 		octDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		octaveSpinner.setAdapter(octDataAdapter);
-		octaveSpinner.setSelection(octave-1);	
+		octaveSpinner.setSelection(octave-1);
 		octaveSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -378,14 +376,14 @@ public class SequenceFragment extends Fragment{
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) { }
 		});
-		
-		list = new ArrayList<String>();	
+
+		list = new ArrayList<String>();
 		int instrumentSelected = 0;
 		for (int i=0;i<MainActivity.config.instruments.size();i++) {
 			Instrument instrumnt = MainActivity.config.instruments.get(i);
 			if(instrumnt.getValue()==MainActivity.config.sequenceInstrument.getValue())
-			   instrumentSelected = i;	   
-		   list.add(instrumnt.getName());
+				instrumentSelected = i;
+			list.add(instrumnt.getName());
 		}
 		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -399,10 +397,10 @@ public class SequenceFragment extends Fragment{
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) { }
 		});
-		
-		list = new ArrayList<String>();	
+
+		list = new ArrayList<String>();
 		for (int i=0;i<NoteDuration.values().length;i++) {
-		   list.add(NoteDuration.values()[i].toString());
+			list.add(NoteDuration.values()[i].toString());
 		}
 		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -416,8 +414,8 @@ public class SequenceFragment extends Fragment{
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) { }
 		});
-		
-		intList = new ArrayList<Integer>();		
+
+		intList = new ArrayList<Integer>();
 		for(int i=16;i<16*5;i=i+16){
 			intList.add(i);
 		}
@@ -433,29 +431,20 @@ public class SequenceFragment extends Fragment{
 						seq.unSelect();
 				}
 				MainActivity.config.sequence.setInterval(createSequenceFile());
-				numberOfCol = (position+1)*16;				
+				numberOfCol = (position+1)*16;
 				loadSequence();
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) { }
 		});
-		
-		/*list = new ArrayList<String>();	
-		int seqSelected =0;
-		for (int i=0;i<MainActivity.config.sequences.size();i++) {
-			Sequence seq = MainActivity.config.sequences.get(i);
-			if(seq.getName().equals(MainActivity.config.sequence.getName()))
-				seqSelected = i;	   
-			list.add(seq.getName());
-		}
-		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
-		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		sequenceSpinner.setAdapter(dataAdapter);
-		sequenceSpinner.setSelection(seqSelected);*/
+
 		reloadSequenceSpinner();
 		sequenceSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+				MainActivity.config.sequence.setInterval(createSequenceFile());//save
+
 				MainActivity.config.sequence = MainActivity.config.sequences.get(position);
 				numberOfCol = MainActivity.config.sequence.getLength();
 				loadSequence();
@@ -464,12 +453,12 @@ public class SequenceFragment extends Fragment{
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) { }
 		});
-		
+
 		return rootView;
-	}	
-	
+	}
+
 	private int[] createSequenceFile(){
-		ArrayList<Integer> seq = new ArrayList<Integer>();	
+		ArrayList<Integer> seq = new ArrayList<Integer>();
 		for(int c=0;c<numberOfCol;c++){
 			boolean colSet = false;
 			for(int i=0;i<NUM_OF_ROWS;i++){
@@ -479,31 +468,31 @@ public class SequenceFragment extends Fragment{
 					seq.add(info.noteDuration.getValue());
 					colSet = true;
 					break;
-				}	
+				}
 			}
 			if(!colSet){
 				seq.add(-99);
 				seq.add(NoteDuration.Sixteenth.getValue());
 			}
-		}		
+		}
 		int[] finalSeq = new int[seq.size()];
-		
+
 		for(int j = 0; j<seq.size(); j++){
 			finalSeq[j] = seq.get(j);
 		}
-			
+
 		MidiFile.writeSequenceFile(Note.getMidiValueFrom(key, octave), MainActivity.config.sequenceInstrument.getValue(), Note.DEFAULT_NOTE_VELOCITY, "sequence.mid", MainActivity.config.sequenceTempo.getTempoEvent(), finalSeq);
-		
+
 		return finalSeq;
 	}
-	
+
 	private void reloadSequenceSpinner(){
-		ArrayList<String> list = new ArrayList<String>();	
+		ArrayList<String> list = new ArrayList<String>();
 		int seqSelected =0;
 		for (int i=0;i<MainActivity.config.sequences.size();i++) {
 			Sequence seq = MainActivity.config.sequences.get(i);
 			if(seq.getName().equals(MainActivity.config.sequence.getName()))
-				seqSelected = i;	   
+				seqSelected = i;
 			list.add(seq.getName());
 		}
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
@@ -511,17 +500,15 @@ public class SequenceFragment extends Fragment{
 		sequenceSpinner.setAdapter(dataAdapter);
 		sequenceSpinner.setSelection(seqSelected);
 	}
-	
+
 	private void loadSequence(){
-		//numberOfCol = MainActivity.config.sequence.getLength();//4 *16;//sequenceLengthInWholeNotes * 16;
-		
-		
+
 		if(gridLayout.getChildCount()>0){
 			gridLayout.removeAllViews();
 		}
-		
+
 		gridLayout.setColumnCount(numberOfCol);
-		
+
 		sequenceElements = new ArrayList<SequenceElement>();
 		int l=0;
 		for(int i=12;i>=-12;i--){
@@ -536,12 +523,12 @@ public class SequenceFragment extends Fragment{
 						info.update(noteDuration);
 					}
 				});
-				gridLayout.addView(fm);	
+				gridLayout.addView(fm);
 			}
 		}
-		
+
 		// load
-		boolean lastWasRest = false; 
+		boolean lastWasRest = false;
 		int interval = 0, col = 0, j = 0;
 		for(int i: MainActivity.config.sequence.getSequence()){
 			if(j%2==0){
@@ -559,24 +546,23 @@ public class SequenceFragment extends Fragment{
 				}
 				if(!lastWasRest){
 					int row = (-1*interval+12)%24;
-					if (interval == -12 ) row = 24;		
-					
-					
+					if (interval == -12 ) row = 24;
+
+
 					SequenceElement refSeq = sequenceElements.get(row*numberOfCol+col);
 					refSeq.update(nd);
-					//HLog.i("row"+row+"col"+col);
 				}
-				col += 1;//nd.getValue()/4;
+				col += 1;
 			}
 			j++;
 		}
 	}
-	
+
 	private void populateMarkers(){
 		if(verticalMarkers.getChildCount()>0){
 			verticalMarkers.removeAllViews();
 		}
-		
+
 		for(int i=VERT_MARKERS.length-1;i>=0;i--){
 			TextView tv = new TextView(getActivity());
 			tv.setHeight(62);
@@ -608,13 +594,13 @@ public class SequenceFragment extends Fragment{
 			text=text+octave;
 		middleTv.setText(text);
 	}
-	
+
 	public UsbConnection getUsbConn() {
 		return usbConn;
 	}
-	
+
 	private class UpdateSelections extends AsyncTask<Void, Integer, Void> {
-	    @Override
+		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			LoadingDialogFragment.getInstance().dismiss();
@@ -625,16 +611,16 @@ public class SequenceFragment extends Fragment{
 			super.onProgressUpdate(values);
 			LoadingDialogFragment.getInstance().updateProgress(values[0]);
 		}
-		protected Void doInBackground(Void... params) {				
+		protected Void doInBackground(Void... params) {
 			// update all notes
 			for(int i=0; i<MainActivity.config.allNotes.length;i++){
-				Note n = MainActivity.config.allNotes[i]; 
+				Note n = MainActivity.config.allNotes[i];
 				n.updateNoteFile();
 				int percent = (int) (100*((double)i/MainActivity.config.allNotes.length));
 				publishProgress(percent);
 			}
 			publishProgress(100);
-	 		return null;
+			return null;
 		}
 	}
 }

@@ -2,7 +2,17 @@ package com.comp4905.jasonfleischer.midimusic.model;
 
 import java.io.Serializable;
 
+import com.comp4905.jasonfleischer.midimusic.MainActivity;
+import com.comp4905.jasonfleischer.midimusic.R;
+
 public class Sequence implements Serializable{
+
+	public static final String[] tempoList = new String[]{
+		MainActivity.getInstance().getResources().getString(R.string.seq_very_slow),
+		MainActivity.getInstance().getResources().getString(R.string.seq_slow),
+		MainActivity.getInstance().getResources().getString(R.string.seq_med),
+		MainActivity.getInstance().getResources().getString(R.string.seq_fast),
+		MainActivity.getInstance().getResources().getString(R.string.seq_very_fast)};
 
 	private static final long serialVersionUID = -8801190481097252349L;
 	private String name;
@@ -14,7 +24,7 @@ public class Sequence implements Serializable{
 		sequence=s;
 		length = l;
 	}
-	
+
 	public String getName() {
 		return name;
 	}

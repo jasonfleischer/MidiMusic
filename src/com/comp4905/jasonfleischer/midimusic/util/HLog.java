@@ -8,9 +8,9 @@ import android.widget.Toast;
 public class HLog {
 
 	private final static String TAG = "MidiMusic";
-	
+
 	public static void i(final String s){
-		MainActivity.getInstance().runOnUiThread(new Runnable() {	
+		MainActivity.getInstance().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
 				Log.i(TAG, s);
@@ -18,13 +18,12 @@ public class HLog {
 			}
 		});
 	}
-	
+
 	public static void e(final String s){
 		MainActivity.getInstance().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
 				Log.e(TAG, "ERROR:"+s);
-				//Toast.makeText(MainActivity.getInstance(), "ERROR: "+s, Toast.LENGTH_LONG).show();
 			}
 		});
 	}

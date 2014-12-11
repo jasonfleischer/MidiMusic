@@ -46,21 +46,19 @@ public class ConsoleFragment extends Fragment{
 	private Button usbBtn;
 	private ToggleButton spokenBtn;
 	private Spinner keySpinner, octaveSpinner, instrumentSpinner, scaleSpinner, modulateSpinner,
-		chordSpinner, durationSpinner, durationSpinnerChord, sequenceSpinner, sequenceTempoSpinner, tempoSpinner, accentSpinner;
+	chordSpinner, durationSpinner, durationSpinnerChord, sequenceSpinner, sequenceTempoSpinner, tempoSpinner, accentSpinner;
 	private UsbConnection usbConn;
 	private RadioGroup playingModeRG, spokenModeRG;
 	private GridLayout instrumentCont;
 	private LinearLayout playingModeCont;
-	
+
 	private int selectedPlayingMode;
-	
-	private static final String[] tempoList = new String[]{"Very Slow", "Slow", "Medium", "Fast", "Very Fast"};
 	private HashMap<String, Integer> tempoMap;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		FragMentManager.getInstance().showNavBar();
-		
+
 		View rootView = inflater.inflate(R.layout.fragment_console, container, false);
 		usbConn = (UsbConnection) rootView.findViewById(R.id.usb_connection_view);
 		usbBtn = (Button) rootView.findViewById(R.id.usb_btn);
@@ -83,9 +81,9 @@ public class ConsoleFragment extends Fragment{
 		sequenceTempoSpinner = (Spinner) rootView.findViewById(R.id.sequence_tempo_spinner);
 		tempoSpinner = (Spinner) rootView.findViewById(R.id.consoleTempoSpinner);
 		accentSpinner = (Spinner) rootView.findViewById(R.id.consoleAccentSpinner);
-		
+
 		usbConn.updateUSBConn(MainActivity.midiInputDevice!=null);
-		
+
 		usbBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -99,7 +97,7 @@ public class ConsoleFragment extends Fragment{
 				new UpdateSelections().execute();
 			}
 		});
-		
+
 		metronomeBtn.setImageResource(SoundManager.isPlayingMetronome?R.drawable.stop:R.drawable.play);
 		rootView.findViewById(R.id.console_metronome_btn_cont).setOnClickListener(new OnClickListener() {
 			@Override
@@ -119,7 +117,7 @@ public class ConsoleFragment extends Fragment{
 				}
 			}
 		});
-		
+
 		spokenBtn.setChecked(SoundManager.isMetronomeSpeakState);
 		spokenBtn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -135,8 +133,8 @@ public class ConsoleFragment extends Fragment{
 			spokenModeRG.setVisibility(View.VISIBLE);
 		else
 			spokenModeRG.setVisibility(View.GONE);
-		
-		List<String> list = new ArrayList<String>();		
+
+		List<String> list = new ArrayList<String>();
 		NoteName[] noteNames = NoteName.values();
 		for(NoteName nn: noteNames){
 			list.add(nn.toString());
@@ -145,31 +143,31 @@ public class ConsoleFragment extends Fragment{
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		keySpinner.setAdapter(dataAdapter);
 		keySpinner.setSelection(MainActivity.config.key.ordinal());
-	  
-		List<Integer> intList = new ArrayList<Integer>();		
+
+		List<Integer> intList = new ArrayList<Integer>();
 		for(int i=1;i<7;i++){
 			intList.add(i);
 		}
 		ArrayAdapter<Integer> octDataAdapter = new ArrayAdapter<Integer>(getActivity(),android.R.layout.simple_spinner_item, intList);
 		octDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		octaveSpinner.setAdapter(octDataAdapter);
-		octaveSpinner.setSelection(MainActivity.config.octave-1);	
-		
-		list = new ArrayList<String>();	
+		octaveSpinner.setSelection(MainActivity.config.octave-1);
+
+		list = new ArrayList<String>();
 		int instrumentSelected = 0;
 		for (int i=0;i<MainActivity.config.instruments.size();i++) {
 			Instrument instrument = MainActivity.config.instruments.get(i);
 			if(MainActivity.config.playingMode == PlayingMode.SINGLE_NOTE){
 				if(instrument.getValue()==MainActivity.config.singleNoteInstrument.getValue())
-					instrumentSelected = i;	   
+					instrumentSelected = i;
 			}else if(MainActivity.config.playingMode == PlayingMode.CHORD){
 				if(instrument.getValue()==MainActivity.config.chordInstrument.getValue())
-					instrumentSelected = i;	  
+					instrumentSelected = i;
 			}else if(MainActivity.config.playingMode == PlayingMode.SEQUENCE){
 				if(instrument.getValue()==MainActivity.config.sequenceInstrument.getValue())
-					instrumentSelected = i;	  
+					instrumentSelected = i;
 			}
-		   list.add(instrument.getName());
+			list.add(instrument.getName());
 		}
 		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -178,7 +176,7 @@ public class ConsoleFragment extends Fragment{
 		instrumentSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				if(PlayingMode.SINGLE_NOTE == PlayingMode.values()[selectedPlayingMode]){ 
+				if(PlayingMode.SINGLE_NOTE == PlayingMode.values()[selectedPlayingMode]){
 					MainActivity.config.singleNoteInstrument = MainActivity.config.instruments.get(position);
 				}else if(PlayingMode.CHORD == PlayingMode.values()[selectedPlayingMode]){
 					MainActivity.config.chordInstrument = MainActivity.config.instruments.get(position);
@@ -189,7 +187,7 @@ public class ConsoleFragment extends Fragment{
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {	}
 		});
-		
+
 		list = new ArrayList<String>();
 		for(int i=0;i<Scale.values().length;i++){
 			list.add(Scale.values()[i].toString());
@@ -198,7 +196,7 @@ public class ConsoleFragment extends Fragment{
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		scaleSpinner.setAdapter(dataAdapter);
 		scaleSpinner.setSelection(MainActivity.config.choosenScale.ordinal());
-		
+
 		intList = new ArrayList<Integer>();
 		for(int i=-12;i<13;i++){
 			intList.add(i);
@@ -207,7 +205,7 @@ public class ConsoleFragment extends Fragment{
 		modDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		modulateSpinner.setAdapter(modDataAdapter);
 		modulateSpinner.setSelection(MainActivity.config.usbModulation+12);
-		
+
 		for(int i=0; i<playingModeRG.getChildCount(); i++){
 			RadioButton rb = (RadioButton) playingModeRG.getChildAt(i);
 			rb.setText(PlayingMode.values()[i].toString());
@@ -240,13 +238,13 @@ public class ConsoleFragment extends Fragment{
 				}
 			});
 		}
-		
+
 		if(MainActivity.config.playingMode == PlayingMode.DRUMS)
 			instrumentCont.setVisibility(View.GONE);
-		
-		list = new ArrayList<String>();	
+
+		list = new ArrayList<String>();
 		for (int i=0;i<NoteDuration.values().length;i++) {
-		   list.add(NoteDuration.values()[i].getName());
+			list.add(NoteDuration.values()[i].getName());
 		}
 		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -254,48 +252,48 @@ public class ConsoleFragment extends Fragment{
 		durationSpinnerChord.setAdapter(dataAdapter);
 		durationSpinner.setSelection(MainActivity.config.noteDuration.ordinal());
 		durationSpinnerChord.setSelection(MainActivity.config.noteDuration.ordinal());
-		
-		
-		list = new ArrayList<String>();	
+
+
+		list = new ArrayList<String>();
 		for (int i=0;i<Chord.ChordName.values().length;i++) {
-		    list.add(Chord.ChordName.values()[i].toString());
+			list.add(Chord.ChordName.values()[i].toString());
 		}
 		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		chordSpinner.setAdapter(dataAdapter);
 		chordSpinner.setSelection(MainActivity.config.chord.ordinal());
-		
-		list = new ArrayList<String>();	
+
+		list = new ArrayList<String>();
 		int seqSelected =0;
 		for (int i=0;i<MainActivity.config.sequences.size();i++) {
 			Sequence seq = MainActivity.config.sequences.get(i);
 			if(seq.getName().equals(MainActivity.config.sequence.getName()))
-				seqSelected = i;	   
+				seqSelected = i;
 			list.add(seq.getName());
 		}
 		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sequenceSpinner.setAdapter(dataAdapter);
 		sequenceSpinner.setSelection(seqSelected);
-		
-		
+
+
 		tempoMap = new HashMap<String, Integer>();
-		tempoMap.put(tempoList[0], 60); 
-		tempoMap.put(tempoList[1], 78); 	
-		tempoMap.put(tempoList[2], 40); 	
-		tempoMap.put(tempoList[3], 180);	
-		tempoMap.put(tempoList[4], 48);	
-		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, tempoList);
+		tempoMap.put(Sequence.tempoList[0], 60);
+		tempoMap.put(Sequence.tempoList[1], 78);
+		tempoMap.put(Sequence.tempoList[2], 40);
+		tempoMap.put(Sequence.tempoList[3], 180);
+		tempoMap.put(Sequence.tempoList[4], 48);
+		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, Sequence.tempoList);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sequenceTempoSpinner.setAdapter(dataAdapter);
 		sequenceTempoSpinner.setSelection(2);
 		sequenceTempoSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				
+
 				ArrayList<Tempo> tempos = MainActivity.config.tempos;
 				for(Tempo temp: tempos){
-					if(temp.getBpm() == tempoMap.get(tempoList[position])){
+					if(temp.getBpm() == tempoMap.get(Sequence.tempoList[position])){
 						MainActivity.config.sequenceTempo = temp;
 					}
 				}
@@ -303,8 +301,8 @@ public class ConsoleFragment extends Fragment{
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) { }
 		});
-		
-		list = new ArrayList<String>();		
+
+		list = new ArrayList<String>();
 		for(Tempo t: MainActivity.config.tempos){
 			list.add(String.valueOf(t.getBpm()));
 		}
@@ -320,7 +318,7 @@ public class ConsoleFragment extends Fragment{
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) { }
 		});
-		
+
 		list = new ArrayList<String>();
 		list.add("None");
 		list.add("Two");
@@ -330,12 +328,12 @@ public class ConsoleFragment extends Fragment{
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		accentSpinner.setAdapter(dataAdapter);
 		accentSpinner.setSelection(3);
-		
+
 		return rootView;
 	}
-	
+
 	private class UpdateSelections extends AsyncTask<Void, Integer, Void> {
-	    @Override
+		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			LoadingDialogFragment.getInstance().dismiss();
@@ -352,7 +350,7 @@ public class ConsoleFragment extends Fragment{
 			MainActivity.config.playingMode = PlayingMode.values()[selectedPlayingMode];
 			MainActivity.config.chord = ChordName.values()[chordSpinner.getSelectedItemPosition()];
 			MainActivity.config.choosenScale = Scale.values()[scaleSpinner.getSelectedItemPosition()];
-			
+
 			if(MainActivity.config.playingMode ==PlayingMode.SINGLE_NOTE){
 				MainActivity.config.singleNoteInstrument = MainActivity.config.instruments.get(instrumentSpinner.getSelectedItemPosition());
 				MainActivity.config.noteDuration = NoteDuration.values()[durationSpinner.getSelectedItemPosition()];
@@ -364,20 +362,20 @@ public class ConsoleFragment extends Fragment{
 				MainActivity.config.sequence = MainActivity.config.sequences.get(sequenceSpinner.getSelectedItemPosition());
 			}
 			MainActivity.config.usbModulation = (int) modulateSpinner.getSelectedItem();
-			
-			
+
+
 			// update all notes
 			for(int i=0; i<MainActivity.config.allNotes.length;i++){
-				Note n = MainActivity.config.allNotes[i]; 
+				Note n = MainActivity.config.allNotes[i];
 				n.updateNoteFile();
 				int percent = (int) (100*((double)i/MainActivity.config.allNotes.length));
 				publishProgress(percent);
 			}
 			publishProgress(100);
-	 		return null;
+			return null;
 		}
 	}
-	
+
 	public UsbConnection getUsbConn() {
 		return usbConn;
 	}

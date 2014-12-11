@@ -50,7 +50,7 @@ public final class MidiInputDevice {
 
 		usbDeviceConnection.claimInterface(usbInterface, true);
 		waiterThread.setPriority(8);
-        waiterThread.setName("MidiInputDevice[" + usbDevice.getDeviceName() + "].WaiterThread");
+		waiterThread.setName("MidiInputDevice[" + usbDevice.getDeviceName() + "].WaiterThread");
 		waiterThread.start();
 		FragMentManager.getInstance().updateUSBConnection(true);
 	}
@@ -59,11 +59,11 @@ public final class MidiInputDevice {
 	 * stops the watching thread
 	 */
 	public void stop() {
-        usbDeviceConnection.releaseInterface(usbInterface);
-        
-        waiterThread.stopFlag = true;
-        resume();
-        FragMentManager.getInstance().updateUSBConnection(false);
+		usbDeviceConnection.releaseInterface(usbInterface);
+
+		waiterThread.stopFlag = true;
+		resume();
+		FragMentManager.getInstance().updateUSBConnection(false);
 		// blocks while the thread will stop
 		while (waiterThread.isAlive()) {
 			try {
@@ -73,7 +73,7 @@ public final class MidiInputDevice {
 			}
 		}
 	}
-	
+
 	/**
 	 * Suspends event listening
 	 */
@@ -140,7 +140,7 @@ public final class MidiInputDevice {
 			//FragMentManager.getInstance().updateUSBConnection(true);
 			while (!stopFlag) {
 				length = deviceConnection.bulkTransfer(usbEndpoint, bulkReadBuffer, maxPacketSize, 0);
-				
+
 				synchronized (suspendSignal) {
 					if (suspendFlag) {
 						try {
@@ -153,11 +153,11 @@ public final class MidiInputDevice {
 						continue;
 					}
 				}
-				
+
 				if (length <= 0) {
 					continue;
 				}
-				
+
 				System.arraycopy(bulkReadBuffer, 0, readBuffer, readBufferSize, length);
 				readBufferSize += length;
 
@@ -194,19 +194,19 @@ public final class MidiInputDevice {
 						eventListener.onMidiCableEvents(sender, cable, byte1, byte2, byte3);
 						break;
 					case 2:
-					// system common message with 2 bytes
+						// system common message with 2 bytes
 					{
 						byte[] bytes = new byte[] { (byte) byte1, (byte) byte2 };
 						eventListener.onMidiSystemCommonMessage(sender, cable, bytes);
 					}
-						break;
+					break;
 					case 3:
-					// system common message with 3 bytes
+						// system common message with 3 bytes
 					{
 						byte[] bytes = new byte[] { (byte) byte1, (byte) byte2, (byte) byte3 };
 						eventListener.onMidiSystemCommonMessage(sender, cable, bytes);
 					}
-						break;
+					break;
 					case 4:
 						// sysex starts, and has next
 						synchronized (systemExclusive) {

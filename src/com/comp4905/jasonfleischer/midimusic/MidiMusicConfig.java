@@ -18,7 +18,7 @@ import com.comp4905.jasonfleischer.midimusic.util.FileManager;
 public class MidiMusicConfig implements Serializable{
 
 	private static final long serialVersionUID = 6431197269116457775L;
-	
+
 	//Global Variables
 	public NoteName key;
 	public int octave;
@@ -27,7 +27,7 @@ public class MidiMusicConfig implements Serializable{
 	public Instrument sequenceInstrument;
 	public Scale choosenScale;
 	public int usbModulation;
-	public Note[] allNotes; 
+	public Note[] allNotes;
 	public ArrayList<Instrument> instruments;
 	public PlayingMode playingMode;
 	public ChordName chord;
@@ -37,16 +37,16 @@ public class MidiMusicConfig implements Serializable{
 	public ArrayList<Tempo> tempos;
 	public Tempo tempo;
 	public Tempo sequenceTempo;
-	
-	public DrumSound[] allDrumSounds; 
+
+	public DrumSound[] allDrumSounds;
 	public DrumSound[] gridDrumSounds;
 	public DrumSound[] kitDrumSounds;
 	public DrumSound[] midiDrumSounds;
-	
+
 	public boolean kitIsShowing;
 	public boolean keysAreShowing; // for instrument fragment
-	
-	public static enum PlayingMode{ 
+
+	public static enum PlayingMode{
 		SINGLE_NOTE("Single Note"), CHORD("Chord"), SEQUENCE("Sequence"), DRUMS("Drums");
 		private String name;
 		PlayingMode(String n){
@@ -56,7 +56,7 @@ public class MidiMusicConfig implements Serializable{
 			return name;
 		}
 	}
-	
+
 	public MidiMusicConfig(){
 		// set defaults settings
 		key = NoteName.C;
@@ -67,64 +67,64 @@ public class MidiMusicConfig implements Serializable{
 		noteDuration = NoteDuration.Quarter;
 		sequences = new ArrayList<Sequence>();
 		int [] seq1 = new int[]{ // -99 for rests
-		    0,  NoteDuration.Eighth.getValue(),
-		    7,  NoteDuration.Eighth.getValue(),
-		    12, NoteDuration.Eighth.getValue(),
-		    7,  NoteDuration.Eighth.getValue()
+				0,  NoteDuration.Eighth.getValue(),
+				7,  NoteDuration.Eighth.getValue(),
+				12, NoteDuration.Eighth.getValue(),
+				7,  NoteDuration.Eighth.getValue()
 		};
 		int [] seq2= new int[]{
-		    0,  NoteDuration.Eighth.getValue(),
-		    4,  NoteDuration.Sixteenth.getValue(),
-		    7, NoteDuration.Sixteenth.getValue(),
-		    4,  NoteDuration.Sixteenth.getValue()
+				0,  NoteDuration.Eighth.getValue(),
+				4,  NoteDuration.Sixteenth.getValue(),
+				7, NoteDuration.Sixteenth.getValue(),
+				4,  NoteDuration.Sixteenth.getValue()
 		};
 		int [] seq3= new int[]{
-		    0,  NoteDuration.Eighth.getValue(),
-		    12,  NoteDuration.Eighth.getValue(),
-		    0, NoteDuration.Eighth.getValue(),
-		    10,  NoteDuration.Eighth.getValue()
+				0,  NoteDuration.Eighth.getValue(),
+				12,  NoteDuration.Eighth.getValue(),
+				0, NoteDuration.Eighth.getValue(),
+				10,  NoteDuration.Eighth.getValue()
 		};
 		sequence = new Sequence("Sequence 1", seq1, 16);
 		sequences.add(sequence);
 		addSequence(seq2, 32);
 		addSequence(seq3, 48);
-		
+
 		instruments = new ArrayList<Instrument>();
 		FileManager.getInstance().loadInstrumentsFromAssets(instruments); //make instruments
-		
+
 		singleNoteInstrument = instruments.get(0); 	//Piano
 		chordInstrument = instruments.get(0); 		//Piano
 		sequenceInstrument = instruments.get(0); 	//Piano
- 		usbModulation = 0;
- 		allNotes = new Note[88]; // 88 keys on a keyboard
- 		
- 		tempos = new ArrayList<Tempo>(); 		
- 		for(int i=40; i<210; i=i+2){
- 			tempos.add(new Tempo(i));
- 		}
- 		tempo = tempos.get(10);
- 		sequenceTempo = tempos.get(0);
- 		
- 		kitIsShowing = false;
- 		keysAreShowing = true;
- 		
- 		createDrumSounds();
+		usbModulation = 0;
+		allNotes = new Note[88]; // 88 keys on a keyboard
+
+		tempos = new ArrayList<Tempo>();
+		for(int i=40; i<210; i=i+2){
+			tempos.add(new Tempo(i));
+		}
+		tempo = tempos.get(10);
+		sequenceTempo = tempos.get(0);
+
+		kitIsShowing = false;
+		keysAreShowing = true;
+
+		createDrumSounds();
 	}
-	
+
 	private void createDrumSounds(){
-		
+
 		String[] fileNames = FileManager.getInstance().getDrumFileNames();
 		allDrumSounds = new DrumSound[fileNames.length];
 		gridDrumSounds = new DrumSound[25];
 		kitDrumSounds = new DrumSound[15];
 		midiDrumSounds = new DrumSound[12];
-		
-		
+
+
 		for(int i=0;i< fileNames.length;i++){
 			DrumSound ds = new DrumSound(fileNames[i]);
 			allDrumSounds[i] = ds;
 		}
-		
+
 		gridDrumSounds[0] = allDrumSounds[14];//crashes
 		gridDrumSounds[1] = allDrumSounds[15];
 		gridDrumSounds[2] = allDrumSounds[16];
@@ -150,7 +150,7 @@ public class MidiMusicConfig implements Serializable{
 		gridDrumSounds[22] = allDrumSounds[54];
 		gridDrumSounds[23] = allDrumSounds[55];
 		gridDrumSounds[24] = allDrumSounds[23];
-		
+
 		kitDrumSounds[0] = allDrumSounds[11];
 		kitDrumSounds[1] = allDrumSounds[14];
 		kitDrumSounds[2] = allDrumSounds[15];
@@ -166,7 +166,7 @@ public class MidiMusicConfig implements Serializable{
 		kitDrumSounds[12] = allDrumSounds[35];//kick
 		kitDrumSounds[13] = allDrumSounds[21];//tom
 		kitDrumSounds[14] = allDrumSounds[22];
-		
+
 		midiDrumSounds[0] = allDrumSounds[35];
 		midiDrumSounds[1] = allDrumSounds[22];
 		midiDrumSounds[2] = allDrumSounds[21];
@@ -180,11 +180,11 @@ public class MidiMusicConfig implements Serializable{
 		midiDrumSounds[10] = allDrumSounds[16];
 		midiDrumSounds[11] = allDrumSounds[17];
 	}
-	
+
 	void setNotes(int index, int oct, NoteName name, int midiV){
 		allNotes[index] = new Note(oct, name, midiV);
 	}
-	
+
 	public Sequence addSequence(int[] seq, int length){
 		if(sequences.size()<30){
 			Sequence sequ = new Sequence("Sequence "+(sequences.size()+1), seq, length);

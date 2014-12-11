@@ -8,7 +8,7 @@ package com.comp4905.jasonfleischer.midimusic.midi;
  * @author K.Shoji
  */
 public interface OnMidiInputEventListener {
-	
+
 	/**
 	 * Miscellaneous function codes. Reserved for future extensions.
 	 * Code Index Number : 0x0
@@ -21,7 +21,7 @@ public interface OnMidiInputEventListener {
 	 * @param byte3
 	 */
 	void onMidiMiscellaneousFunctionCodes(MidiInputDevice sender, int cable, int byte1, int byte2, int byte3);
-	
+
 	/**
 	 * Cable events. Reserved for future expansion.
 	 * Code Index Number : 0x1
@@ -34,7 +34,7 @@ public interface OnMidiInputEventListener {
 	 * @param byte3
 	 */
 	void onMidiCableEvents(MidiInputDevice sender, int cable, int byte1, int byte2, int byte3);
-	
+
 	/**
 	 * System Common messages, or SysEx ends with following single byte.
 	 * Code Index Number : 0x2 0x3 0x5
@@ -45,7 +45,7 @@ public interface OnMidiInputEventListener {
 	 * @param bytes bytes.length:1, 2, or 3
 	 */
 	void onMidiSystemCommonMessage(MidiInputDevice sender, int cable, byte[] bytes);
-	
+
 	/**
 	 * SysEx
 	 * Code Index Number : 0x4, 0x5, 0x6, 0x7
@@ -56,7 +56,7 @@ public interface OnMidiInputEventListener {
 	 * @param systemExclusive
 	 */
 	void onMidiSystemExclusive(MidiInputDevice sender, int cable, byte[] systemExclusive);
-	
+
 	/**
 	 * Note-off
 	 * Code Index Number : 0x8
@@ -69,7 +69,7 @@ public interface OnMidiInputEventListener {
 	 * @param velocity 0-127
 	 */
 	void onMidiNoteOff(MidiInputDevice sender, int cable, int channel, int note, int velocity);
-	
+
 	/**
 	 * Note-on
 	 * Code Index Number : 0x9
@@ -82,7 +82,7 @@ public interface OnMidiInputEventListener {
 	 * @param velocity 0-127
 	 */
 	void onMidiNoteOn(MidiInputDevice sender, int cable, int channel, int note, int velocity);
-	
+
 	/**
 	 * Poly-KeyPress
 	 * Code Index Number : 0xa
@@ -95,7 +95,7 @@ public interface OnMidiInputEventListener {
 	 * @param pressure 0-127
 	 */
 	void onMidiPolyphonicAftertouch(MidiInputDevice sender, int cable, int channel, int note, int pressure);
-	
+
 	/**
 	 * Control Change
 	 * Code Index Number : 0xb
@@ -108,7 +108,7 @@ public interface OnMidiInputEventListener {
 	 * @param value 0-127
 	 */
 	void onMidiControlChange(MidiInputDevice sender, int cable, int channel, int function, int value);
-	
+
 	/**
 	 * Program Change
 	 * Code Index Number : 0xc
@@ -120,7 +120,7 @@ public interface OnMidiInputEventListener {
 	 * @param program 0-127
 	 */
 	void onMidiProgramChange(MidiInputDevice sender, int cable, int channel, int program);
-	
+
 	/**
 	 * Channel Pressure
 	 * Code Index Number : 0xd
@@ -132,7 +132,7 @@ public interface OnMidiInputEventListener {
 	 * @param pressure 0-127
 	 */
 	void onMidiChannelAftertouch(MidiInputDevice sender, int cable, int channel, int pressure);
-	
+
 	/**
 	 * PitchBend Change
 	 * Code Index Number : 0xe
@@ -144,7 +144,7 @@ public interface OnMidiInputEventListener {
 	 * @param amount 0(low)-8192(center)-16383(high)
 	 */
 	void onMidiPitchWheel(MidiInputDevice sender, int cable, int channel, int amount);
-	
+
 	/**
 	 * Single Byte
 	 * Code Index Number : 0xf

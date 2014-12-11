@@ -12,11 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class UsbConnection extends LinearLayout{
-	
+
 	public UsbConnection(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
-	
+
 	public void updateUSBConn(final boolean connected){
 		final ImageView led = (ImageView) findViewById(R.id.led);
 		final TextView usbConnTV = (TextView) findViewById(R.id.usb_connection);
@@ -30,10 +30,9 @@ public class UsbConnection extends LinearLayout{
 					usbConnTV.setText(R.string.usb_disconn );
 					led.setBackgroundResource(R.drawable.ledred);
 				}
-				
+
 			}
 		});
-		
 	}
 
 	@Override

@@ -22,26 +22,26 @@ public class GridElement extends FrameLayout{
 	public void init(Note n){
 		note =n;
 		highligthed=false;
-		
-		
+
+
 		disabled = false;
 		if(MainActivity.config.playingMode ==PlayingMode.SINGLE_NOTE){
 			if(!MainActivity.config.singleNoteInstrument.inRange(note.getMidiValue())){
 				disabled = true;
 				setAlpha(0.5f);
-			}	
+			}
 		}else if(MainActivity.config.playingMode ==PlayingMode.CHORD){
 			if(!MainActivity.config.chordInstrument.inRange(note.getMidiValue())){
 				disabled = true;
 				setAlpha(0.5f);
-			}	
+			}
 		}else if(MainActivity.config.playingMode  == PlayingMode.SEQUENCE){
 			if(!MainActivity.config.sequenceInstrument.inRange(note.getMidiValue())){
 				disabled = true;
 				setAlpha(0.5f);
-			}	
+			}
 		}
-		
+
 	}
 	public void playNote(){
 		if(disabled){
@@ -55,7 +55,7 @@ public class GridElement extends FrameLayout{
 		((TextView) findViewById(R.id.grid_element_label)).setText(note.getName().name());
 		setBackgroundResource(R.drawable.grid_element_highlighted);
 	}
-	
+
 	public void setDefaultResource(){
 		if(highligthed)
 			setBackgroundResource(R.drawable.grid_element_highlighted);
