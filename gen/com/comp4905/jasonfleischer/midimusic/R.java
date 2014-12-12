@@ -284,16 +284,11 @@ public final class R {
         public static final int drum_machine=0x7f070015;
         public static final int dubbing_started=0x7f070038;
         public static final int duration=0x7f070009;
-        /**  Default screen margins, per the Android Design guidelines.
-    
-    small 
-
-         Example customization of dimensions originally defined in res/values/dimens.xml
-         (such as screen margins) for screens with more than 820dp of available width. This
-         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
-         
-         large
-    
+        /**  Default screen margins, per the Android Design guidelines. small 
+ Example customization of dimensions originally defined in res/values/dimens.xml 
+		(such as screen margins) for screens with more than 820dp of available width. 
+		This would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively). 
+		large 
          */
         public static final int hidden=0x7f070000;
         public static final int highlighted_scale=0x7f070013;
@@ -339,15 +334,10 @@ public final class R {
         public static final int virtual_keyboard=0x7f07000f;
     }
     public static final class style {
-        /** 
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
+        /**  Base application theme, dependent on API level. This theme is replaced 
+		by AppBaseTheme from res/values-vXX/styles.xml on newer devices. 
+ Theme customizations available in newer API levels can go in res/values-vXX/styles.xml, 
+			while customizations related to backward-compatibility can go here. 
          */
         public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 

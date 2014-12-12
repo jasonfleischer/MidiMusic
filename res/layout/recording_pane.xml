@@ -1,60 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.comp4905.jasonfleischer.midimusic.views.RecordingPane
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-   	android:layout_height="wrap_content"
-   	android:orientation="horizontal"
-   	android:layout_marginTop="3dp"
-   	android:layout_marginBottom="3dp"
-   	android:background="@drawable/conatiner_shape_no_border"
-   	android:id="@+id/recording_pane_view">
-   	<LinearLayout 
-   	    android:orientation="vertical"
-   	    android:layout_width="wrap_content"
-     	android:layout_height="wrap_content"
-     	android:paddingLeft="5dp"
-     	android:visibility="@string/hidden"
-        android:paddingRight="5dp"
-        android:paddingTop="3dp">
-	   	<TextView 
-	   	    android:id="@+id/recording_bpm"
-	        android:layout_width="70dp"
-	        android:textStyle="bold"
-	        android:layout_height="wrap_content"/>
-	   	<TextView 
-	   	    android:id="@+id/recording_time"
-	        android:layout_width="70dp"
-	        android:textSize="10sp"
-	        android:layout_height="wrap_content"/>
-   	</LinearLayout>
-   	<TextView 
-   	    android:id="@+id/recording_status"
-        android:layout_width="75dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_height="50dp"/>
-	<ImageButton 
-        android:id="@+id/recording_rec_btn"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/record"
-        android:contentDescription="@string/descp_record_track"/> 
-    <ImageButton 
-        android:id="@+id/recording_loop_btn"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/loop"
-        android:contentDescription="@string/descp_loop_track"/>
-    <ImageButton 
-        android:id="@+id/recording_delete_track_btn"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/delete"
-        android:contentDescription="@string/descp_delete_track"/>
-
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:orientation="horizontal" android:layout_marginTop="3dp"
+	android:layout_marginBottom="3dp" android:background="@drawable/conatiner_shape_no_border"
+	android:id="@+id/recording_pane_view">
+	<LinearLayout android:orientation="vertical"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:paddingLeft="5dp" android:visibility="@string/hidden"
+		android:paddingRight="5dp" android:paddingTop="3dp">
+		<TextView android:id="@+id/recording_bpm"
+			android:layout_width="70dp" android:textStyle="bold"
+			android:layout_height="wrap_content" />
+		<TextView android:id="@+id/recording_time"
+			android:layout_width="70dp" android:textSize="10sp"
+			android:layout_height="wrap_content" />
+	</LinearLayout>
+	<TextView android:id="@+id/recording_status"
+		android:layout_width="75dp" android:paddingLeft="5dp"
+		android:paddingRight="5dp" android:paddingTop="3dp"
+		android:layout_marginRight="3dp" android:layout_height="50dp" />
+	<ImageButton android:id="@+id/recording_rec_btn"
+		android:layout_width="45dp" android:layout_height="45dp"
+		android:scaleType="fitCenter" android:src="@drawable/record"
+		android:contentDescription="@string/descp_record_track" />
+	<ImageButton android:id="@+id/recording_loop_btn"
+		android:layout_width="45dp" android:layout_height="45dp"
+		android:scaleType="fitCenter" android:src="@drawable/loop"
+		android:contentDescription="@string/descp_loop_track" />
+	<ImageButton android:id="@+id/recording_delete_track_btn"
+		android:layout_width="45dp" android:layout_height="45dp"
+		android:scaleType="fitCenter" android:src="@drawable/delete"
+		android:contentDescription="@string/descp_delete_track" />
 </com.comp4905.jasonfleischer.midimusic.views.RecordingPane>

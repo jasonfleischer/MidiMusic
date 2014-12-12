@@ -1,215 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_bottom_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_top_margin"
-    android:orientation="vertical" >
-    <RelativeLayout 
-        android:layout_width="match_parent"
-	    android:layout_height="50dp"
-	    android:orientation="horizontal">
-	    <LinearLayout 
-	    	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:orientation="vertical">
-	    	<LinearLayout 
-	    	    android:layout_width="wrap_content"
-	    		android:layout_height="wrap_content"
-	    		android:orientation="horizontal">
-			    <TextView 
-			        android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:textSize="20sp"
-		    		android:textStyle="bold"
-		    		android:layout_marginRight="15dp"
-		    		android:text="@string/sequencer"/>
-			    <TextView 
-			        android:id="@+id/sequence_name"
-			        android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:textSize="20sp"/>
-		    </LinearLayout>
-		    <include layout="@layout/usb_connection"/>
-	    </LinearLayout>
-		<LinearLayout 
-		    android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:layout_alignParentRight="true"> 
-	    	<ImageButton 
-	    	    android:layout_marginLeft="10dp"
-		        android:id="@+id/sequence_add_btn"
-		        android:layout_width="50dp"
-		        android:layout_height="50dp"
-		        android:scaleType="fitCenter"
-		        android:src="@drawable/add"
-		        android:contentDescription="@string/descp_add_sequence"/> 
-	    	<ImageButton 
-		        android:id="@+id/sequence_delete_btn"
-		        android:layout_width="50dp"
-		        android:layout_height="50dp"
-		        android:scaleType="fitCenter"
-		        android:src="@drawable/delete"
-	    		android:contentDescription="@string/descp_rem_sequence"/>
-	    	<ImageButton 
-		        android:id="@+id/sequence_play_btn"
-		        android:layout_width="50dp"
-		        android:layout_height="50dp"
-		        android:scaleType="fitCenter"
-		        android:src="@drawable/play"
-		        android:contentDescription="@string/descp_play"/> 
-	    	<ImageButton 
-		        android:id="@+id/sequence_loop_btn"
-		        android:layout_width="50dp"
-		        android:layout_height="50dp"
-		        android:scaleType="fitCenter"
-		        android:src="@drawable/loop"
-		        android:contentDescription="@string/descp_loop"/>
-	    	<ImageButton
-		        android:id="@+id/sequence_connect_btn"
-		        android:layout_width="50dp"
-		        android:layout_height="50dp"
-		        android:scaleType="fitCenter"
-		        android:src="@drawable/connect"
-		        android:contentDescription="@string/descp_connect_keyboard"/>
-	    	<ImageButton 
-		        android:id="@+id/sequence_expand_btn"
-		        android:layout_width="50dp"
-		        android:layout_marginRight="30dp"
-		        android:layout_height="50dp"
-		        android:scaleType="fitCenter"
-		        android:src="@drawable/collapse"
-		        android:contentDescription="@string/descp_expand"/> 
-		    <ImageButton 
-		        android:id="@+id/sequence_key_btn"
-		        android:layout_width="50dp"
-		        android:layout_height="50dp"
-		        android:scaleType="fitCenter"
-		        android:src="@drawable/keys"
-		        android:contentDescription="@string/descp_intrument_screen"/>
+	android:layout_width="match_parent" android:layout_height="match_parent"
+	android:paddingBottom="@dimen/activity_bottom_margin"
+	android:paddingLeft="@dimen/activity_horizontal_margin"
+	android:paddingRight="@dimen/activity_horizontal_margin"
+	android:paddingTop="@dimen/activity_top_margin" android:orientation="vertical">
+	<RelativeLayout android:layout_width="match_parent"
+		android:layout_height="50dp" android:orientation="horizontal">
+		<LinearLayout android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:orientation="vertical">
+			<LinearLayout android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:orientation="horizontal">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textSize="20sp"
+					android:textStyle="bold" android:layout_marginRight="15dp"
+					android:text="@string/sequencer" />
+				<TextView android:id="@+id/sequence_name"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:textSize="20sp" />
+			</LinearLayout>
+			<include layout="@layout/usb_connection" />
+		</LinearLayout>
+		<LinearLayout android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_alignParentRight="true">
+			<ImageButton android:layout_marginLeft="10dp"
+				android:id="@+id/sequence_add_btn" android:layout_width="50dp"
+				android:layout_height="50dp" android:scaleType="fitCenter"
+				android:src="@drawable/add" android:contentDescription="@string/descp_add_sequence" />
+			<ImageButton android:id="@+id/sequence_delete_btn"
+				android:layout_width="50dp" android:layout_height="50dp"
+				android:scaleType="fitCenter" android:src="@drawable/delete"
+				android:contentDescription="@string/descp_rem_sequence" />
+			<ImageButton android:id="@+id/sequence_play_btn"
+				android:layout_width="50dp" android:layout_height="50dp"
+				android:scaleType="fitCenter" android:src="@drawable/play"
+				android:contentDescription="@string/descp_play" />
+			<ImageButton android:id="@+id/sequence_loop_btn"
+				android:layout_width="50dp" android:layout_height="50dp"
+				android:scaleType="fitCenter" android:src="@drawable/loop"
+				android:contentDescription="@string/descp_loop" />
+			<ImageButton android:id="@+id/sequence_connect_btn"
+				android:layout_width="50dp" android:layout_height="50dp"
+				android:scaleType="fitCenter" android:src="@drawable/connect"
+				android:contentDescription="@string/descp_connect_keyboard" />
+			<ImageButton android:id="@+id/sequence_expand_btn"
+				android:layout_width="50dp" android:layout_marginRight="30dp"
+				android:layout_height="50dp" android:scaleType="fitCenter"
+				android:src="@drawable/collapse" android:contentDescription="@string/descp_expand" />
+			<ImageButton android:id="@+id/sequence_key_btn"
+				android:layout_width="50dp" android:layout_height="50dp"
+				android:scaleType="fitCenter" android:src="@drawable/keys"
+				android:contentDescription="@string/descp_intrument_screen" />
 		</LinearLayout>
 	</RelativeLayout>
-	
-    <RelativeLayout
-        android:layout_width="fill_parent"
-		android:layout_height="fill_parent">	
-		
 
-        <GridLayout 
-            android:id="@+id/seqGridLayout"
-		    android:layout_width="wrap_content"
-    		android:layout_height="wrap_content"
-    		android:columnCount="2" 
-    		android:rowCount="6"
-    		android:layout_gravity="center"
-			android:orientation="horizontal"
-			android:layout_alignParentRight="true"
-    		android:paddingRight="5dp"
-    		android:paddingLeft="10dp">
-		    <TextView 
-		        android:layout_width="wrap_content"
-			    android:layout_height="wrap_content" 
-			    android:textStyle="bold"
-			    android:textSize="18sp"
-			    android:text="@string/sequence"/>
-			<Spinner
-			    android:id="@+id/seqSeqSpinner"
-			    android:layout_width="150dp"
-			    android:layout_height="60dp" />
-			<TextView 
-		        android:layout_width="wrap_content"
-			    android:layout_height="wrap_content" 
-			    android:textStyle="bold"
-			    android:textSize="18sp"
-			    android:text="@string/tempo"/>
-			<Spinner
-			    android:id="@+id/seqTempoSpinner"
-			    android:layout_width="150dp"
-			    android:layout_height="60dp" />
-		    <TextView 
-		        android:layout_width="wrap_content"
-			    android:layout_height="wrap_content" 
-			    android:textStyle="bold"
-			    android:textSize="18sp"
-			    android:text="@string/key"/>
-			<Spinner
-			    android:id="@+id/seqKeySpinner"
-			    android:layout_width="150dp"
-			    android:layout_height="60dp" />
-			<TextView 
-		        android:layout_width="wrap_content"
-			    android:layout_height="wrap_content" 
-			    android:textStyle="bold"
-			    android:textSize="18sp"
-			    android:text="@string/octave"/>
-			<Spinner
-			    android:id="@+id/seqOctaveSpinner"
-			    android:layout_width="150dp"
-			    android:layout_height="60dp" />
-			<TextView 
-		        android:layout_width="wrap_content"
-			    android:layout_height="wrap_content" 
-			    android:textStyle="bold"
-			    android:textSize="18sp"
-			    android:paddingRight="10dp"
-			    android:text="@string/instrument"/>
-			<Spinner
-			    android:id="@+id/seqInstrumentSpinner"
-			    android:layout_width="150dp"
-			    android:layout_height="60dp" />
-			<TextView 
-		        android:layout_width="wrap_content"
-			    android:layout_height="wrap_content" 
-			    android:textStyle="bold"
-			    android:textSize="18sp"
-			    android:text="@string/duration"/>
-			<Spinner
-			    android:id="@+id/seqDurationSpinner"
-			    android:layout_width="150dp"
-			    android:layout_height="60dp" />
-			<TextView 
-		        android:layout_width="wrap_content"
-			    android:layout_height="wrap_content" 
-			    android:textStyle="bold"
-			    android:textSize="18sp"
-			    android:text="@string/columns"/>
-			<Spinner
-			    android:id="@+id/seqColSpinner"
-			    android:layout_width="150dp"
-			    android:layout_height="60dp" />
-			
+	<RelativeLayout android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		
+		<GridLayout android:id="@+id/seqGridLayout"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:columnCount="2" android:rowCount="6" android:layout_gravity="center"
+			android:orientation="horizontal" android:layout_alignParentRight="true"
+			android:paddingRight="5dp" android:paddingLeft="10dp">
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:textStyle="bold"
+				android:textSize="18sp" android:text="@string/sequence" />
+			<Spinner android:id="@+id/seqSeqSpinner"
+				android:layout_width="150dp" android:layout_height="60dp" />
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:textStyle="bold"
+				android:textSize="18sp" android:text="@string/tempo" />
+			<Spinner android:id="@+id/seqTempoSpinner"
+				android:layout_width="150dp" android:layout_height="60dp" />
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:textStyle="bold"
+				android:textSize="18sp" android:text="@string/key" />
+			<Spinner android:id="@+id/seqKeySpinner"
+				android:layout_width="150dp" android:layout_height="60dp" />
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:textStyle="bold"
+				android:textSize="18sp" android:text="@string/octave" />
+			<Spinner android:id="@+id/seqOctaveSpinner"
+				android:layout_width="150dp" android:layout_height="60dp" />
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:textStyle="bold"
+				android:textSize="18sp" android:paddingRight="10dp" android:text="@string/instrument" />
+			<Spinner android:id="@+id/seqInstrumentSpinner"
+				android:layout_width="150dp" android:layout_height="60dp" />
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:textStyle="bold"
+				android:textSize="18sp" android:text="@string/duration" />
+			<Spinner android:id="@+id/seqDurationSpinner"
+				android:layout_width="150dp" android:layout_height="60dp" />
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:textStyle="bold"
+				android:textSize="18sp" android:text="@string/columns" />
+			<Spinner android:id="@+id/seqColSpinner"
+				android:layout_width="150dp" android:layout_height="60dp" />
 		</GridLayout>
-        
-        <ScrollView 
-		    android:layout_width="fill_parent"
-	    	android:layout_height="fill_parent"
-	    	android:background="@drawable/rounded_corners_bg_shape"
-		    android:padding="0dp"
-		    android:layout_toLeftOf="@id/seqGridLayout">
-			<HorizontalScrollView
-			    android:layout_width="fill_parent"
-		    	android:layout_height="wrap_content">
-			    <LinearLayout 
-			        android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:orientation="horizontal"
-				    android:padding="5dp">
-				    <LinearLayout 
-			        	android:layout_width="wrap_content"
-				    	android:layout_height="wrap_content"
-				    	android:orientation="vertical"
-				    	android:id="@+id/seq_vertical_markers">
-				    </LinearLayout>
-					<GridLayout 
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:id="@+id/sequence_grid_layout">
-					</GridLayout>
+
+		<ScrollView android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:background="@drawable/rounded_corners_bg_shape"
+			android:padding="0dp" android:layout_toLeftOf="@id/seqGridLayout">
+			<HorizontalScrollView android:layout_width="fill_parent"
+				android:layout_height="wrap_content">
+				<LinearLayout android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:orientation="horizontal"
+					android:padding="5dp">
+					<LinearLayout android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:orientation="vertical"
+						android:id="@+id/seq_vertical_markers" />
+
+					<GridLayout android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:id="@+id/sequence_grid_layout" />
 				</LinearLayout>
 			</HorizontalScrollView>
 		</ScrollView>
-        
+
 	</RelativeLayout>
 </LinearLayout>

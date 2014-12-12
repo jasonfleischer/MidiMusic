@@ -33,7 +33,7 @@ public class GridElement extends FrameLayout{
 				disabled = true;
 				setAlpha(0.5f);
 			}
-		}else if(MainActivity.config.playingMode  == PlayingMode.SEQUENCE){
+		}else if(MainActivity.config.playingMode == PlayingMode.SEQUENCE){
 			if(!MainActivity.config.sequenceInstrument.inRange(note.getMidiValue())){
 				disabled = true;
 				setAlpha(0.5f);

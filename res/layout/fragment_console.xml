@@ -1,462 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_bottom_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_top_margin" >
-
-    <RelativeLayout 
-        android:layout_width="match_parent"
-	    android:layout_height="50dp"
-	    android:orientation="horizontal">
-	    <LinearLayout 
-    	    android:layout_width="wrap_content"
-    		android:layout_height="wrap_content"
-    		android:orientation="vertical">
-		    <TextView 
-		        android:layout_width="wrap_content"
-	    		android:layout_height="wrap_content"
-	    		android:textSize="20sp"
-	    		android:textStyle="bold"
-	    		android:text="@string/console"/>
-		    <include layout="@layout/usb_connection"/>
-	    </LinearLayout>
-		<LinearLayout 
-		    android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:layout_alignParentRight="true"> 
-		    <ImageButton 
-		        android:id="@+id/console_key_btn"
-		        android:layout_width="50dp"
-		        android:layout_height="50dp"
-		        android:scaleType="fitCenter"
-		        android:src="@drawable/keys"
-		        android:contentDescription="@string/descp_intrument_screen"/>
+	android:layout_width="match_parent" android:layout_height="match_parent"
+	android:orientation="vertical" android:paddingBottom="@dimen/activity_bottom_margin"
+	android:paddingLeft="@dimen/activity_horizontal_margin"
+	android:paddingRight="@dimen/activity_horizontal_margin"
+	android:paddingTop="@dimen/activity_top_margin">
+	<RelativeLayout android:layout_width="match_parent"
+		android:layout_height="50dp" android:orientation="horizontal">
+		<LinearLayout android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:orientation="vertical">
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:textSize="20sp"
+				android:textStyle="bold" android:text="@string/console" />
+			<include layout="@layout/usb_connection" />
+		</LinearLayout>
+		<LinearLayout android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_alignParentRight="true">
+			<ImageButton android:id="@+id/console_key_btn"
+				android:layout_width="50dp" android:layout_height="50dp"
+				android:scaleType="fitCenter" android:src="@drawable/keys"
+				android:contentDescription="@string/descp_intrument_screen" />
 		</LinearLayout>
 	</RelativeLayout>
-	<ScrollView
-	    android:layout_width="fill_parent"
-    	android:layout_height="fill_parent"
-    	android:background="@drawable/rounded_corners_bg_shape"
-    	android:paddingLeft="@dimen/console_indent">
-	<HorizontalScrollView
-	    android:layout_width="fill_parent"
-    	android:layout_height="wrap_content">
-		<LinearLayout
-		    android:layout_width="wrap_content"
-    		android:layout_height="wrap_content"
-    		android:orientation="horizontal"
-    		android:paddingLeft="10dp"
-    		android:paddingRight="10dp" >
-		<LinearLayout
-		    android:layout_width="wrap_content"
-    		android:layout_height="wrap_content"
-    		android:orientation="vertical"
-    		android:paddingLeft="10dp"
-    		android:paddingRight="10dp" >
-    		<LinearLayout
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_marginTop="10dp"
-		        android:background="@drawable/conatiner_shape"
-		        android:paddingRight="10dp"
-		        android:paddingLeft="10dp"
-		        android:paddingBottom="10dp" 
-		        android:orientation="vertical">
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:background="@drawable/rounded_corners_bg_shape"
+		android:paddingLeft="@dimen/console_indent">
+		<HorizontalScrollView android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+			<LinearLayout android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:orientation="horizontal"
+				android:paddingLeft="10dp" android:paddingRight="10dp">
+				<LinearLayout android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:orientation="vertical"
+					android:paddingLeft="10dp" android:paddingRight="10dp">
+					<LinearLayout android:layout_width="fill_parent"
+						android:layout_height="wrap_content" android:layout_marginTop="10dp"
+						android:background="@drawable/conatiner_shape"
+						android:paddingRight="10dp" android:paddingLeft="10dp"
+						android:paddingBottom="10dp" android:orientation="vertical">
+						<GridLayout android:layout_width="wrap_content"
+							android:layout_marginLeft="10dp" android:layout_height="wrap_content"
+							android:columnCount="2">
+							<TextView android:layout_width="match_parent"
+								android:layout_height="wrap_content" android:layout_marginTop="5dp"
+								android:layout_marginBottom="10dp" android:text="@string/usb_settings"
+								android:textSize="@dimen/font_title" android:textStyle="bold" />
+							<Button android:id="@+id/usb_btn"
+								android:layout_marginTop="10dp" android:layout_width="180dp"
+								android:layout_height="50dp" android:text="Connect USB Device" />
+							<TextView android:layout_height="wrap_content"
+								android:layout_width="200dp" android:textStyle="bold"
+								android:textSize="@dimen/font_sub_title" android:text="Modulate USB:" />
+							<Spinner android:id="@+id/modulateSpinner"
+								android:layout_width="180dp" android:layout_height="60dp" />
+						</GridLayout>
+					</LinearLayout>
 
-				<GridLayout 
-				    android:layout_width="wrap_content"
-				    android:layout_marginLeft="10dp"
-		    		android:layout_height="wrap_content"
-		    		android:columnCount="2" > 
-		    		<TextView
-			            android:layout_width="match_parent"
-			            android:layout_height="wrap_content"
-						android:layout_marginTop="5dp"
-			            android:layout_marginBottom="10dp"
-			            android:text="@string/usb_settings"
-			            android:textSize="@dimen/font_title"
-			            android:textStyle="bold" />
-					<Button 
-					    android:id="@+id/usb_btn"
-					    android:layout_marginTop="10dp"
-					    android:layout_width="180dp"
-				        android:layout_height="50dp"
-				        android:text="Connect USB Device"/>
-					<TextView 
-					    android:layout_height="wrap_content" 
-					    android:layout_width="200dp"
-					    android:textStyle="bold"
-					    android:textSize="@dimen/font_sub_title"
-					    android:text="Modulate USB:"/>
-					<Spinner
-					    android:id="@+id/modulateSpinner"
-					    android:layout_width="180dp"
-					    android:layout_height="60dp" />
-		        </GridLayout>
-		    </LinearLayout>
+					<LinearLayout android:id="@+id/playing_mode_cont"
+						android:layout_width="fill_parent" android:layout_height="wrap_content"
+						android:layout_marginTop="10dp" android:layout_marginBottom="10dp"
+						android:background="@drawable/conatiner_shape"
+						android:orientation="vertical" android:paddingBottom="10dp"
+						android:paddingLeft="10dp" android:paddingRight="10dp">
 
-		    <LinearLayout
-		        android:id="@+id/playing_mode_cont"
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_marginTop="10dp"
-		        android:layout_marginBottom="10dp"
-		        android:background="@drawable/conatiner_shape"
-		        android:orientation="vertical"
-		        android:paddingBottom="10dp"
-		        android:paddingLeft="10dp"
-		        android:paddingRight="10dp" >
+						<TextView android:layout_width="match_parent"
+							android:layout_height="wrap_content" android:layout_marginTop="15dp"
+							android:text="@string/playing_mode" android:textSize="@dimen/font_title"
+							android:textStyle="bold" />
 
-		        <TextView
-		            android:layout_width="match_parent"
-		            android:layout_height="wrap_content"
-		            android:layout_marginTop="15dp"
-		            android:text="@string/playing_mode"
-		            android:textSize="@dimen/font_title"
-		            android:textStyle="bold" />
+						<LinearLayout android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:orientation="horizontal">
 
-		        <LinearLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:orientation="horizontal" >
+							<RadioGroup android:id="@+id/playing_mode_radio_group"
+								android:layout_width="match_parent" android:layout_height="wrap_content"
+								android:orientation="horizontal">
 
-		            <RadioGroup
-		                android:id="@+id/playing_mode_radio_group"
-		                android:layout_width="match_parent"
-		                android:layout_height="wrap_content"
-		                android:orientation="horizontal" >
+								<RadioButton android:layout_width="wrap_content"
+									android:layout_height="60dp" android:paddingRight="18dp" />
 
-		                <RadioButton
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp"
-		                    android:paddingRight="18dp" />
+								<RadioButton android:layout_width="wrap_content"
+									android:layout_height="60dp" android:paddingRight="18dp" />
 
-		                <RadioButton
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp"
-		                    android:paddingRight="18dp" />
+								<RadioButton android:layout_width="wrap_content"
+									android:layout_height="60dp" android:paddingRight="18dp" />
 
-		                <RadioButton
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp"
-		                    android:paddingRight="18dp" />
+								<RadioButton android:layout_width="wrap_content"
+									android:layout_height="60dp" />
+							</RadioGroup>
+						</LinearLayout>
 
-		                <RadioButton
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp" />
-		            </RadioGroup>
-		        </LinearLayout>
+						<GridLayout android:id="@+id/instrument_cont"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							android:columnCount="2">
 
-		        <GridLayout
-		            android:id="@+id/instrument_cont"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:columnCount="2" >
+							<TextView android:layout_width="180dp"
+								android:layout_height="wrap_content" android:layout_gravity="left"
+								android:text="@string/instrument" android:textSize="@dimen/font_sub_title"
+								android:textStyle="bold" />
 
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="@string/instrument"
-		                android:textSize="@dimen/font_sub_title"
-		                android:textStyle="bold" />
+							<Spinner android:id="@+id/instrumentSpinner"
+								android:layout_width="210dp" android:layout_height="60dp"
+								android:layout_gravity="fill_horizontal" />
+						</GridLayout>
 
-		            <Spinner
-		                android:id="@+id/instrumentSpinner"
-		                android:layout_width="210dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		        </GridLayout>
+						<GridLayout android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:columnCount="2"
+							android:visibility="gone">
 
-		        <GridLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:columnCount="2"
-		            android:visibility="gone" >
+							<TextView android:layout_width="180dp"
+								android:layout_height="wrap_content" android:layout_gravity="left"
+								android:text="@string/sustain" android:textSize="@dimen/font_sub_title"
+								android:textStyle="bold" />
 
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="@string/sustain"
-		                android:textSize="@dimen/font_sub_title"
-		                android:textStyle="bold" />
+							<Spinner android:id="@+id/duration_spinner"
+								android:layout_width="210dp" android:layout_height="60dp"
+								android:layout_gravity="fill_horizontal" />
+						</GridLayout>
 
-		            <Spinner
-		                android:id="@+id/duration_spinner"
-		                android:layout_width="210dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		        </GridLayout>
+						<GridLayout android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:columnCount="2"
+							android:visibility="gone">
 
-		        <GridLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:columnCount="2"
-		            android:visibility="gone" >
+							<TextView android:layout_width="180dp"
+								android:layout_height="wrap_content" android:layout_gravity="left"
+								android:text="Chord:" android:textSize="@dimen/font_sub_title"
+								android:textStyle="bold" />
 
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="Chord:"
-		                android:textSize="@dimen/font_sub_title"
-		                android:textStyle="bold" />
+							<Spinner android:id="@+id/chord_spinner"
+								android:layout_width="210dp" android:layout_height="60dp"
+								android:layout_gravity="fill_horizontal" />
 
-		            <Spinner
-		                android:id="@+id/chord_spinner"
-		                android:layout_width="210dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
+							<TextView android:layout_width="180dp"
+								android:layout_height="wrap_content" android:layout_gravity="left"
+								android:text="@string/sustain" android:textSize="@dimen/font_sub_title"
+								android:textStyle="bold" />
 
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="@string/sustain"
-		                android:textSize="@dimen/font_sub_title"
-		                android:textStyle="bold" />
+							<Spinner android:id="@+id/duration_spinner_chord"
+								android:layout_width="210dp" android:layout_height="60dp"
+								android:layout_gravity="fill_horizontal" />
+						</GridLayout>
 
-		            <Spinner
-		                android:id="@+id/duration_spinner_chord"
-		                android:layout_width="210dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		        </GridLayout>
+						<GridLayout android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:columnCount="2"
+							android:visibility="gone">
 
-		        <GridLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:columnCount="2"
-		            android:visibility="gone" >
+							<TextView android:layout_width="180dp"
+								android:layout_height="wrap_content" android:layout_gravity="left"
+								android:text="Type:" android:textSize="@dimen/font_sub_title"
+								android:textStyle="bold" />
 
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="Type:"
-		                android:textSize="@dimen/font_sub_title"
-		                android:textStyle="bold" />
+							<Spinner android:id="@+id/sequence_spinner"
+								android:layout_width="210dp" android:layout_height="60dp"
+								android:layout_gravity="fill_horizontal" />
 
-		            <Spinner
-		                android:id="@+id/sequence_spinner"
-		                android:layout_width="210dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
+							<TextView android:layout_width="180dp"
+								android:layout_height="wrap_content" android:layout_gravity="left"
+								android:text="@string/tempo" android:textSize="@dimen/font_sub_title"
+								android:textStyle="bold" />
 
-		            <TextView
-		                android:layout_width="180dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="@string/tempo"
-		                android:textSize="@dimen/font_sub_title"
-		                android:textStyle="bold" />
+							<Spinner android:id="@+id/sequence_tempo_spinner"
+								android:layout_width="210dp" android:layout_height="60dp"
+								android:layout_gravity="fill_horizontal" />
+						</GridLayout>
 
-		            <Spinner
-		                android:id="@+id/sequence_tempo_spinner"
-		                android:layout_width="210dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		        </GridLayout>
+						<FrameLayout android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:visibility="gone" />
 
-		        <FrameLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:visibility="gone" >
-		        </FrameLayout>
-		    </LinearLayout>
-		    
-		</LinearLayout>
-
-		<LinearLayout
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-		    android:paddingLeft="10dp"
-		    android:paddingRight="10dp" >
-
-		    <LinearLayout
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_marginTop="10dp"
-		        android:background="@drawable/conatiner_shape"
-		        android:paddingRight="10dp"
-		        android:paddingLeft="10dp"
-		        android:paddingBottom="10dp" 
-		        android:orientation="vertical">
-				<RelativeLayout  
-				    android:layout_width="wrap_content"
-		        	android:layout_height="wrap_content">
-					<TextView
-			            android:layout_width="match_parent"
-			            android:layout_height="wrap_content"
-			            android:layout_marginTop="15dp"
-			            android:text="@string/metronome"
-			            android:textSize="@dimen/font_title"
-			            android:textStyle="bold" />
-					<LinearLayout  
-					    android:id="@+id/console_metronome_btn_cont"
-					    android:layout_width="wrap_content"
-		        		android:layout_height="wrap_content"
-		        		android:orientation="horizontal"
-		        		android:layout_alignParentRight="true">
-					   <ImageButton
-				            android:layout_width="50dp"
-				            android:layout_height="50dp"
-				            android:layout_marginTop="3dp"
-				            android:scaleType="fitCenter"
-				            android:src="@drawable/metronome"
-				            android:contentDescription="@null" />
-					   <ImageButton
-				            android:id="@+id/console_metronome_btn"
-				            android:layout_width="50dp"
-				            android:layout_height="50dp"
-				            android:layout_marginTop="3dp"
-				            android:scaleType="fitCenter"
-				            android:src="@drawable/play"
-				            android:contentDescription="@string/descp_metronome" />
-				   </LinearLayout>
-				</RelativeLayout>
-				<LinearLayout 
-				    android:layout_width="wrap_content"
-		        	android:layout_height="wrap_content">
-				    <TextView
-			            android:layout_width="wrap_content"
-			            android:layout_height="wrap_content"
-			            android:text="@string/tempo"
-			            android:textSize="@dimen/font_sub_title"
-			            android:textStyle="bold"
-			            android:labelFor="@+id/consoleTempoSpinner" />
-			        <Spinner
-			            android:id="@id/consoleTempoSpinner"
-			            android:layout_width="130dp"
-			            android:layout_height="60dp"
-			            android:layout_weight="1" />
-			        <TextView
-			            android:layout_width="wrap_content"
-			            android:layout_height="wrap_content"
-			            android:layout_marginLeft="30dp"
-			            android:text="Accent:"
-			            android:textSize="@dimen/font_sub_title"
-			            android:textStyle="bold"
-			            android:labelFor="@+id/consoleAccentSpinner" />
-			        <Spinner
-			            android:id="@id/consoleAccentSpinner"
-			            android:layout_width="130dp"
-			            android:layout_height="60dp"
-			            android:layout_weight="1" />
+					</LinearLayout>
 
 				</LinearLayout>
-				<LinearLayout 
-				    android:layout_width="wrap_content"
-				    android:layout_marginTop="5dp"
-		        	android:layout_height="wrap_content">
-			        <TextView
-			            android:layout_width="wrap_content"
-			            android:layout_height="wrap_content"
-			            android:text="Spoken:"
-			            android:textSize="@dimen/font_sub_title"
-			            android:textStyle="bold" />
-				    <ToggleButton 
-				        android:layout_marginLeft="5dp"
-				        android:id="@+id/console_spoken_metronome_btn"
-				        android:layout_width="wrap_content"
-				        android:layout_height="wrap_content"/>
-				    <RadioGroup android:id="@+id/console_spoken_options"
-		                android:layout_width="match_parent"
-		                android:layout_height="wrap_content"
-		                android:layout_marginLeft="5dp"
-		                android:checkedButton="@+id/console_spoken_option_1"
-		                android:orientation="horizontal">
-				        <RadioButton
-				            android:id="@+id/console_spoken_option_1"
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp"
-		                    android:paddingRight="18dp"
-		                    android:text="- - -" />
-				         <RadioButton
-				            android:id="@+id/console_spoken_option_2"
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp"
-		                    android:paddingRight="18dp"
-		                    android:text="- And -"  />
-				          <RadioButton
-				            android:id="@+id/console_spoken_option_3"
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="60dp"
-		                    android:paddingRight="18dp"
-		                    android:text="e And a"  />
-				    </RadioGroup>
-				</LinearLayout>
-		        
-		    </LinearLayout>
 
-		    <LinearLayout
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_marginTop="10dp"
-		        android:layout_marginBottom="10dp"
-		        android:background="@drawable/conatiner_shape"
-		        android:orientation="vertical"
-		        android:paddingBottom="10dp"
-		        android:paddingLeft="10dp"
-		        android:paddingRight="10dp" >
-		        <TextView
-		            android:layout_width="match_parent"
-		            android:layout_height="wrap_content"
-		            android:layout_marginBottom="10dp"
-		            android:layout_marginTop="15dp"
-		            android:text="@string/virtual_keyboard"
-		            android:textSize="@dimen/font_title"
-		            android:textStyle="bold" />
-		        <GridLayout
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:columnCount="2" >
-		            <TextView
-		                android:layout_width="200dp"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="@string/transpose_key"
-		                android:textSize="@dimen/font_sub_title"
-		                android:textStyle="bold" />
-		            <Spinner
-		                android:id="@+id/keySpinner"
-		                android:layout_width="210dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		            <TextView
-		                android:layout_width="match_parent"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="@string/octave"
-		                android:textSize="@dimen/font_sub_title"
-		                android:textStyle="bold" />
-		            <Spinner
-		                android:id="@+id/octaveSpinner"
-		                android:layout_width="210dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		            <TextView
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="left"
-		                android:text="@string/highlighted_scale"
-		                android:textSize="@dimen/font_sub_title"
-		                android:textStyle="bold" />
-		            <Spinner
-		                android:id="@+id/scaleSpinner"
-		                android:layout_width="210dp"
-		                android:layout_height="60dp"
-		                android:layout_gravity="fill_horizontal" />
-		        </GridLayout>
-		    </LinearLayout>
-		</LinearLayout>
-		    
-		</LinearLayout>
-	</HorizontalScrollView>
+				<LinearLayout android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:orientation="vertical"
+					android:paddingLeft="10dp" android:paddingRight="10dp">
+
+					<LinearLayout android:layout_width="fill_parent"
+						android:layout_height="wrap_content" android:layout_marginTop="10dp"
+						android:background="@drawable/conatiner_shape"
+						android:paddingRight="10dp" android:paddingLeft="10dp"
+						android:paddingBottom="10dp" android:orientation="vertical">
+						<RelativeLayout android:layout_width="wrap_content"
+							android:layout_height="wrap_content">
+							<TextView android:layout_width="match_parent"
+								android:layout_height="wrap_content" android:layout_marginTop="15dp"
+								android:text="@string/metronome" android:textSize="@dimen/font_title"
+								android:textStyle="bold" />
+							<LinearLayout android:id="@+id/console_metronome_btn_cont"
+								android:layout_width="wrap_content" android:layout_height="wrap_content"
+								android:orientation="horizontal"
+								android:layout_alignParentRight="true">
+								<ImageButton android:layout_width="50dp"
+									android:layout_height="50dp" android:layout_marginTop="3dp"
+									android:scaleType="fitCenter" android:src="@drawable/metronome"
+									android:contentDescription="@null" />
+								<ImageButton android:id="@+id/console_metronome_btn"
+									android:layout_width="50dp" android:layout_height="50dp"
+									android:layout_marginTop="3dp" android:scaleType="fitCenter"
+									android:src="@drawable/play" android:contentDescription="@string/descp_metronome" />
+							</LinearLayout>
+						</RelativeLayout>
+						<LinearLayout android:layout_width="wrap_content"
+							android:layout_height="wrap_content">
+							<TextView android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:text="@string/tempo"
+								android:textSize="@dimen/font_sub_title" android:textStyle="bold"
+								android:labelFor="@+id/consoleTempoSpinner" />
+							<Spinner android:id="@id/consoleTempoSpinner"
+								android:layout_width="130dp" android:layout_height="60dp"
+								android:layout_weight="1" />
+							<TextView android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:layout_marginLeft="30dp"
+								android:text="Accent:" android:textSize="@dimen/font_sub_title"
+								android:textStyle="bold" android:labelFor="@+id/consoleAccentSpinner" />
+							<Spinner android:id="@id/consoleAccentSpinner"
+								android:layout_width="130dp" android:layout_height="60dp"
+								android:layout_weight="1" />
+
+						</LinearLayout>
+						<LinearLayout android:layout_width="wrap_content"
+							android:layout_marginTop="5dp" android:layout_height="wrap_content">
+							<TextView android:layout_width="wrap_content"
+								android:layout_height="wrap_content" android:text="Spoken:"
+								android:textSize="@dimen/font_sub_title" android:textStyle="bold" />
+							<ToggleButton android:layout_marginLeft="5dp"
+								android:id="@+id/console_spoken_metronome_btn"
+								android:layout_width="wrap_content" android:layout_height="wrap_content" />
+							<RadioGroup android:id="@+id/console_spoken_options"
+								android:layout_width="match_parent" android:layout_height="wrap_content"
+								android:layout_marginLeft="5dp" android:checkedButton="@+id/console_spoken_option_1"
+								android:orientation="horizontal">
+								<RadioButton android:id="@+id/console_spoken_option_1"
+									android:layout_width="wrap_content" android:layout_height="60dp"
+									android:paddingRight="18dp" android:text="- - -" />
+								<RadioButton android:id="@+id/console_spoken_option_2"
+									android:layout_width="wrap_content" android:layout_height="60dp"
+									android:paddingRight="18dp" android:text="- And -" />
+								<RadioButton android:id="@+id/console_spoken_option_3"
+									android:layout_width="wrap_content" android:layout_height="60dp"
+									android:paddingRight="18dp" android:text="e And a" />
+							</RadioGroup>
+						</LinearLayout>
+					</LinearLayout>
+
+					<LinearLayout android:layout_width="fill_parent"
+						android:layout_height="wrap_content" android:layout_marginTop="10dp"
+						android:layout_marginBottom="10dp" android:background="@drawable/conatiner_shape"
+						android:orientation="vertical" android:paddingBottom="10dp"
+						android:paddingLeft="10dp" android:paddingRight="10dp">
+						<TextView android:layout_width="match_parent"
+							android:layout_height="wrap_content" android:layout_marginBottom="10dp"
+							android:layout_marginTop="15dp" android:text="@string/virtual_keyboard"
+							android:textSize="@dimen/font_title" android:textStyle="bold" />
+						<GridLayout android:layout_width="wrap_content"
+							android:layout_height="wrap_content" android:columnCount="2">
+							<TextView android:layout_width="200dp"
+								android:layout_height="wrap_content" android:layout_gravity="left"
+								android:text="@string/transpose_key" android:textSize="@dimen/font_sub_title"
+								android:textStyle="bold" />
+							<Spinner android:id="@+id/keySpinner"
+								android:layout_width="210dp" android:layout_height="60dp"
+								android:layout_gravity="fill_horizontal" />
+							<TextView android:layout_width="match_parent"
+								android:layout_height="wrap_content" android:layout_gravity="left"
+								android:text="@string/octave" android:textSize="@dimen/font_sub_title"
+								android:textStyle="bold" />
+							<Spinner android:id="@+id/octaveSpinner"
+								android:layout_width="210dp" android:layout_height="60dp"
+								android:layout_gravity="fill_horizontal" />
+							<TextView android:layout_height="wrap_content"
+								android:layout_gravity="left" android:text="@string/highlighted_scale"
+								android:textSize="@dimen/font_sub_title" android:textStyle="bold" />
+							<Spinner android:id="@+id/scaleSpinner"
+								android:layout_width="210dp" android:layout_height="60dp"
+								android:layout_gravity="fill_horizontal" />
+						</GridLayout>
+					</LinearLayout>
+				</LinearLayout>
+			</LinearLayout>
+		</HorizontalScrollView>
 	</ScrollView>
 </LinearLayout>

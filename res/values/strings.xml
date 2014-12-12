@@ -6,8 +6,8 @@
 	<string name="note">Note:</string>
 	<string name="usb_disconn">USB Device Disconnected</string>
 	<string name="usb_conn">USB Device Connected</string>
-	
-	
+
+
 	<string name="octave">Octave:</string>
 	<string name="instrument">Instrument:</string>
 	<string name="key">Key:</string>
@@ -16,8 +16,8 @@
 	<string name="sustain">Sustain:</string>
 	<string name="sequence">Sequence:</string>
 	<string name="columns">Columns:</string>
-	
-	
+
+
 	<string name="usb_settings">USB Settings</string>
 	<string name="virtual_keyboard">Virtual Keyboard</string>
 	<string name="playing_mode">Playing Mode</string>
@@ -53,17 +53,23 @@
 	<string name="permission_denied_for_usb">Permission denied for USB device</string>
 
 	<string name="attach_chord">Midi Device and virtual keyboard is now attached to
-		chord sounds</string>
+		chord sounds
+	</string>
 	<string name="detach_chords">Midi Device and virtual keyboard is now detached
-		from chord sounds</string>
+		from chord sounds
+	</string>
 	<string name="attach_drum">Midi Device and virtual keyboard is now attached to
-		drum sounds</string>
+		drum sounds
+	</string>
 	<string name="detach_drum">Midi Device and virtual keyboard is now detached
-		from drum sounds</string>
+		from drum sounds
+	</string>
 	<string name="attach_sequence">Midi Device and virtual keyboard is now attached to
-		sequence sounds</string>
+		sequence sounds
+	</string>
 	<string name="detach_sequence">Midi Device and virtual keyboard is now detached
-		from sequence sounds</string>
+		from sequence sounds
+	</string>
 
 	<string name="create_sequence_limit">Cannot create more than 30 sequences</string>
 	<string name="new_sequence">New sequence</string>
@@ -78,7 +84,8 @@
 	<string name="dubbing_started">Dubbing started</string>
 
 	<string name="try_smaller_tempo">Please try a smaller tempo. Spoken option
-		incoherent over 110 BPM</string>
+		incoherent over 110 BPM
+	</string>
 	<string name="out_of_range">Note is out of instrument range</string>
 
 	<!-- content descriptors -->
