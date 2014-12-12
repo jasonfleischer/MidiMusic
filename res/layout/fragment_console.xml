@@ -47,10 +47,10 @@
 								android:textSize="@dimen/font_title" android:textStyle="bold" />
 							<Button android:id="@+id/usb_btn"
 								android:layout_marginTop="10dp" android:layout_width="180dp"
-								android:layout_height="50dp" android:text="Connect USB Device" />
+								android:layout_height="50dp" android:text="@string/conn_usb" />
 							<TextView android:layout_height="wrap_content"
 								android:layout_width="200dp" android:textStyle="bold"
-								android:textSize="@dimen/font_sub_title" android:text="Modulate USB:" />
+								android:textSize="@dimen/font_sub_title" android:text="@string/mod_usb" />
 							<Spinner android:id="@+id/modulateSpinner"
 								android:layout_width="180dp" android:layout_height="60dp" />
 						</GridLayout>
@@ -70,7 +70,6 @@
 
 						<LinearLayout android:layout_width="wrap_content"
 							android:layout_height="wrap_content" android:orientation="horizontal">
-
 							<RadioGroup android:id="@+id/playing_mode_radio_group"
 								android:layout_width="match_parent" android:layout_height="wrap_content"
 								android:orientation="horizontal">
@@ -120,21 +119,17 @@
 						<GridLayout android:layout_width="wrap_content"
 							android:layout_height="wrap_content" android:columnCount="2"
 							android:visibility="gone">
-
 							<TextView android:layout_width="180dp"
 								android:layout_height="wrap_content" android:layout_gravity="left"
-								android:text="Chord:" android:textSize="@dimen/font_sub_title"
+								android:text="@string/chord" android:textSize="@dimen/font_sub_title"
 								android:textStyle="bold" />
-
 							<Spinner android:id="@+id/chord_spinner"
 								android:layout_width="210dp" android:layout_height="60dp"
 								android:layout_gravity="fill_horizontal" />
-
 							<TextView android:layout_width="180dp"
 								android:layout_height="wrap_content" android:layout_gravity="left"
 								android:text="@string/sustain" android:textSize="@dimen/font_sub_title"
 								android:textStyle="bold" />
-
 							<Spinner android:id="@+id/duration_spinner_chord"
 								android:layout_width="210dp" android:layout_height="60dp"
 								android:layout_gravity="fill_horizontal" />
@@ -146,7 +141,7 @@
 
 							<TextView android:layout_width="180dp"
 								android:layout_height="wrap_content" android:layout_gravity="left"
-								android:text="Type:" android:textSize="@dimen/font_sub_title"
+								android:text="@string/type" android:textSize="@dimen/font_sub_title"
 								android:textStyle="bold" />
 
 							<Spinner android:id="@+id/sequence_spinner"
@@ -210,7 +205,7 @@
 								android:layout_weight="1" />
 							<TextView android:layout_width="wrap_content"
 								android:layout_height="wrap_content" android:layout_marginLeft="30dp"
-								android:text="Accent:" android:textSize="@dimen/font_sub_title"
+								android:text="@string/accent" android:textSize="@dimen/font_sub_title"
 								android:textStyle="bold" android:labelFor="@+id/consoleAccentSpinner" />
 							<Spinner android:id="@id/consoleAccentSpinner"
 								android:layout_width="130dp" android:layout_height="60dp"
@@ -220,7 +215,7 @@
 						<LinearLayout android:layout_width="wrap_content"
 							android:layout_marginTop="5dp" android:layout_height="wrap_content">
 							<TextView android:layout_width="wrap_content"
-								android:layout_height="wrap_content" android:text="Spoken:"
+								android:layout_height="wrap_content" android:text="@string/spoken"
 								android:textSize="@dimen/font_sub_title" android:textStyle="bold" />
 							<ToggleButton android:layout_marginLeft="5dp"
 								android:id="@+id/console_spoken_metronome_btn"
@@ -231,13 +226,13 @@
 								android:orientation="horizontal">
 								<RadioButton android:id="@+id/console_spoken_option_1"
 									android:layout_width="wrap_content" android:layout_height="60dp"
-									android:paddingRight="18dp" android:text="- - -" />
+									android:paddingRight="18dp" android:text="@string/dash_dash_dash" />
 								<RadioButton android:id="@+id/console_spoken_option_2"
 									android:layout_width="wrap_content" android:layout_height="60dp"
-									android:paddingRight="18dp" android:text="- And -" />
+									android:paddingRight="18dp" android:text="@string/dash_and_dash" />
 								<RadioButton android:id="@+id/console_spoken_option_3"
 									android:layout_width="wrap_content" android:layout_height="60dp"
-									android:paddingRight="18dp" android:text="e And a" />
+									android:paddingRight="18dp" android:text="@string/e_and_a" />
 							</RadioGroup>
 						</LinearLayout>
 					</LinearLayout>

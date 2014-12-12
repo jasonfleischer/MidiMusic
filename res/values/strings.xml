@@ -7,7 +7,6 @@
 	<string name="usb_disconn">USB Device Disconnected</string>
 	<string name="usb_conn">USB Device Connected</string>
 
-
 	<string name="octave">Octave:</string>
 	<string name="instrument">Instrument:</string>
 	<string name="key">Key:</string>
@@ -16,7 +15,12 @@
 	<string name="sustain">Sustain:</string>
 	<string name="sequence">Sequence:</string>
 	<string name="columns">Columns:</string>
-
+	<string name="type">Type:</string>
+	<string name="chord">Chord:</string>
+	<string name="accent">Accent:</string>
+	<string name="spoken">Spoken:</string>
+	<string name="mod_usb">Modulate USB:</string>
+	<string name="conn_usb">Connect USB Device</string>
 
 	<string name="usb_settings">USB Settings</string>
 	<string name="virtual_keyboard">Virtual Keyboard</string>
@@ -44,6 +48,10 @@
 	<string name="note_med">Medium</string>
 	<string name="note_long">Long</string>
 	<string name="note_very_long">Very Long</string>
+	
+	<string name="dash_dash_dash">- - -</string>
+	<string name="dash_and_dash">- And -</string>
+	<string name="e_and_a">e And a</string>
 
 	<!-- toasts -->
 	<string name="usb_not_supported">USB device not supported</string>

@@ -8,7 +8,8 @@
 		<ImageView android:id="@+id/drum_pad_wrench"
 			android:visibility="gone" android:layout_width="25dp"
 			android:layout_height="25dp" android:layout_margin="8dp"
-			android:layout_marginTop="5dp" android:background="@drawable/wrench" />
+			android:layout_marginTop="5dp" android:background="@drawable/wrench"
+			android:contentDescription="@null" />
 		<TextView android:visibility="@string/hidden" android:id="@+id/drum_pad_label"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:paddingLeft="8dp" android:paddingBottom="5dp"
