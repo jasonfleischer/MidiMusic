@@ -40,18 +40,21 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/record"/> 
+        android:src="@drawable/record"
+        android:contentDescription="@string/descp_record_track"/> 
     <ImageButton 
         android:id="@+id/recording_loop_btn"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/loop"/>
+        android:src="@drawable/loop"
+        android:contentDescription="@string/descp_loop_track"/>
     <ImageButton 
         android:id="@+id/recording_delete_track_btn"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/delete"/>
+        android:src="@drawable/delete"
+        android:contentDescription="@string/descp_delete_track"/>
 
 </com.comp4905.jasonfleischer.midimusic.views.RecordingPane>

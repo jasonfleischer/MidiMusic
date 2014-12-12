@@ -12,11 +12,10 @@
    	    android:layout_width="15dp"
    	    android:layout_height="15dp"
    	    android:layout_marginRight="5dp"
-   	    android:contentDescription="@string/descp_led"/> 
+   	    android:contentDescription="@null"/> 
     <TextView 
         android:id="@+id/usb_connection"
         android:layout_width="wrap_content"
    		android:layout_height="match_parent"
    		android:textSize="12sp"/> 
-
 </com.comp4905.jasonfleischer.midimusic.views.UsbConnection>

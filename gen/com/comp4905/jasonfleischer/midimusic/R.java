@@ -206,6 +206,7 @@ public final class R {
         public static final int seqSeqSpinner=0x7f0a0063;
         public static final int seqTempoSpinner=0x7f0a0064;
         public static final int seq_vertical_markers=0x7f0a006a;
+        public static final int sequence_add_btn=0x7f0a005b;
         public static final int sequence_btn=0x7f0a0045;
         public static final int sequence_connect_btn=0x7f0a005f;
         public static final int sequence_delete_btn=0x7f0a005c;
@@ -215,7 +216,6 @@ public final class R {
         public static final int sequence_loop_btn=0x7f0a005e;
         public static final int sequence_name=0x7f0a005a;
         public static final int sequence_play_btn=0x7f0a005d;
-        public static final int sequence_save_btn=0x7f0a005b;
         public static final int sequence_spinner=0x7f0a001c;
         public static final int sequence_tempo_spinner=0x7f0a001d;
         public static final int usb_btn=0x7f0a0013;
@@ -242,26 +242,44 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f070001;
-        public static final int attach_chord=0x7f070022;
-        public static final int attach_drum=0x7f070024;
-        public static final int attach_sequence=0x7f070026;
-        public static final int cannot_delete_last_sequence=0x7f07002b;
-        public static final int cannot_loop_uncomplete=0x7f07002e;
-        public static final int cannot_record_while_looping=0x7f07002f;
-        public static final int chord_player=0x7f07000f;
-        public static final int clear_recording=0x7f07002d;
-        public static final int console=0x7f07000d;
-        public static final int create_sequence_limit=0x7f070028;
+        public static final int attach_chord=0x7f070029;
+        public static final int attach_drum=0x7f07002b;
+        public static final int attach_sequence=0x7f07002d;
+        public static final int cannot_delete_last_sequence=0x7f070032;
+        public static final int cannot_loop_uncomplete=0x7f070035;
+        public static final int cannot_record_while_looping=0x7f070036;
+        public static final int chord_player=0x7f070016;
+        public static final int clear_recording=0x7f070034;
+        public static final int columns=0x7f07000d;
+        public static final int console=0x7f070014;
+        public static final int create_sequence_limit=0x7f07002f;
         public static final int dash=0x7f070002;
+        public static final int descp_add_sequence=0x7f07004c;
+        public static final int descp_change_drum=0x7f070042;
+        public static final int descp_change_instr=0x7f070041;
+        public static final int descp_chord_screen=0x7f07003f;
+        public static final int descp_close=0x7f070040;
+        public static final int descp_connect_keyboard=0x7f070044;
+        public static final int descp_console_screen=0x7f07003c;
+        public static final int descp_delete_track=0x7f07004b;
+        public static final int descp_drum_screen=0x7f07003e;
+        public static final int descp_edit_drum=0x7f070043;
+        public static final int descp_expand=0x7f070045;
         /**  content descriptors 
          */
-        public static final int descp_intrument_screen=0x7f070034;
-        public static final int descp_led=0x7f070035;
-        public static final int detach_chords=0x7f070023;
-        public static final int detach_drum=0x7f070025;
-        public static final int detach_sequence=0x7f070027;
-        public static final int drum_machine=0x7f07000e;
-        public static final int dubbing_started=0x7f070031;
+        public static final int descp_intrument_screen=0x7f07003b;
+        public static final int descp_loop=0x7f070046;
+        public static final int descp_loop_track=0x7f070049;
+        public static final int descp_metronome=0x7f070048;
+        public static final int descp_play=0x7f070047;
+        public static final int descp_record_track=0x7f07004a;
+        public static final int descp_rem_sequence=0x7f07004d;
+        public static final int descp_sequence_screen=0x7f07003d;
+        public static final int detach_chords=0x7f07002a;
+        public static final int detach_drum=0x7f07002c;
+        public static final int detach_sequence=0x7f07002e;
+        public static final int drum_machine=0x7f070015;
+        public static final int dubbing_started=0x7f070038;
         public static final int duration=0x7f070009;
         /**  Default screen margins, per the Android Design guidelines.
     
@@ -275,41 +293,47 @@ public final class R {
     
          */
         public static final int hidden=0x7f070000;
-        public static final int highlighted_scale=0x7f07000c;
+        public static final int highlighted_scale=0x7f070013;
         public static final int instrument=0x7f070007;
         public static final int key=0x7f070008;
-        public static final int loading=0x7f070011;
-        public static final int new_sequence=0x7f070029;
-        public static final int no_usb_dectected=0x7f070020;
+        public static final int loading=0x7f070018;
+        public static final int metronome=0x7f070011;
+        public static final int new_sequence=0x7f070030;
+        public static final int no_usb_dectected=0x7f070027;
         public static final int note=0x7f070003;
-        public static final int note_long=0x7f07001b;
-        public static final int note_med=0x7f07001a;
-        public static final int note_short=0x7f070019;
-        public static final int note_too_large=0x7f07002a;
-        public static final int note_very_long=0x7f07001c;
-        public static final int note_very_short=0x7f070018;
+        public static final int note_long=0x7f070022;
+        public static final int note_med=0x7f070021;
+        public static final int note_short=0x7f070020;
+        public static final int note_too_large=0x7f070031;
+        public static final int note_very_long=0x7f070023;
+        public static final int note_very_short=0x7f07001f;
         public static final int octave=0x7f070006;
-        public static final int out_of_range=0x7f070033;
-        public static final int permission_denied_for_usb=0x7f070021;
-        public static final int recording_started=0x7f070030;
-        public static final int seq_fast=0x7f070016;
-        public static final int seq_med=0x7f070015;
-        public static final int seq_slow=0x7f070014;
-        public static final int seq_very_fast=0x7f070017;
-        public static final int seq_very_slow=0x7f070013;
-        public static final int sequence_deleted=0x7f07002c;
-        public static final int sequencer=0x7f070010;
-        public static final int transpose_key=0x7f07000b;
-        public static final int try_smaller_tempo=0x7f070032;
-        public static final int updating_midi=0x7f070012;
-        public static final int usb_already_connected=0x7f07001e;
+        public static final int out_of_range=0x7f07003a;
+        public static final int permission_denied_for_usb=0x7f070028;
+        public static final int playing_mode=0x7f070010;
+        public static final int recording_started=0x7f070037;
+        public static final int seq_fast=0x7f07001d;
+        public static final int seq_med=0x7f07001c;
+        public static final int seq_slow=0x7f07001b;
+        public static final int seq_very_fast=0x7f07001e;
+        public static final int seq_very_slow=0x7f07001a;
+        public static final int sequence=0x7f07000c;
+        public static final int sequence_deleted=0x7f070033;
+        public static final int sequencer=0x7f070017;
+        public static final int sustain=0x7f07000b;
+        public static final int tempo=0x7f07000a;
+        public static final int transpose_key=0x7f070012;
+        public static final int try_smaller_tempo=0x7f070039;
+        public static final int updating_midi=0x7f070019;
+        public static final int usb_already_connected=0x7f070025;
         public static final int usb_conn=0x7f070005;
-        public static final int usb_connected=0x7f07001f;
+        public static final int usb_connected=0x7f070026;
         public static final int usb_disconn=0x7f070004;
         /**  toasts 
          */
-        public static final int usb_not_supported=0x7f07001d;
-        public static final int virtual_keyboard=0x7f07000a;
+        public static final int usb_not_supported=0x7f070024;
+        public static final int usb_settings=0x7f07000e;
+        public static final int virtual_keyboard=0x7f07000f;
     }
     public static final class style {
         /** 

@@ -36,27 +36,31 @@
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
 		        android:visibility="@string/hidden"
-		        android:src="@drawable/grid"/>
+		        android:src="@drawable/grid"
+		        android:contentDescription="@string/descp_change_drum"/>
 	    	<ImageButton 
 	    	    android:layout_marginLeft="@dimen/drum_header_indent"
 		        android:id="@+id/drum_edit_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/wrench"/>
+		        android:src="@drawable/wrench"
+		        android:contentDescription="@string/descp_edit_drum"/>
 	    	<ImageButton 
 		        android:id="@+id/drum_connect_btn"
 		        android:layout_width="50dp"
 		        android:layout_marginRight="30dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/connect"/>
+		        android:src="@drawable/connect"
+		        android:contentDescription="@string/descp_connect_keyboard"/>
 		    <ImageButton 
 		        android:id="@+id/drum_key_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/keys"/>
+		        android:src="@drawable/keys"
+		        android:contentDescription="@string/descp_intrument_screen"/>
 		</LinearLayout>
 	</RelativeLayout>
 	<FrameLayout 
@@ -82,7 +86,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		        <FrameLayout 
 		            android:id="@+id/drum_1"
@@ -95,7 +100,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		         <FrameLayout 
 		            android:id="@+id/drum_5"
@@ -108,7 +114,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		        <FrameLayout 
 		            android:id="@+id/drum_4"
@@ -121,7 +128,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		        <FrameLayout 
 		            android:id="@+id/drum_2"
@@ -134,7 +142,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		        <FrameLayout 
 		            android:id="@+id/drum_3"
@@ -147,7 +156,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
     			</FrameLayout>
 		    </RelativeLayout>
 		    <RelativeLayout 
@@ -168,7 +178,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		        <FrameLayout 
 		            android:id="@+id/drum_11"
@@ -183,7 +194,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		        <FrameLayout 
 		            android:id="@+id/drum_13"
@@ -198,7 +210,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		        <FrameLayout 
 		            android:id="@+id/drum_14"
@@ -213,7 +226,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		        <FrameLayout 
 		            android:id="@+id/drum_10"
@@ -228,7 +242,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		    </RelativeLayout>
 	        <LinearLayout 
@@ -247,7 +262,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 		        <FrameLayout 
 		            android:id="@+id/drum_8"
@@ -259,7 +275,8 @@
     				    android:layout_width="25dp"
     					android:layout_height="25dp"
     					android:layout_gravity="center"
-    					android:background="@drawable/wrench" />
+    					android:background="@drawable/wrench"
+    					android:contentDescription="@null" />
 		        </FrameLayout>
 	        </LinearLayout>
 		    <FrameLayout 
@@ -274,7 +291,8 @@
    				    android:layout_width="25dp"
    					android:layout_height="25dp"
    					android:layout_gravity="center"
-   					android:background="@drawable/wrench" />
+   					android:background="@drawable/wrench"
+   					android:contentDescription="@null" />
 		    </FrameLayout>
 		    <FrameLayout 
         		android:layout_marginRight="5dp"
@@ -289,7 +307,8 @@
    				    android:layout_width="25dp"
    					android:layout_height="25dp"
    					android:layout_gravity="center"
-   					android:background="@drawable/wrench" />
+   					android:background="@drawable/wrench"
+   					android:contentDescription="@null" />
 	        </FrameLayout>
 		</RelativeLayout>
 		<GridLayout

@@ -20,7 +20,6 @@
 	    	    android:layout_width="wrap_content"
 	    		android:layout_height="wrap_content"
 	    		android:orientation="horizontal">
-
 			    <TextView 
 			        android:id="@+id/instrument"
 			        android:layout_width="wrap_content"
@@ -56,40 +55,46 @@
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/grid2"/>
+		        android:src="@drawable/grid2"
+		        android:contentDescription="@string/descp_change_instr"/>
 			<ImageButton 
 		        android:id="@+id/sequence_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
 		        android:visibility="@string/hidden"
-		        android:src="@drawable/wave"/>
+		        android:src="@drawable/wave"
+		        android:contentDescription="@string/descp_sequence_screen"/>
 		    <ImageButton 
 		        android:id="@+id/drum_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/drum"/>
-		    <ImageButton  
+		        android:src="@drawable/drum"
+		        android:contentDescription="@string/descp_drum_screen"/>
+		    <ImageButton 
 	    	    android:id="@+id/note_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
 		        android:src="@drawable/notes"
-		        android:visibility="gone"/> 
+		        android:visibility="gone"
+		        android:contentDescription="@string/descp_chord_screen"/> 
 		    <ImageButton    
 		        android:layout_marginRight="30dp" 
 		        android:id="@+id/console_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/console"/>
+		        android:src="@drawable/console"
+		        android:contentDescription="@string/descp_console_screen"/>
 		    <ImageButton 
 		        android:id="@+id/close_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/close"/>
+		        android:src="@drawable/close"
+		        android:contentDescription="@string/descp_close"/>
 		</LinearLayout>
 	</RelativeLayout>
 	<FrameLayout 

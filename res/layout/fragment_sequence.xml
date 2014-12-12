@@ -40,48 +40,55 @@
 	    	android:layout_alignParentRight="true"> 
 	    	<ImageButton 
 	    	    android:layout_marginLeft="10dp"
-		        android:id="@+id/sequence_save_btn"
+		        android:id="@+id/sequence_add_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/add"/> 
+		        android:src="@drawable/add"
+		        android:contentDescription="@string/descp_add_sequence"/> 
 	    	<ImageButton 
 		        android:id="@+id/sequence_delete_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/delete"/> 	    	
+		        android:src="@drawable/delete"
+	    		android:contentDescription="@string/descp_rem_sequence"/>
 	    	<ImageButton 
 		        android:id="@+id/sequence_play_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/play"/> 
+		        android:src="@drawable/play"
+		        android:contentDescription="@string/descp_play"/> 
 	    	<ImageButton 
 		        android:id="@+id/sequence_loop_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/loop"/>
+		        android:src="@drawable/loop"
+		        android:contentDescription="@string/descp_loop"/>
 	    	<ImageButton
 		        android:id="@+id/sequence_connect_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/connect"/>
+		        android:src="@drawable/connect"
+		        android:contentDescription="@string/descp_connect_keyboard"/>
 	    	<ImageButton 
 		        android:id="@+id/sequence_expand_btn"
 		        android:layout_width="50dp"
 		        android:layout_marginRight="30dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/collapse"/> 
+		        android:src="@drawable/collapse"
+		        android:contentDescription="@string/descp_expand"/> 
 		    <ImageButton 
 		        android:id="@+id/sequence_key_btn"
 		        android:layout_width="50dp"
 		        android:layout_height="50dp"
 		        android:scaleType="fitCenter"
-		        android:src="@drawable/keys"/>
+		        android:src="@drawable/keys"
+		        android:contentDescription="@string/descp_intrument_screen"/>
 		</LinearLayout>
 	</RelativeLayout>
 	
@@ -106,7 +113,7 @@
 			    android:layout_height="wrap_content" 
 			    android:textStyle="bold"
 			    android:textSize="18sp"
-			    android:text="Sequence:"/>
+			    android:text="@string/sequence"/>
 			<Spinner
 			    android:id="@+id/seqSeqSpinner"
 			    android:layout_width="150dp"
@@ -116,7 +123,7 @@
 			    android:layout_height="wrap_content" 
 			    android:textStyle="bold"
 			    android:textSize="18sp"
-			    android:text="Tempo:"/>
+			    android:text="@string/tempo"/>
 			<Spinner
 			    android:id="@+id/seqTempoSpinner"
 			    android:layout_width="150dp"
@@ -167,14 +174,13 @@
 			    android:layout_height="wrap_content" 
 			    android:textStyle="bold"
 			    android:textSize="18sp"
-			    android:text="Columns:"/>
+			    android:text="@string/columns"/>
 			<Spinner
 			    android:id="@+id/seqColSpinner"
 			    android:layout_width="150dp"
 			    android:layout_height="60dp" />
 			
 		</GridLayout>
-		
         
         <ScrollView 
 		    android:layout_width="fill_parent"

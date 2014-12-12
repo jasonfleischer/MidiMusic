@@ -102,6 +102,6 @@
         	android:layout_height="fill_parent"
         	android:layout_marginLeft="@dimen/keyboard_black_key_indent_4"
         	android:background="@drawable/key_black">
-        </FrameLayout>       
+        </FrameLayout>
     </LinearLayout>
 </RelativeLayout>

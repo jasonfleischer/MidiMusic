@@ -12,9 +12,16 @@
 	<string name="instrument">Instrument:</string>
 	<string name="key">Key:</string>
 	<string name="duration">Duration:</string>
+	<string name="tempo">Tempo:</string>
+	<string name="sustain">Sustain:</string>
+	<string name="sequence">Sequence:</string>
+	<string name="columns">Columns:</string>
 	
 	
+	<string name="usb_settings">USB Settings</string>
 	<string name="virtual_keyboard">Virtual Keyboard</string>
+	<string name="playing_mode">Playing Mode</string>
+	<string name="metronome">Metronome</string>
 	<string name="transpose_key">Transpose Key:</string>
 	<string name="highlighted_scale">Highlighted Scale:</string>
 
@@ -75,7 +82,24 @@
 	<string name="out_of_range">Note is out of instrument range</string>
 
 	<!-- content descriptors -->
-	<string name="descp_intrument_screen">instrument screen</string>
-	<string name="descp_led">led indicator</string>
+	<string name="descp_intrument_screen">navigate to instrument screen</string>
+	<string name="descp_console_screen">navigate to console screen</string>
+	<string name="descp_sequence_screen">navigate to sequence screen</string>
+	<string name="descp_drum_screen">navigate to drum screen</string>
+	<string name="descp_chord_screen">navigate to chord screen</string>
+	<string name="descp_close">close application</string>
+	<string name="descp_change_instr">change instrument view</string>
+	<string name="descp_change_drum">change drum view</string>
+	<string name="descp_edit_drum">edit drums on and off</string>
+	<string name="descp_connect_keyboard">connect keyboard</string>
+	<string name="descp_expand">expand or collapse menu</string>
+	<string name="descp_loop">loop or stop sequence</string>
+	<string name="descp_play">play or stop sequence</string>
+	<string name="descp_metronome">play or stop metronome</string>
+	<string name="descp_loop_track">loop or stop track</string>
+	<string name="descp_record_track">record or stop record track</string>
+	<string name="descp_delete_track">delete track</string>
+	<string name="descp_add_sequence">add sequence</string>
+	<string name="descp_rem_sequence">remove sequence</string>
 
 </resources>

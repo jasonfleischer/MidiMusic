@@ -189,7 +189,7 @@ public class SequenceFragment extends Fragment{
 		sequenceNameTv = (TextView) rootView.findViewById(R.id.sequence_name);
 		usbConn = (UsbConnection) rootView.findViewById(R.id.usb_connection_view);
 
-		addBtn = (ImageButton) rootView.findViewById(R.id.sequence_save_btn);
+		addBtn = (ImageButton) rootView.findViewById(R.id.sequence_add_btn);
 		deleteBtn = (ImageButton) rootView.findViewById(R.id.sequence_delete_btn);
 		playBtn = (ImageButton) rootView.findViewById(R.id.sequence_play_btn);
 		loopBtn = (ImageButton) rootView.findViewById(R.id.sequence_loop_btn);
