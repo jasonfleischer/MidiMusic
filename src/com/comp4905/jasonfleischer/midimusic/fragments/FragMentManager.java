@@ -58,6 +58,16 @@ public class FragMentManager {
 		replace(new GridFragment(), R.id.instrument_fragment);
 	}
 
+	void setupDrumFragment(){
+		fragmentManager.beginTransaction().add(R.id.drum_fragment,(MainActivity.config.kitIsShowing?new DrumKitFragment():new DrumGridFragment())).commit();
+	}
+	void showDrumKit(){
+		replace(new DrumKitFragment(), R.id.drum_fragment);
+	}
+	void showDrumGrid() {
+		replace(new DrumGridFragment(), R.id.drum_fragment);
+	}
+
 	public void updateUSBConnection(boolean connected){
 
 		Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container); // prevents duplicates

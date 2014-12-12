@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/drum_kit" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:padding="5dp">
+	<RelativeLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+		<FrameLayout android:id="@+id/drum_0"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:background="@drawable/circle_drum_shape_sml">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+		<FrameLayout android:id="@+id/drum_1"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_toRightOf="@id/drum_0" android:background="@drawable/circle_drum_shape_lrg">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+		<FrameLayout android:id="@+id/drum_5"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_alignParentRight="true" android:background="@drawable/circle_drum_shape_sml">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+		<FrameLayout android:id="@+id/drum_4"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_toLeftOf="@id/drum_5" android:background="@drawable/circle_drum_shape_lrg">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+		<FrameLayout android:id="@+id/drum_2"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_toRightOf="@id/drum_1" android:background="@drawable/circle_drum_shape_med">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+		<FrameLayout android:id="@+id/drum_3"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_toLeftOf="@id/drum_4" android:background="@drawable/circle_drum_shape_med">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+	</RelativeLayout>
+	<RelativeLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+		<FrameLayout android:id="@+id/drum_12"
+			android:layout_centerHorizontal="true"
+			android:layout_alignParentBottom="true" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_marginLeft="20dp"
+			android:layout_marginRight="20dp" android:background="@drawable/circle_drum_shape_bass">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+		<FrameLayout android:id="@+id/drum_11"
+			android:layout_alignParentBottom="true"
+			android:layout_centerHorizontal="true" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_toLeftOf="@id/drum_12"
+			android:background="@drawable/circle_drum_shape_thick">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+		<FrameLayout android:id="@+id/drum_13"
+			android:layout_alignParentBottom="true"
+			android:layout_centerHorizontal="true" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_toRightOf="@id/drum_12"
+			android:background="@drawable/circle_drum_shape_thick">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+		<FrameLayout android:id="@+id/drum_14"
+			android:layout_centerHorizontal="true" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_toRightOf="@id/drum_13"
+			android:layout_alignParentBottom="true" android:background="@drawable/circle_drum_shape_med">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+		<FrameLayout android:id="@+id/drum_10"
+			android:layout_centerHorizontal="true" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_toLeftOf="@id/drum_11"
+			android:layout_alignParentBottom="true" android:background="@drawable/circle_drum_shape_med">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+	</RelativeLayout>
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:orientation="horizontal"
+		android:layout_centerVertical="true" android:layout_centerHorizontal="true">
+		<FrameLayout android:id="@+id/drum_7"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:background="@drawable/circle_drum_shape_thick">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+		<FrameLayout android:id="@+id/drum_8"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:background="@drawable/circle_drum_shape_thick">
+			<ImageView android:visibility="gone" android:layout_width="25dp"
+				android:layout_height="25dp" android:layout_gravity="center"
+				android:background="@drawable/wrench" android:contentDescription="@null" />
+		</FrameLayout>
+	</LinearLayout>
+	<FrameLayout android:layout_marginLeft="5dp" android:id="@+id/drum_6"
+		android:layout_width="wrap_content" android:layout_centerVertical="true"
+		android:layout_height="wrap_content" android:background="@drawable/circle_drum_shape_lrg">
+		<ImageView android:visibility="gone" android:layout_width="25dp"
+			android:layout_height="25dp" android:layout_gravity="center"
+			android:background="@drawable/wrench" android:contentDescription="@null" />
+	</FrameLayout>
+	<FrameLayout android:layout_marginRight="5dp" android:id="@+id/drum_9"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_centerVertical="true" android:layout_alignParentRight="true"
+		android:background="@drawable/circle_drum_shape_lrg">
+		<ImageView android:visibility="gone" android:layout_width="25dp"
+			android:layout_height="25dp" android:layout_gravity="center"
+			android:background="@drawable/wrench" android:contentDescription="@null" />
+	</FrameLayout>
+</RelativeLayout>

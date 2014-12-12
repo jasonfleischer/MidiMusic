@@ -101,6 +101,7 @@ public class InstrumentFragment extends Fragment{
 		closeBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				recordingPane.clearTrack();
 				MainActivity.getInstance().finish();
 			}
 		});

@@ -22,8 +22,6 @@ public class GridElement extends FrameLayout{
 	public void init(Note n){
 		note =n;
 		highligthed=false;
-
-
 		disabled = false;
 		if(MainActivity.config.playingMode ==PlayingMode.SINGLE_NOTE){
 			if(!MainActivity.config.singleNoteInstrument.inRange(note.getMidiValue())){
@@ -41,8 +39,8 @@ public class GridElement extends FrameLayout{
 				setAlpha(0.5f);
 			}
 		}
-
 	}
+
 	public void playNote(){
 		if(disabled){
 			HLog.i(getResources().getString(R.string.out_of_range));

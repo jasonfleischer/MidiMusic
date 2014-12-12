@@ -150,23 +150,26 @@ public class RecordingPane extends LinearLayout{
 		});
 
 		deleteTrackBtn.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
-				SoundManager.getInstance().stopTrack();
-				stopTimer();
-				isLooping = false;
-				isRecording = false;
-				loopBtn.setImageResource(R.drawable.loop);
-				recordBtn.setImageResource(R.drawable.record);
-				masterTrack = null;
+				clearTrack();
 				HLog.i(getResources().getString(R.string.clear_recording));
-				statusTextView.setText("Track cleared");
-				timeTextView.setText(" ");
 			}
 		});
 	}
 
+	public void clearTrack(){
+		SoundManager.getInstance().stopTrack();
+		stopTimer();
+		isLooping = false;
+		isRecording = false;
+		loopBtn.setImageResource(R.drawable.loop);
+		recordBtn.setImageResource(R.drawable.record);
+		masterTrack = null;
+		statusTextView.setText("Track cleared");
+		timeTextView.setText(" ");
+	}
+	
 	private void updateStatus(){
 		if(masterTrack == null){
 			statusTextView.setText("Empty track");
