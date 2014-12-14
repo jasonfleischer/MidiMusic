@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
@@ -42,7 +43,7 @@ public class FileManager {
 	public void loadInstrumentsFromAssets(ArrayList<Instrument> instruments){
 
 		try{
-			InputStream is = assets.open("instruments.txt");
+			InputStream is = assets.open("instruments_"+getLanguageSuffix()+".txt");
 			InputStreamReader isr = new  InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 			String line;
@@ -57,6 +58,14 @@ public class FileManager {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
+	}
+	
+	private String getLanguageSuffix(){
+		String lang = Locale.getDefault().getLanguage();
+		if(lang.equals("zh") || lang.equals("fr") || lang.equals("es"))
+			return lang;
+		else
+			return "en";
 	}
 
 	public String[] getMetronomeSoundsFromAssets(){

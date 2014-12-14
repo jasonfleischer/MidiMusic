@@ -37,6 +37,7 @@ public class MidiMusicConfig implements Serializable{
 	public ArrayList<Tempo> tempos;
 	public Tempo tempo;
 	public Tempo sequenceTempo;
+	public static int seqNum;
 
 	public DrumSound[] allDrumSounds;
 	public DrumSound[] gridDrumSounds;
@@ -47,7 +48,10 @@ public class MidiMusicConfig implements Serializable{
 	public boolean keysAreShowing; // for instrument fragment
 
 	public static enum PlayingMode{
-		SINGLE_NOTE("Single Note"), CHORD("Chord"), SEQUENCE("Sequence"), DRUMS("Drums");
+		SINGLE_NOTE(MainActivity.getInstance().getResources().getString(R.string.playing_mode_single_note)),
+		CHORD(MainActivity.getInstance().getResources().getString(R.string.playing_mode_chord)),
+		SEQUENCE(MainActivity.getInstance().getResources().getString(R.string.playing_mode_sequence)),
+		DRUMS(MainActivity.getInstance().getResources().getString(R.string.playing_mode_drums));
 		private String name;
 		PlayingMode(String n){
 			name = n;
@@ -84,7 +88,8 @@ public class MidiMusicConfig implements Serializable{
 				0, NoteDuration.Eighth.getValue(),
 				10,  NoteDuration.Eighth.getValue()
 		};
-		sequence = new Sequence("Sequence 1", seq1, 16);
+		seqNum = 2;
+		sequence = new Sequence(MainActivity.getInstance().getResources().getString(R.string.playing_mode_sequence)+" 1", seq1, 16);
 		sequences.add(sequence);
 		addSequence(seq2, 32);
 		addSequence(seq3, 48);
@@ -187,7 +192,8 @@ public class MidiMusicConfig implements Serializable{
 
 	public Sequence addSequence(int[] seq, int length){
 		if(sequences.size()<30){
-			Sequence sequ = new Sequence("Sequence "+(sequences.size()+1), seq, length);
+			Sequence sequ = new Sequence(MainActivity.getInstance().getResources().getString(R.string.playing_mode_sequence)
+					+" "+seqNum++, seq, length);
 			sequences.add(sequ);
 			return sequ;
 		}

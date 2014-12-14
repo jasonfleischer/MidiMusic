@@ -52,6 +52,28 @@
 	<string name="dash_dash_dash">- - -</string>
 	<string name="dash_and_dash">- And -</string>
 	<string name="e_and_a">e And a</string>
+	
+	<!-- New -->
+	<string name="beats">beats</string>
+	<string name="recording_track">Recording track</string>
+	<string name="dubbing_track">Dubbing track</string>
+	<string name="dubbing_stopped">Dubbing stopped</string>
+	<string name="recording_stopped">Recording stopped</string>
+	<string name="track_ready">Track ready</string>
+	<string name="track_playing">Track playing</string>
+	<string name="track_cleared">Track cleared</string>
+	<string name="track_stopped">Track stopped</string>
+	<string name="empty_track">Empty track</string>
+	
+	<string name="none">None</string>
+	<string name="two">Two</string>
+	<string name="three">Three</string>
+	<string name="four">Four</string>
+	
+	<string name="playing_mode_single_note">Single Note</string>
+	<string name="playing_mode_chord">Chord</string>
+	<string name="playing_mode_sequence">Sequence</string>
+	<string name="playing_mode_drums">Drums</string>
 
 	<!-- toasts -->
 	<string name="usb_not_supported">USB device not supported</string>

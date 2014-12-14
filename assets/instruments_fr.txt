@@ -1,0 +1,128 @@
+0,Acoustic Grand Piano,0,127
+1,Piano acoustique Lumineux,0,127
+2,Electric Grand Piano,0,127
+3,Honky tonk-Piano,0,127
+4,Piano électrique 1,0,127
+5,Piano électrique 2,0,127
+6,Clavecin,0,127
+7,Clavinet,0,127
+8,Celesta,0,127
+9,Glockenspiel,0,127
+10,Music Box,0,127
+11,Vibraphone,0,127
+12,Marimba,0,127
+13,Xylophone,0,127
+14,Tubular Bells,0,127
+15,Dulcimer,0,127
+16,Orgue à tirettes,0,127
+17,Percussive Organ,0,127
+18,Orgue rock,0,127
+19,Church Organ,0,127
+20,Orgue,0,127
+21,Accordéon,0,127
+22,Harmonica,0,127
+23,Tango Accordéon,0,127
+24,Guitare acoustique (nylon),0,127
+25,Guitare acoustique (acier),0,127
+26,Guitare électrique (jazz),0,127
+27,Guitare électrique (propre),0,127
+28,Guitare électrique (sourdine),0,127
+29,saturé Guitar,0,127
+30,Distortion Guitar,0,127
+31,Guitar Harmonics,0,127
+32,Acoustic Bass,0,127
+33,Basse électrique (doigt),0,127
+34,Electric Bass (choix),0,127
+35,Fretless Bass,0,127
+36,Slap Basse 1,0,127
+37,Slap Basse 2,0,127
+38,Synthé basse 1,0,127
+39,Synthé basse 2,0,127
+40,Violon,55,103
+41,Viola,48,91
+42,Violoncelle,0,127
+43,Contrebasse,0,127
+44,Tremolo Strings,0,127
+45,Pizzicato Cordes,0,127
+46,Harpe d'orchestre,0,127
+47,Timpani,0,127
+48,String Ensemble 1,0,127
+49,String Ensemble 2,0,127
+50,Synth cordes 1,0,127
+51,Synth cordes 2,0,127
+52,Choeur Aahs,0,127
+53,Voix Oohs,0,127
+54,Synth Choir,0,127
+55,Orchestra Hit,0,127
+56,Trompette,0,127
+57,Trombone,0,127
+58,Tuba,0,127
+59,Trompette bouchée,0,127
+60,Corne française,0,127
+61,Brass Section,0,127
+62,Cuivres synthétiques 1,0,127
+63,Cuivres synthétiques 2,0,127
+64,Soprano Sax,0,127
+65,Alto Sax,0,127
+66,Tenor Sax,0,127
+67,baryton,0,127
+68,Hautbois,0,127
+69,Cor anglais,0,127
+70,Basson,0,127
+71,Clarinette,0,127
+72,Piccolo,0,127
+73,Flûte,0,127
+74,Enregistreur,0,127
+75,Flûte de Pan,0,127
+76,Bouteille soufflé,0,127
+77,Shakuhachi,0,127
+78,Sifflet,0,127
+79,Ocarina,0,127
+80,Plomb 1 (carré),0,127
+81,Plomb 2 (en dents de scie),0,127
+82,Lead 3 (Calliope),0,127
+83,4 chiff plomb,0,127
+84,5 plomb (Charang),0,127
+85,6 plomb (voix),0,127
+86,7 plomb (cinquièmes),0,127
+87,8 plomb (basse + plomb),0,127
+88,Pad 1 (nouvel âge),0,127
+89,Pad 2 (chaud),0,127
+90,Pad 3 (synthétiseur polyphonique),0,127
+91,Pad 4 (choeur),0,127
+92,Pad 5 (inclina),0,127
+93,Pad 6 (métallique),0,127
+94,Pad 7 (halo),0,127
+95,Pad 8 (sweep),0,127
+96,FX 1 (pluie),0,127
+97,FX 2 (bande sonore),0,127
+98,FX 3 (cristal),0,127
+99,FX 4 (atmosphère),0,127
+100,FX 5 (luminosité),0,127
+101,FX 6 (gobelins),0,127
+102,FX 7 (échos),0,127
+103,FX 8 (Sci-Fi),0,127
+104,Sitar,0,127
+105,banjo,0,127
+106,Shamisen,0,127
+107,Koto,0,127
+108,Kalimba,0,127
+109,Cornemuse,0,127
+110,Fiddle,0,127
+111,Shanai,0,127
+112,Tinkle Bell,0,127
+113,Agogo,0,127
+114,Steel Drums,0,127
+115,Estampe,0,127
+116,Taiko Drum,0,127
+117,Melodic Tom,0,127
+118,Synth Drum,0,127
+119,Système de cymbale,0,127
+120,Guitar Fret Noise,0,127
+121,Breath Noise,0,127
+122,Seashore,0,127
+123,Oiseau Tweet,0,127
+124,Telephone Ring,0,127
+125,Hélicoptère,0,127
+126,Applaudissements,0,127
+127,Gunshot,0,127

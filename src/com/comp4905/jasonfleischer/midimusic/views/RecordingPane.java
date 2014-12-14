@@ -42,7 +42,7 @@ public class RecordingPane extends LinearLayout{
 
 		timeTextView=  (TextView) findViewById(R.id.recording_time);
 		if(masterTrack!=null){
-			timeTextView.setText(masterTrack.getNumberOfBeats()+" beats");
+			timeTextView.setText(masterTrack.getNumberOfBeats()+" "+getResources().getString(R.string.beats));
 		}else{
 			timeTextView.setText("");
 		}
@@ -83,7 +83,7 @@ public class RecordingPane extends LinearLayout{
 									@Override
 									public void run() {
 										recordBtn.setImageResource(R.drawable.stop);
-										statusTextView.setText("Recording track");
+										statusTextView.setText(getResources().getString(R.string.recording_track));
 									}
 								});
 							}else {
@@ -95,7 +95,7 @@ public class RecordingPane extends LinearLayout{
 									@Override
 									public void run() {
 										recordBtn.setImageResource(R.drawable.stop);
-										statusTextView.setText("Dubbing track");
+										statusTextView.setText(getResources().getString(R.string.dubbing_track));
 									}
 								});
 							}
@@ -111,16 +111,16 @@ public class RecordingPane extends LinearLayout{
 					recordBtn.setImageResource(R.drawable.record);
 
 					if(masterTrack == null){
-						HLog.i("Dubbing stopped");
-						statusTextView.setText("Dubbing stopped");
+						HLog.i(getResources().getString(R.string.dubbing_stopped));
+						statusTextView.setText(getResources().getString(R.string.dubbing_stopped));
 
 					}else{
 						SoundManager.getInstance().stopTrack();
-						HLog.i("Recording Stopped");
-						statusTextView.setText("Recording stopped");
+						HLog.i(getResources().getString(R.string.recording_stopped));
+						statusTextView.setText(getResources().getString(R.string.recording_stopped));
 					}
 					masterTrack.normalizeTime();
-					timeTextView.setText(masterTrack.getNumberOfBeats()+" beats");
+					timeTextView.setText(masterTrack.getNumberOfBeats()+" "+getResources().getString(R.string.beats));
 
 				}
 			}
@@ -138,10 +138,10 @@ public class RecordingPane extends LinearLayout{
 
 					isLooping = true;
 					SoundManager.getInstance().playTrack(masterTrack, true);
-					statusTextView.setText("Track playing");
+					statusTextView.setText(getResources().getString(R.string.track_playing));
 					loopBtn.setImageResource(R.drawable.stop);
 				}else{//stop loop
-					statusTextView.setText("Track stopped");
+					statusTextView.setText(getResources().getString(R.string.track_stopped));
 					SoundManager.getInstance().stopTrack();
 					isLooping = false;
 					loopBtn.setImageResource(R.drawable.loop);
@@ -166,19 +166,19 @@ public class RecordingPane extends LinearLayout{
 		loopBtn.setImageResource(R.drawable.loop);
 		recordBtn.setImageResource(R.drawable.record);
 		masterTrack = null;
-		statusTextView.setText("Track cleared");
+		statusTextView.setText(getResources().getString(R.string.track_cleared));
 		timeTextView.setText(" ");
 	}
 	
 	private void updateStatus(){
 		if(masterTrack == null){
-			statusTextView.setText("Empty track");
+			statusTextView.setText(getResources().getString(R.string.empty_track));
 		}else if(isRecording){
-			statusTextView.setText("Recording track");
+			statusTextView.setText(getResources().getString(R.string.recording_track));
 		}else if(isLooping){
-			statusTextView.setText("Track playing");
+			statusTextView.setText(getResources().getString(R.string.track_playing));
 		}else{
-			statusTextView.setText("Track ready");
+			statusTextView.setText(getResources().getString(R.string.track_ready));
 		}
 	}
 
@@ -186,14 +186,13 @@ public class RecordingPane extends LinearLayout{
 		MainActivity.getInstance().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				statusTextView.setText("Dubbing stopped");
+				statusTextView.setText(MainActivity.getInstance().getResources().getString(R.string.dubbing_stopped));
 				recordBtn.setImageResource(R.drawable.record);
 			}
 		});
 		SoundManager.getInstance().stopMetronome();
 		masterTrack.normalizeTime();
 		isRecording = false;
-
 	}
 
 	public static void stopTimer(){

@@ -1,8 +1,11 @@
 package com.comp4905.jasonfleischer.midimusic.model;
 
+import com.comp4905.jasonfleischer.midimusic.MainActivity;
+import com.comp4905.jasonfleischer.midimusic.R;
+
 public enum Scale{
 
-	None("None", new int[]{}),
+	None(MainActivity.getInstance().getResources().getString(R.string.none), new int[]{}),
 	Major("Major", new int[]{2,4,5,7,9,11}),
 	min("Natural minor", new int[]{2,3,5,7,8,10}),
 	hmin("Harmonic minor", new int[]{2,3,5,7,8,11}),

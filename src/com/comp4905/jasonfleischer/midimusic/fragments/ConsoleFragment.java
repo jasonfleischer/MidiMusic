@@ -320,10 +320,10 @@ public class ConsoleFragment extends Fragment{
 		});
 
 		list = new ArrayList<String>();
-		list.add("None");
-		list.add("Two");
-		list.add("Three");
-		list.add("Four");
+		list.add(getResources().getString(R.string.none));
+		list.add(getResources().getString(R.string.two));
+		list.add(getResources().getString(R.string.three));
+		list.add(getResources().getString(R.string.four));
 		dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, list);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		accentSpinner.setAdapter(dataAdapter);
