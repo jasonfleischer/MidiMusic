@@ -10,5 +10,5 @@ For MIDI controller USB connection needs USB HOST (Android Version 3.1+)
 and a USB OTG (On-the-go) cable
 
 Application was developed and works with:
-Android Tablet - Nexus 7 (Android version 4.4.4)
+Android Tablet - Nexus 7 (Android version 4.4.4) 
 MIDI Keyboard controller with USB cable (Model: Acorn masterkey 25)
