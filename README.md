@@ -9,17 +9,19 @@ Use [Android Studio](https://developer.android.com/studio) to build an APK for y
 
 ### Notes
 
-Primarily built for tablets but also works on phones
-Android SDK 15 - 19
+Built with focused development on tablets but also works on phones
+Minimum Android SDK 18
 
 Application was developed and works with:
-- Android Tablet - Nexus 7 (Android version 4.4.4) 
+- Android Tablet - Nexus 7 (Android version 4.4.4)
+- Android Tablet - Samsung Galaxy Tab A (Android version 5.1.1)
 - MIDI Keyboard controller with USB cable (Model: Acorn masterkey 25)
 
 ### Requirements for USB device connection
 
-For MIDI controller USB connection needs USB HOST (Android Version 3.1+)
-and a USB OTG (On-the-go) cable
+- USB connection needs USB HOST (Android Version 3.1+)
+- USB OTG (On-the-go) cable
+- MIDI controller device
 
 ### Screenshots
 
@@ -32,3 +34,7 @@ and a USB OTG (On-the-go) cable
 ![4](/screenshots/4.png)
 
 ![4](/screenshots/5.png)
+
+Author: Jason Fleischer
+
+Website: http://jasonfleischer.github.io/website/
