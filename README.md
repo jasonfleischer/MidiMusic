@@ -5,7 +5,7 @@ Android Music Application that manipulates and plays MIDI files
 
 ### Setup
 
-Use [Android Studio](https://developer.android.com/studio) to build APK for you Android device
+Use [Android Studio](https://developer.android.com/studio) to build an APK for your Android device
 
 ### Notes
 
