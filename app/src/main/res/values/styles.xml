@@ -1,0 +1,28 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:imageButtonStyle">@style/ImgBtnStyle</item>
+		<item name="android:buttonStyle">@style/BtnStyle</item>
+		<item name="android:textSize">@dimen/default_font</item>
+	</style>
+	<!-- Base application theme, dependent on API level. This theme is replaced 
+		by AppBaseTheme from res/values-vXX/styles.xml on newer devices. -->
+
+
+	<style name="ImgBtnStyle">
+		<item name="android:background">@drawable/img_button</item>
+		<item name="android:padding">10dp</item>
+	</style>
+
+	<style name="BtnStyle">
+		<item name="android:background">@drawable/button</item>
+		<item name="android:gravity">center</item>
+	</style>
+</resources>

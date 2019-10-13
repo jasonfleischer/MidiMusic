@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jfleischer.midimusic.views.RecordingPane xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recording_pane_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    android:background="@drawable/container_shape_no_border"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingTop="3dp"
+        android:paddingRight="5dp"
+        android:visibility="@string/hidden">
+
+        <TextView
+            android:id="@+id/recording_bpm"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/recording_time"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/recording_status"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="3dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="3dp"
+        android:paddingRight="5dp" />
+
+    <ImageButton
+        android:id="@+id/recording_rec_btn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:contentDescription="@string/description_record_track"
+        android:scaleType="fitCenter"
+        android:src="@drawable/record" />
+
+    <ImageButton
+        android:id="@+id/recording_loop_btn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:contentDescription="@string/description_loop_track"
+        android:scaleType="fitCenter"
+        android:src="@drawable/loop" />
+
+    <ImageButton
+        android:id="@+id/recording_delete_track_btn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:contentDescription="@string/description_delete_track"
+        android:scaleType="fitCenter"
+        android:src="@drawable/delete" />
+</com.jfleischer.midimusic.views.RecordingPane>

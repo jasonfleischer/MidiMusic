@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal">
+
+    <!-- White Keys -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/key_0"
+            android:layout_width="@dimen/keyboard_key_width"
+            android:layout_height="fill_parent"
+            android:background="@drawable/key_white_key">
+
+            <TextView
+                android:id="@+id/key_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="5dp"
+                android:textColor="#CCC"
+                android:textSize="@dimen/font_large" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/key_2"
+            android:layout_width="@dimen/keyboard_key_width"
+            android:layout_height="fill_parent"
+            android:background="@drawable/key_white_key" />
+
+        <FrameLayout
+            android:id="@+id/key_4"
+            android:layout_width="@dimen/keyboard_key_width"
+            android:layout_height="fill_parent"
+            android:background="@drawable/key_white_key" />
+
+        <FrameLayout
+            android:id="@+id/key_5"
+            android:layout_width="@dimen/keyboard_key_width"
+            android:layout_height="fill_parent"
+            android:background="@drawable/key_white_key" />
+
+        <FrameLayout
+            android:id="@+id/key_7"
+            android:layout_width="@dimen/keyboard_key_width"
+            android:layout_height="fill_parent"
+            android:background="@drawable/key_white_key" />
+
+        <FrameLayout
+            android:id="@+id/key_9"
+            android:layout_width="@dimen/keyboard_key_width"
+            android:layout_height="fill_parent"
+            android:background="@drawable/key_white_key" />
+
+        <FrameLayout
+            android:id="@+id/key_11"
+            android:layout_width="@dimen/keyboard_key_width"
+            android:layout_height="fill_parent"
+            android:background="@drawable/key_white_key" />
+
+        <FrameLayout
+            android:id="@+id/key_12"
+            android:layout_width="@dimen/keyboard_key_width"
+            android:layout_height="fill_parent"
+            android:background="@drawable/key_white_key" />
+    </LinearLayout>
+
+    <!-- Black Keys -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/keyboard_black_key_height"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/key_1"
+            android:layout_width="@dimen/keyboard_black_key_width_1"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="@dimen/keyboard_black_key_indent_1"
+            android:background="@drawable/key_black" />
+
+        <FrameLayout
+            android:id="@+id/key_3"
+            android:layout_width="@dimen/keyboard_black_key_width_1"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="@dimen/keyboard_black_key_indent_2"
+            android:background="@drawable/key_black" />
+
+        <FrameLayout
+            android:id="@+id/key_6"
+            android:layout_width="@dimen/keyboard_black_key_width_2"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="@dimen/keyboard_black_key_indent_3"
+            android:background="@drawable/key_black" />
+
+        <FrameLayout
+            android:id="@+id/key_8"
+            android:layout_width="@dimen/keyboard_black_key_width_2"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="@dimen/keyboard_black_key_indent_4"
+            android:background="@drawable/key_black" />
+
+        <FrameLayout
+            android:id="@+id/key_10"
+            android:layout_width="@dimen/keyboard_black_key_width_2"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="@dimen/keyboard_black_key_indent_4"
+            android:background="@drawable/key_black" />
+    </LinearLayout>
+</RelativeLayout>
